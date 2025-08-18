@@ -1,0 +1,71 @@
+package com.rendyrobbani.keuangan.persistence.entity;
+
+import com.rendyrobbani.keuangan.core.domain.entity.BaseEntity;
+import com.rendyrobbani.keuangan.core.domain.entity.DataEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
+import java.time.LocalDateTime;
+
+@Data
+@Setter(AccessLevel.PROTECTED)
+@Accessors(fluent = true)
+@EqualsAndHashCode(callSuper = true)
+@MappedSuperclass
+public abstract class AbstractDataEntity<DOMAIN extends BaseEntity<ID>, ID> extends AbstractBaseEntity<DOMAIN, ID> implements DataEntity<ID> {
+
+	@Column(name = "created_at", updatable = false)
+	protected LocalDateTime createdAt;
+
+	@Column(name = "created_by", length = 18, updatable = false)
+	protected String createdBy;
+
+	@Column(name = "updated_at")
+	protected LocalDateTime updatedAt;
+
+	@Column(name = "updated_by", length = 18)
+	protected String updatedBy;
+
+	@Column(name = "is_deleted")
+	protected boolean isDeleted;
+
+	@Column(name = "deleted_at")
+	protected LocalDateTime deletedAt;
+
+	@Column(name = "deleted_by", length = 18)
+	protected String deletedBy;
+
+	@Override
+	public void create(LocalDateTime createdAt, String createdBy) {
+		this.createdAt = createdAt;
+		this.createdBy = createdBy;
+	}
+
+	@Override
+	public void update(LocalDateTime updatedAt, String updatedBy) {
+		this.updatedAt = updatedAt;
+		this.updatedBy = updatedBy;
+	}
+
+	@Override
+	public void delete(LocalDateTime deletedAt, String deletedBy) {
+		this.isDeleted = true;
+		this.deletedAt = deletedAt;
+		this.deletedBy = deletedBy;
+	}
+
+	@Override
+	public void revive(LocalDateTime updatedAt, String updatedBy) {
+		this.isDeleted = false;
+		this.deletedAt = null;
+		this.deletedBy = null;
+		this.updatedAt = updatedAt;
+		this.updatedBy = updatedBy;
+	}
+
+}
