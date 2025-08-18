@@ -36,10 +36,10 @@ public abstract class AbstractDataMasterBidangEntity extends AbstractDataMasterC
 
 	@Override
 	public void create(BidangClassification classification, String name, LocalDateTime createdAt, String createdBy) {
-		this.id = classification.bidangCode().toUpperCase().replaceAll("X", "0");
+		this.id = classification.bidangCode().replaceAll("X", "0");
 		this.code = classification.bidangCode();
 		this.name = name;
-		this.urusanId = classification.urusanCode().toUpperCase().replaceAll("X", "0");
+		this.urusanId = classification.urusanCode().replaceAll("X", "0");
 		this.create(createdAt, createdBy);
 	}
 

@@ -39,11 +39,11 @@ public abstract class AbstractDataMasterProgramEntity extends AbstractDataMaster
 
 	@Override
 	public void create(ProgramClassification classification, String name, LocalDateTime createdAt, String createdBy) {
-		this.id = classification.programCode().toUpperCase().replaceAll("X", "0");
+		this.id = classification.programCode().replaceAll("X", "0");
 		this.code = classification.programCode();
 		this.name = name;
-		this.urusanId = classification.urusanCode().toUpperCase().replaceAll("X", "0");
-		this.bidangId = classification.bidangCode().toUpperCase().replaceAll("X", "0");
+		this.urusanId = classification.urusanCode().replaceAll("X", "0");
+		this.bidangId = classification.bidangCode().replaceAll("X", "0");
 		this.create(createdAt, createdBy);
 	}
 

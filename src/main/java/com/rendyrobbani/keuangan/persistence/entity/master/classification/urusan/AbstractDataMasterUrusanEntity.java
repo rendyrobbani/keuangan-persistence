@@ -33,7 +33,7 @@ public abstract class AbstractDataMasterUrusanEntity extends AbstractDataMasterC
 
 	@Override
 	public void create(UrusanClassification classification, String name, LocalDateTime createdAt, String createdBy) {
-		this.id = classification.urusanCode().toUpperCase().replaceAll("X", "0");
+		this.id = classification.urusanCode().replaceAll("X", "0");
 		this.code = classification.urusanCode();
 		this.name = name;
 		this.create(createdAt, createdBy);

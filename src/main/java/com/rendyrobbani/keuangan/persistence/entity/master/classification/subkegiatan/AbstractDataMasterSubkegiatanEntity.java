@@ -1,7 +1,7 @@
-package com.rendyrobbani.keuangan.persistence.entity.master.classification.kegiatan;
+package com.rendyrobbani.keuangan.persistence.entity.master.classification.subkegiatan;
 
-import com.rendyrobbani.keuangan.core.domain.entity.master.classification.kegiatan.DataMasterKegiatan;
-import com.rendyrobbani.keuangan.core.domain.vo.classification.kegiatan.KegiatanClassification;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.subkegiatan.DataMasterSubkegiatan;
+import com.rendyrobbani.keuangan.core.domain.vo.classification.kegiatan.SubkegiatanClassification;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassifcationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
@@ -19,13 +19,13 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataMasterKegiatanEntity extends AbstractDataMasterClassifcationEntity<DataMasterKegiatan> implements DataMasterKegiatan {
+public abstract class AbstractDataMasterSubkegiatanEntity extends AbstractDataMasterClassifcationEntity<DataMasterSubkegiatan> implements DataMasterSubkegiatan {
 
 	@Id
-	@Column(name = "id", length = 12, nullable = false)
+	@Column(name = "id", length = 15, nullable = false)
 	protected String id;
 
-	@Column(name = "code", length = 12, nullable = false)
+	@Column(name = "code", length = 15, nullable = false)
 	protected String code;
 
 	@Column(name = "name", nullable = false)
@@ -40,6 +40,9 @@ public abstract class AbstractDataMasterKegiatanEntity extends AbstractDataMaste
 	@Column(name = "program_id", length = 7, nullable = false)
 	protected String programId;
 
+	@Column(name = "kegiatan_id", length = 12, nullable = false)
+	protected String kegiatanId;
+
 	@Column(name = "fungsi_id", length = 2, nullable = false)
 	protected String fungsiId;
 
@@ -47,13 +50,14 @@ public abstract class AbstractDataMasterKegiatanEntity extends AbstractDataMaste
 	protected String subfungsiId;
 
 	@Override
-	public void create(KegiatanClassification classification, String name, LocalDateTime createdAt, String createdBy) {
-		this.id = classification.kegiatanCode().replaceAll("X", "0");
-		this.code = classification.kegiatanCode();
+	public void create(SubkegiatanClassification classification, String name, LocalDateTime createdAt, String createdBy) {
+		this.id = classification.subkegiatanCode().replaceAll("X", "0");
+		this.code = classification.subkegiatanCode();
 		this.name = name;
 		this.urusanId = classification.urusanCode().replaceAll("X", "0");
 		this.bidangId = classification.bidangCode().replaceAll("X", "0");
 		this.programId = classification.programCode().replaceAll("X", "0");
+		this.kegiatanId = classification.kegiatanCode().replaceAll("X", "0");
 		this.fungsiId = classification.fungsiCode();
 		this.subfungsiId = classification.subfungsiCode();
 		this.create(createdAt, createdBy);
