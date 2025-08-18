@@ -29,7 +29,6 @@ public abstract class AbstractLogsEntity<DOMAIN extends LogsEntity<SUBJECT, SUBJ
 	@Column(name = "logged_by", length = 18, nullable = false)
 	private String loggedBy;
 
-	@Override
 	public void create(LocalDateTime createdAt, String createdBy) {
 		this.loggedAt = createdAt;
 		this.loggedBy = createdBy;
