@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class DataMasterFungsiRepositoryImpl extends AbstractDataMasterClassificationRepository<DataMasterFungsiEntity, DataMasterFungsi> implements DataMasterFungsiRepository {
@@ -17,6 +19,16 @@ public class DataMasterFungsiRepositoryImpl extends AbstractDataMasterClassifica
 	@Override
 	protected JpaRepository<DataMasterFungsiEntity, String> repository() {
 		return repository;
+	}
+
+	@Override
+	public List<DataMasterFungsi> findByIsDeletedFalse() {
+		return this.repository.findByIsDeleted(false).stream().map(DataMasterFungsiEntity::toDomain).toList();
+	}
+
+	@Override
+	public List<DataMasterFungsi> findByIsDeletedTrue() {
+		return this.repository.findByIsDeleted(true).stream().map(DataMasterFungsiEntity::toDomain).toList();
 	}
 
 }
