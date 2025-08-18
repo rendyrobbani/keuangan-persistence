@@ -9,7 +9,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Data
-@Setter(AccessLevel.PROTECTED)
+@Setter(AccessLevel.NONE)
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity

@@ -21,7 +21,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
-@Setter(AccessLevel.PROTECTED)
+@Setter(AccessLevel.NONE)
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass

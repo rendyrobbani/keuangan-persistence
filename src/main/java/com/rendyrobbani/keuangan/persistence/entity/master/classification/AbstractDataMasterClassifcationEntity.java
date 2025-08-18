@@ -1,0 +1,53 @@
+package com.rendyrobbani.keuangan.persistence.entity.master.classification;
+
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.DataMasterClassificationEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.AbstractDataMasterEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
+import java.time.LocalDateTime;
+
+@Data
+@Setter(AccessLevel.NONE)
+@Accessors(fluent = true)
+@EqualsAndHashCode(callSuper = true)
+@MappedSuperclass
+public abstract class AbstractDataMasterClassifcationEntity<DOMAIN extends DataMasterClassificationEntity> extends AbstractDataMasterEntity<DOMAIN, String> implements DataMasterClassificationEntity {
+
+	@Column(name = "is_locked", nullable = false)
+	protected boolean isLocked;
+
+	@Column(name = "locked_at")
+	protected LocalDateTime lockedAt;
+
+	@Column(name = "locked_by", length = 18)
+	protected String lockedBy;
+
+	@Override
+	public void lock(LocalDateTime lockedAt, String lockedBy) {
+		this.isLocked = true;
+		this.lockedAt = lockedAt;
+		this.lockedBy = lockedBy;
+	}
+
+	@Override
+	public void unlock(LocalDateTime updatedAt, String updatedBy) {
+		this.isLocked = false;
+		this.lockedAt = null;
+		this.lockedBy = null;
+		this.updatedAt = updatedAt;
+		this.updatedBy = updatedBy;
+	}
+
+	@Override
+	public void delete(LocalDateTime deletedAt, String deletedBy) {
+		lock(deletedAt, deletedBy);
+		super.delete(deletedAt, deletedBy);
+	}
+
+}

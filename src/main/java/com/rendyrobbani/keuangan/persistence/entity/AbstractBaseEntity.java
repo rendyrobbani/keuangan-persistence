@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 import java.io.Serial;
 
 @Data
-@Setter(AccessLevel.PROTECTED)
+@Setter(AccessLevel.NONE)
 @Accessors(fluent = true)
 @EqualsAndHashCode
 @MappedSuperclass
