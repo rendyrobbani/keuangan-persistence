@@ -22,10 +22,10 @@ import java.time.LocalDateTime;
 public abstract class AbstractDataMasterUrusanEntity extends AbstractDataMasterClassifcationEntity<DataMasterUrusan> implements DataMasterUrusan {
 
 	@Id
-	@Column(name = "id", length = 1, nullable = false)
+	@Column(name = "id", length = 1, nullable = false, updatable = false)
 	protected String id;
 
-	@Column(name = "code", length = 1, nullable = false)
+	@Column(name = "code", length = 1, nullable = false, updatable = false)
 	protected String code;
 
 	@Column(name = "name", nullable = false)
@@ -33,7 +33,7 @@ public abstract class AbstractDataMasterUrusanEntity extends AbstractDataMasterC
 
 	@Override
 	public void create(UrusanClassification classification, String name, LocalDateTime createdAt, String createdBy) {
-		this.id = classification.urusanCode();
+		this.id = classification.urusanCode().toUpperCase().replaceAll("X", "0");
 		this.code = classification.urusanCode();
 		this.name = name;
 		this.create(createdAt, createdBy);

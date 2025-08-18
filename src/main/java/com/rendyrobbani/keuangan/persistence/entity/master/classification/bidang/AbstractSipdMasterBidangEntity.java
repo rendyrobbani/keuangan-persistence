@@ -1,7 +1,7 @@
-package com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan;
+package com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang;
 
-import com.rendyrobbani.keuangan.core.domain.entity.master.classification.urusan.DataMasterUrusan;
-import com.rendyrobbani.keuangan.core.domain.entity.master.classification.urusan.SipdMasterUrusan;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.bidang.DataMasterBidang;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.bidang.SipdMasterBidang;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractSipdMasterClassifcationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
@@ -19,19 +19,19 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractSipdMasterUrusanEntity extends AbstractSipdMasterClassifcationEntity<SipdMasterUrusan, DataMasterUrusan> implements SipdMasterUrusan {
+public abstract class AbstractSipdMasterBidangEntity extends AbstractSipdMasterClassifcationEntity<SipdMasterBidang, DataMasterBidang> implements SipdMasterBidang {
 
 	@Id
 	@Column(name = "id", nullable = false, updatable = false)
 	protected Long id;
 
-	@Column(name = "code", length = 1, nullable = false)
+	@Column(name = "code", length = 4, nullable = false)
 	protected String code;
 
 	@Column(name = "name", nullable = false)
 	protected String name;
 
-	@Column(name = "subject_id", length = 1, nullable = false)
+	@Column(name = "subject_id", length = 4, nullable = false)
 	protected String subjectId;
 
 	@Override
