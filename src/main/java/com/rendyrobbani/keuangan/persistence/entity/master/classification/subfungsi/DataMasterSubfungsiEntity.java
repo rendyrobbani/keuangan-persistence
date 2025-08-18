@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = DataMasterSubfungsi.TABLE_NAME)
+@Table(name = DataMasterSubfungsi.TABLE_NAME, uniqueConstraints = {@UniqueConstraint(columnNames = {"fungsi_id", "id"})})
 public class DataMasterSubfungsiEntity extends AbstractDataMasterSubfungsiEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
