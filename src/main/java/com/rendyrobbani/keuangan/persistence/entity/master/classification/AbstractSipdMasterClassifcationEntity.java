@@ -3,8 +3,8 @@ package com.rendyrobbani.keuangan.persistence.entity.master.classification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.DataMasterClassificationEntity;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.SipdMasterClassificationEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.AbstractSipdMasterEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
+import com.rendyrobbani.keuangan.persistence.entity.user.DataUserEntity;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,6 +28,12 @@ public abstract class AbstractSipdMasterClassifcationEntity<DOMAIN extends SipdM
 
 	@Column(name = "locked_by", length = 18)
 	protected String lockedBy;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns(value = {
+			@JoinColumn(name = "locked_by", referencedColumnName = "id", insertable = false, updatable = false)
+	})
+	protected DataUserEntity lockedByAsDataUser;
 
 	@Override
 	public void lock(LocalDateTime lockedAt, String lockedBy) {

@@ -1,13 +1,12 @@
 package com.rendyrobbani.keuangan.persistence.entity.master.classification.organisasi;
 
-import com.rendyrobbani.keuangan.core.common.classification.organisasi.OrganisasiClassification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.organisasi.DataMasterOrganisasi;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.organisasi.LogsMasterOrganisasi;
 import com.rendyrobbani.keuangan.core.domain.vo.JabatanStatus;
 import com.rendyrobbani.keuangan.persistence.converter.JabatanStatusConverter;
-import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassifcationEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractLogsMasterClassifcationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -23,14 +22,8 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataMasterOrganisasiEntity extends AbstractDataMasterClassifcationEntity<DataMasterOrganisasi> implements DataMasterOrganisasi {
+public abstract class AbstractLogsMasterOrganisasiEntity extends AbstractLogsMasterClassifcationEntity<LogsMasterOrganisasi, DataMasterOrganisasi> implements LogsMasterOrganisasi {
 
-	@Id
-	@Check(constraints = "id = code")
-	@Column(name = "id", length = 22, nullable = false, updatable = false)
-	protected String id;
-
-	@Check(constraints = "id = unit_id")
 	@Column(name = "code", length = 22, nullable = false, updatable = false)
 	protected String code;
 
@@ -65,29 +58,25 @@ public abstract class AbstractDataMasterOrganisasiEntity extends AbstractDataMas
 	@Column(name = "head_status")
 	protected JabatanStatus headStatus;
 
-	@Override
-	public void create(OrganisasiClassification classification, String name, Byte mainBidangIndex, String headId, JabatanStatus headStatus, LocalDateTime createdAt, String createdBy) {
-		this.id = classification.unitCode();
-		this.code = classification.unitCode();
-		this.skpdId = classification.skpdCode();
-		this.unitId = classification.unitCode();
-		this.bidang1Id = classification.bidang1Code();
-		this.bidang2Id = classification.bidang2Code();
-		this.bidang3Id = classification.bidang3Code();
-		this.name = name;
-		this.mainBidangIndex = mainBidangIndex;
-		this.headId = headId;
-		this.headStatus = headStatus;
-		this.create(createdAt, createdBy);
-	}
+	@Check(constraints = "subject_id = unit_id")
+	@Column(name = "subject_id", length = 22, nullable = false)
+	protected String subjectId;
 
 	@Override
-	public void update(String name, Byte mainBidangIndex, String headId, JabatanStatus headStatus, LocalDateTime updatedAt, String updatedBy) {
-		this.name = name;
-		this.mainBidangIndex = mainBidangIndex;
-		this.headId = headId;
-		this.headStatus = headStatus;
-		this.update(updatedAt, updatedBy);
+	public void create(DataMasterOrganisasi data, LocalDateTime createdAt, String createdBy) {
+		this.code = data.code();
+		this.name = data.name();
+		this.skpdId = data.skpdId();
+		this.unitId = data.unitId();
+		this.mainBidangIndex = data.mainBidangIndex();
+		this.bidang1Id = data.bidang1Id();
+		this.bidang2Id = data.bidang2Id();
+		this.bidang3Id = data.bidang3Id();
+		this.headId = data.headId();
+		this.headStatus = data.headStatus();
+		this.isLocked = data.isLocked();
+		this.isDeleted = data.isDeleted();
+		this.create(createdAt, createdBy);
 	}
 
 }

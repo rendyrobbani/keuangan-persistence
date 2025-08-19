@@ -2,6 +2,7 @@ package com.rendyrobbani.keuangan.persistence.entity;
 
 import com.rendyrobbani.keuangan.core.domain.entity.DataEntity;
 import com.rendyrobbani.keuangan.core.domain.entity.LogsEntity;
+import com.rendyrobbani.keuangan.persistence.entity.user.DataUserEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -28,6 +29,12 @@ public abstract class AbstractLogsEntity<DOMAIN extends LogsEntity<SUBJECT, SUBJ
 
 	@Column(name = "logged_by", length = 18, nullable = false)
 	private String loggedBy;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns(value = {
+			@JoinColumn(name = "logged_by", referencedColumnName = "id", insertable = false, updatable = false)
+	})
+	protected DataUserEntity loggedByByAsDataUser;
 
 	public void create(LocalDateTime createdAt, String createdBy) {
 		this.loggedAt = createdAt;

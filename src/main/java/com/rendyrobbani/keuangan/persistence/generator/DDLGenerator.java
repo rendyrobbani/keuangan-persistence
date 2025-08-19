@@ -1,6 +1,7 @@
 package com.rendyrobbani.keuangan.persistence.generator;
 
 import com.rendyrobbani.keuangan.core.domain.vo.Gender;
+import com.rendyrobbani.keuangan.core.domain.vo.JabatanStatus;
 import com.rendyrobbani.keuangan.core.domain.vo.Pangkat;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.DataMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.SipdMasterBidangEntity;
@@ -13,6 +14,9 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.kegiat
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kegiatan.SipdMasterKegiatanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kelurahan.DataMasterKelurahanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kelurahan.SipdMasterKelurahanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.organisasi.DataMasterOrganisasiEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.organisasi.LogsMasterOrganisasiEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.organisasi.SipdMasterOrganisasiEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.program.DataMasterProgramEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.program.SipdMasterProgramEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.provinsi.DataMasterProvinsiEntity;
@@ -74,6 +78,10 @@ public final class DDLGenerator {
 			entityClasses.add(DataMasterSubkegiatanEntity.class);
 			entityClasses.add(SipdMasterSubkegiatanEntity.class);
 
+			entityClasses.add(DataMasterOrganisasiEntity.class);
+			entityClasses.add(LogsMasterOrganisasiEntity.class);
+			entityClasses.add(SipdMasterOrganisasiEntity.class);
+
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}
 		return entityClasses;
@@ -84,7 +92,7 @@ public final class DDLGenerator {
 		if (List.of(Long.class, long.class).contains(field.getType())) return "bigint";
 		if (List.of(Integer.class, int.class).contains(field.getType())) return "int";
 		if (List.of(Short.class, short.class).contains(field.getType())) return "smallint";
-		if (List.of(Byte.class, byte.class, Gender.class).contains(field.getType())) return "tinyint";
+		if (List.of(Byte.class, byte.class, Gender.class, JabatanStatus.class).contains(field.getType())) return "tinyint";
 		if (List.of(Boolean.class, boolean.class).contains(field.getType())) return "bit";
 		if (List.of(Double.class, double.class).contains(field.getType())) return "double";
 		if (List.of(Float.class, float.class).contains(field.getType())) return "float";

@@ -1,0 +1,40 @@
+drop table if exists data_master_subkegiatan;
+
+create or replace table data_master_subkegiatan (
+	id           varchar(17)  not null,
+	code         varchar(17)  not null,
+	name         varchar(510) not null,
+	is_locked    bit          not null,
+	locked_at    datetime     null,
+	locked_by    varchar(18)  null,
+	created_at   datetime     null,
+	created_by   varchar(18)  null,
+	updated_at   datetime     null,
+	updated_by   varchar(18)  null,
+	is_deleted   bit          null,
+	deleted_at   datetime     null,
+	deleted_by   varchar(18)  null,
+	urusan_id    varchar(1)   not null,
+	bidang_id    varchar(4)   not null,
+	program_id   varchar(7)   not null,
+	kegiatan_id  varchar(12)  not null,
+	fungsi_id    varchar(2)   not null,
+	subfungsi_id varchar(5)   not null,
+	constraint ck_data_master_subkegiatan_01 check (id = replace(code, 'X', '0')),
+	constraint fk_data_master_subkegiatan_01 foreign key (urusan_id) references data_master_urusan (id),
+	constraint fk_data_master_subkegiatan_02 foreign key (urusan_id, bidang_id) references data_master_bidang (urusan_id, id),
+	constraint fk_data_master_subkegiatan_03 foreign key (urusan_id, bidang_id, program_id) references data_master_program (urusan_id, bidang_id, id),
+	constraint fk_data_master_subkegiatan_04 foreign key (fungsi_id, subfungsi_id, urusan_id, bidang_id, program_id, kegiatan_id) references data_master_kegiatan (fungsi_id, subfungsi_id, urusan_id, bidang_id, program_id, id),
+	constraint fk_data_master_subkegiatan_05 foreign key (fungsi_id) references data_master_fungsi (id),
+	constraint fk_data_master_subkegiatan_06 foreign key (fungsi_id, subfungsi_id) references data_master_subfungsi (fungsi_id, id),
+	constraint fk_data_master_subkegiatan_07 foreign key (locked_by) references data_user (id),
+	constraint fk_data_master_subkegiatan_08 foreign key (created_by) references data_user (id),
+	constraint fk_data_master_subkegiatan_09 foreign key (updated_by) references data_user (id),
+	constraint fk_data_master_subkegiatan_10 foreign key (deleted_by) references data_user (id),
+	constraint uk_data_master_subkegiatan_01 unique key (urusan_id, bidang_id, program_id, kegiatan_id, id),
+	constraint uk_data_master_subkegiatan_02 unique key (fungsi_id, subfungsi_id, urusan_id, bidang_id, program_id, kegiatan_id, id),
+	constraint uk_data_master_subkegiatan_03 unique key (fungsi_id, subfungsi_id, program_id, kegiatan_id, id),
+	primary key (id)
+) engine = innodb
+  charset = utf8mb4
+  collate = utf8mb4_unicode_ci;
