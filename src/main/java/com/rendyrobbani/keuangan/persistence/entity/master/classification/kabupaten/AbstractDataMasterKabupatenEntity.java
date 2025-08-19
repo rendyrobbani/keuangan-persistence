@@ -1,0 +1,54 @@
+package com.rendyrobbani.keuangan.persistence.entity.master.classification.kabupaten;
+
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.kabupaten.DataMasterKabupaten;
+import com.rendyrobbani.keuangan.core.domain.vo.classification.daerah.KabupatenClassification;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassifcationEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+import org.hibernate.annotations.Check;
+
+import java.time.LocalDateTime;
+
+@Data
+@Setter(AccessLevel.NONE)
+@Accessors(fluent = true)
+@EqualsAndHashCode(callSuper = true)
+@MappedSuperclass
+public abstract class AbstractDataMasterKabupatenEntity extends AbstractDataMasterClassifcationEntity<DataMasterKabupaten> implements DataMasterKabupaten {
+
+	@Id
+	@Check(constraints = "id = code")
+	@Column(name = "id", length = 5, nullable = false)
+	protected String id;
+
+	@Column(name = "code", length = 5, nullable = false)
+	protected String code;
+
+	@Column(name = "name", nullable = false)
+	protected String name;
+
+	@Column(name = "provinsi_id", length = 2, nullable = false)
+	protected String provinsiId;
+
+	@Override
+	public void create(KabupatenClassification classification, String name, LocalDateTime createdAt, String createdBy) {
+		this.id = classification.kabupatenCode();
+		this.code = classification.kabupatenCode();
+		this.name = name;
+		this.provinsiId = classification.provinsiCode();
+		this.create(createdAt, createdBy);
+	}
+
+	@Override
+	public void update(String name, LocalDateTime updatedAt, String updatedBy) {
+		this.name = name;
+		this.create(createdAt, createdBy);
+	}
+
+}

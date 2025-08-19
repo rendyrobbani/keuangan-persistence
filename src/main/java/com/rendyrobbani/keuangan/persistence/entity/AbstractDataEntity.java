@@ -2,8 +2,8 @@ package com.rendyrobbani.keuangan.persistence.entity;
 
 import com.rendyrobbani.keuangan.core.domain.entity.BaseEntity;
 import com.rendyrobbani.keuangan.core.domain.entity.DataEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
+import com.rendyrobbani.keuangan.persistence.entity.user.DataUserEntity;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -39,6 +39,24 @@ public abstract class AbstractDataEntity<DOMAIN extends BaseEntity<ID>, ID> exte
 
 	@Column(name = "deleted_by", length = 18)
 	protected String deletedBy;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns(value = {
+			@JoinColumn(name = "created_by", referencedColumnName = "id", insertable = false, updatable = false)
+	})
+	protected DataUserEntity createdByAsDataUser;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns(value = {
+			@JoinColumn(name = "updated_by", referencedColumnName = "id", insertable = false, updatable = false)
+	})
+	protected DataUserEntity updatedByAsDataUser;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns(value = {
+			@JoinColumn(name = "deleted_by", referencedColumnName = "id", insertable = false, updatable = false)
+	})
+	protected DataUserEntity deletedByAsDataUser;
 
 	@Override
 	public void create(LocalDateTime createdAt, String createdBy) {

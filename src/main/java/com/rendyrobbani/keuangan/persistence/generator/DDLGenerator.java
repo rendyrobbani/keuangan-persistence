@@ -5,10 +5,18 @@ import com.rendyrobbani.keuangan.core.domain.vo.Pangkat;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.DataMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.SipdMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.fungsi.DataMasterFungsiEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.kabupaten.DataMasterKabupatenEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.kabupaten.SipdMasterKabupatenEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.kecamatan.DataMasterKecamatanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.kecamatan.SipdMasterKecamatanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kegiatan.DataMasterKegiatanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kegiatan.SipdMasterKegiatanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.kelurahan.DataMasterKelurahanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.kelurahan.SipdMasterKelurahanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.program.DataMasterProgramEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.program.SipdMasterProgramEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.provinsi.DataMasterProvinsiEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.provinsi.SipdMasterProvinsiEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subfungsi.DataMasterSubfungsiEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subkegiatan.DataMasterSubkegiatanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subkegiatan.SipdMasterSubkegiatanEntity;
@@ -42,6 +50,15 @@ public final class DDLGenerator {
 
 			entityClasses.add(DataUserEntity.class);
 			entityClasses.add(LogsUserEntity.class);
+
+			entityClasses.add(DataMasterProvinsiEntity.class);
+			entityClasses.add(SipdMasterProvinsiEntity.class);
+			entityClasses.add(DataMasterKabupatenEntity.class);
+			entityClasses.add(SipdMasterKabupatenEntity.class);
+			entityClasses.add(DataMasterKecamatanEntity.class);
+			entityClasses.add(SipdMasterKecamatanEntity.class);
+			entityClasses.add(DataMasterKelurahanEntity.class);
+			entityClasses.add(SipdMasterKelurahanEntity.class);
 
 			entityClasses.add(DataMasterFungsiEntity.class);
 			entityClasses.add(DataMasterSubfungsiEntity.class);
