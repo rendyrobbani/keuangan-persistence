@@ -25,13 +25,13 @@ public abstract class AbstractSipdMasterSubkegiatanEntity extends AbstractSipdMa
 	@Column(name = "id", nullable = false, updatable = false)
 	protected Long id;
 
-	@Column(name = "code", length = 15, nullable = false)
+	@Column(name = "code", length = 17, nullable = false)
 	protected String code;
 
 	@Column(name = "name", nullable = false)
 	protected String name;
 
-	@Column(name = "subject_id", length = 15, nullable = false)
+	@Column(name = "subject_id", length = 17, nullable = false)
 	protected String subjectId;
 
 	@Override

@@ -16,6 +16,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Check;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -31,6 +32,7 @@ public abstract class AbstractDataUserEntity extends AbstractDataEntity<DataUser
 	@Column(name = "id", length = 18, nullable = false, updatable = false)
 	protected String id;
 
+	@Check(constraints = "pangkat regexp " + Pangkat.REGEX)
 	@Convert(converter = PangkatConverter.class)
 	@Column(name = "pangkat", length = 2, nullable = false)
 	protected Pangkat pangkat;
@@ -53,16 +55,20 @@ public abstract class AbstractDataUserEntity extends AbstractDataEntity<DataUser
 	@Column(name = "date_of_start")
 	protected LocalDate dateOfStart;
 
+	@Check(constraints = "gender between 1 and 2")
 	@Convert(converter = GenderConverter.class)
 	@Column(name = "gender", nullable = false, updatable = false)
 	protected Gender gender;
 
+	@Check(constraints = "number between 1 and 999")
 	@Column(name = "number", nullable = false, updatable = false)
 	protected Short number;
 
+	@Check(constraints = "pangkat regexp " + Pangkat.REGEX_PNS)
 	@Column(name = "is_pns", nullable = false)
 	protected boolean isPNS;
 
+	@Check(constraints = "pangkat regexp " + Pangkat.REGEX_P3K)
 	@Column(name = "is_p3k", nullable = false)
 	protected boolean isP3K;
 

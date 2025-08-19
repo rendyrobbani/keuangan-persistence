@@ -15,15 +15,20 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = DataMasterProgram.TABLE_NAME)
+@Table(name = DataMasterProgram.TABLE_NAME, uniqueConstraints = {@UniqueConstraint(columnNames = {"urusan_id", "bidang_id", "id"})})
 public class DataMasterProgramEntity extends AbstractDataMasterProgramEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "urusan_id", insertable = false, updatable = false)
+	@JoinColumns(value = {
+			@JoinColumn(name = "urusan_id", referencedColumnName = "id", insertable = false, updatable = false)
+	})
 	protected DataMasterUrusanEntity urusan;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "bidang_id", insertable = false, updatable = false)
+	@JoinColumns(value = {
+			@JoinColumn(name = "urusan_id", referencedColumnName = "urusan_id", insertable = false, updatable = false),
+			@JoinColumn(name = "bidang_id", referencedColumnName = "id", insertable = false, updatable = false)
+	})
 	protected DataMasterBidangEntity bidang;
 
 	@Override

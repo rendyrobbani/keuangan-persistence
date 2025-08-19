@@ -18,27 +18,41 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = DataMasterKegiatan.TABLE_NAME)
+@Table(name = DataMasterKegiatan.TABLE_NAME, uniqueConstraints = {@UniqueConstraint(columnNames = {"urusan_id", "bidang_id", "program_id", "id"}), @UniqueConstraint(columnNames = {"fungsi_id", "subfungsi_id", "urusan_id", "bidang_id", "program_id", "id"}), @UniqueConstraint(columnNames = {"fungsi_id", "subfungsi_id", "program_id", "id"})})
 public class DataMasterKegiatanEntity extends AbstractDataMasterKegiatanEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "urusan_id", insertable = false, updatable = false)
+	@JoinColumns(value = {
+			@JoinColumn(name = "urusan_id", referencedColumnName = "id", insertable = false, updatable = false)
+	})
 	protected DataMasterUrusanEntity urusan;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "bidang_id", insertable = false, updatable = false)
+	@JoinColumns(value = {
+			@JoinColumn(name = "urusan_id", referencedColumnName = "urusan_id", insertable = false, updatable = false),
+			@JoinColumn(name = "bidang_id", referencedColumnName = "id", insertable = false, updatable = false)
+	})
 	protected DataMasterBidangEntity bidang;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "program_id", insertable = false, updatable = false)
+	@JoinColumns(value = {
+			@JoinColumn(name = "urusan_id", referencedColumnName = "urusan_id", insertable = false, updatable = false),
+			@JoinColumn(name = "bidang_id", referencedColumnName = "bidang_id", insertable = false, updatable = false),
+			@JoinColumn(name = "program_id", referencedColumnName = "id", insertable = false, updatable = false)
+	})
 	protected DataMasterProgramEntity program;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fungsi_id", insertable = false, updatable = false)
+	@JoinColumns(value = {
+			@JoinColumn(name = "fungsi_id", referencedColumnName = "id", insertable = false, updatable = false)
+	})
 	protected DataMasterFungsiEntity fungsi;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "subfungsi_id", insertable = false, updatable = false)
+	@JoinColumns(value = {
+			@JoinColumn(name = "fungsi_id", referencedColumnName = "fungsi_id", insertable = false, updatable = false),
+			@JoinColumn(name = "subfungsi_id", referencedColumnName = "id", insertable = false, updatable = false)
+	})
 	protected DataMasterSubfungsiEntity subfungsi;
 
 	@Override

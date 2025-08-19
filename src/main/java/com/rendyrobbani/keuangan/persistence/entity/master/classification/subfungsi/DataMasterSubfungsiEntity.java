@@ -18,8 +18,10 @@ import lombok.experimental.Accessors;
 public class DataMasterSubfungsiEntity extends AbstractDataMasterSubfungsiEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fungsi_id", referencedColumnName = "id", insertable = false, updatable = false)
-	private DataMasterFungsiEntity fungsi;
+	@JoinColumns(value = {
+			@JoinColumn(name = "fungsi_id", referencedColumnName = "id", insertable = false, updatable = false)
+	})
+	protected DataMasterFungsiEntity fungsi;
 
 	@Override
 	public DataMasterSubfungsi toDomain() {

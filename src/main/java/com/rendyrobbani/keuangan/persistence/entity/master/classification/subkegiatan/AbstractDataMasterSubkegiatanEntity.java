@@ -22,10 +22,10 @@ import java.time.LocalDateTime;
 public abstract class AbstractDataMasterSubkegiatanEntity extends AbstractDataMasterClassifcationEntity<DataMasterSubkegiatan> implements DataMasterSubkegiatan {
 
 	@Id
-	@Column(name = "id", length = 15, nullable = false)
+	@Column(name = "id", length = 17, nullable = false)
 	protected String id;
 
-	@Column(name = "code", length = 15, nullable = false)
+	@Column(name = "code", length = 17, nullable = false)
 	protected String code;
 
 	@Column(name = "name", nullable = false)

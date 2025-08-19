@@ -14,11 +14,13 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = DataMasterBidang.TABLE_NAME)
+@Table(name = DataMasterBidang.TABLE_NAME, uniqueConstraints = {@UniqueConstraint(columnNames = {"urusan_id", "id"})})
 public class DataMasterBidangEntity extends AbstractDataMasterBidangEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "urusan_id", insertable = false, updatable = false)
+	@JoinColumns(value = {
+			@JoinColumn(name = "urusan_id", referencedColumnName = "id", insertable = false, updatable = false)
+	})
 	protected DataMasterUrusanEntity urusan;
 
 	@Override
