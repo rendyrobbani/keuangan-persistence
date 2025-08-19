@@ -2,17 +2,29 @@ package com.rendyrobbani.keuangan.persistence.generator;
 
 import com.rendyrobbani.keuangan.core.domain.vo.Gender;
 import com.rendyrobbani.keuangan.core.domain.vo.Pangkat;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.DataMasterBidangEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.SipdMasterBidangEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.fungsi.DataMasterFungsiEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.kegiatan.DataMasterKegiatanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.kegiatan.SipdMasterKegiatanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.program.DataMasterProgramEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.program.SipdMasterProgramEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.subfungsi.DataMasterSubfungsiEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subkegiatan.DataMasterSubkegiatanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.subkegiatan.SipdMasterSubkegiatanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan.DataMasterUrusanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan.SipdMasterUrusanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.user.DataUserEntity;
 import com.rendyrobbani.keuangan.persistence.entity.user.LogsUserEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
+import org.hibernate.annotations.Check;
+import org.hibernate.annotations.Checks;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -28,22 +40,22 @@ public final class DDLGenerator {
 		if (entityClasses == null) {
 			entityClasses = new ArrayList<>();
 
-//			entityClasses.add(DataUserEntity.class);
-//			entityClasses.add(LogsUserEntity.class);
-//
-//			entityClasses.add(DataMasterFungsiEntity.class);
-//			entityClasses.add(DataMasterSubfungsiEntity.class);
-//
-//			entityClasses.add(DataMasterUrusanEntity.class);
-//			entityClasses.add(SipdMasterUrusanEntity.class);
-//			entityClasses.add(DataMasterBidangEntity.class);
-//			entityClasses.add(SipdMasterBidangEntity.class);
-//			entityClasses.add(DataMasterProgramEntity.class);
-//			entityClasses.add(SipdMasterProgramEntity.class);
-//			entityClasses.add(DataMasterKegiatanEntity.class);
-//			entityClasses.add(SipdMasterKegiatanEntity.class);
+			entityClasses.add(DataUserEntity.class);
+			entityClasses.add(LogsUserEntity.class);
+
+			entityClasses.add(DataMasterFungsiEntity.class);
+			entityClasses.add(DataMasterSubfungsiEntity.class);
+
+			entityClasses.add(DataMasterUrusanEntity.class);
+			entityClasses.add(SipdMasterUrusanEntity.class);
+			entityClasses.add(DataMasterBidangEntity.class);
+			entityClasses.add(SipdMasterBidangEntity.class);
+			entityClasses.add(DataMasterProgramEntity.class);
+			entityClasses.add(SipdMasterProgramEntity.class);
+			entityClasses.add(DataMasterKegiatanEntity.class);
+			entityClasses.add(SipdMasterKegiatanEntity.class);
 			entityClasses.add(DataMasterSubkegiatanEntity.class);
-//			entityClasses.add(SipdMasterSubkegiatanEntity.class);
+			entityClasses.add(SipdMasterSubkegiatanEntity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}
@@ -55,7 +67,7 @@ public final class DDLGenerator {
 		if (List.of(Long.class, long.class).contains(field.getType())) return "bigint";
 		if (List.of(Integer.class, int.class).contains(field.getType())) return "int";
 		if (List.of(Short.class, short.class).contains(field.getType())) return "smallint";
-		if (List.of(Byte.class, byte.class).contains(field.getType())) return "tinyint";
+		if (List.of(Byte.class, byte.class, Gender.class).contains(field.getType())) return "tinyint";
 		if (List.of(Boolean.class, boolean.class).contains(field.getType())) return "bit";
 		if (List.of(Double.class, double.class).contains(field.getType())) return "double";
 		if (List.of(Float.class, float.class).contains(field.getType())) return "float";
@@ -63,11 +75,41 @@ public final class DDLGenerator {
 		if (field.getType() == LocalDateTime.class) return "datetime";
 		if (field.getType() == BigDecimal.class) return "decimal(38, 2)";
 		if (List.of(Character.class, char.class, Pangkat.class).contains(field.getType())) return "char(" + column.length() + ")";
-		if (List.of(String.class, Gender.class).contains(field.getType())) return "varchar(" + column.length() + ")";
+		if (List.of(String.class).contains(field.getType())) return "varchar(" + column.length() + ")";
 		throw new IllegalArgumentException("Type '" + field.getType().getName() + "' is not supported");
 	}
 
-	private static List<Field> sortFields(List<Field> fields) {
+	private static List<Field> fields(Class<?> entityClass) {
+		List<String> names = new ArrayList<>();
+		List<Field> fields = new ArrayList<>();
+		Class<?> currentClass = entityClass;
+		while (currentClass != null) {
+			for (Field field : currentClass.getDeclaredFields()) {
+				if ((field.isAnnotationPresent(Column.class) || field.isAnnotationPresent(JoinColumns.class)) && !names.contains(field.getName())) {
+					fields.add(field);
+					names.add(field.getName());
+				}
+			}
+			currentClass = currentClass.getSuperclass();
+		}
+		return fields;
+	}
+
+	private static List<Field> fieldsOfColumn(Class<?> entityClass) {
+		List<Field> fields = new ArrayList<>();
+		for (Field field : fields(entityClass)) if (field.isAnnotationPresent(Column.class)) fields.add(field);
+		return sortFieldsOfColumn(fields);
+	}
+
+	private static List<Field> fieldsOfJoinColumns(Class<?> entityClass) {
+		return fields(entityClass).stream().filter(field -> field.isAnnotationPresent(JoinColumns.class)).toList();
+	}
+
+	private static List<Field> fieldsOfCheck(Class<?> entityClass) {
+		return fields(entityClass).stream().filter(field -> field.isAnnotationPresent(Check.class)).toList();
+	}
+
+	private static List<Field> sortFieldsOfColumn(List<Field> fields) {
 		Map<Field, Integer> indexes = new HashMap<>();
 		for (int i = 0; i < fields.size(); i++) {
 			int index = i + 1;
@@ -85,20 +127,31 @@ public final class DDLGenerator {
 		return fields;
 	}
 
-	private static List<Field> fields(Class<?> entityClass) {
-		List<String> names = new ArrayList<>();
-		List<Field> fields = new ArrayList<>();
-		Class<?> currentClass = entityClass;
-		while (currentClass != null) {
-			for (Field field : currentClass.getDeclaredFields()) {
-				if (field.isAnnotationPresent(Column.class) && !names.contains(field.getName())) {
-					fields.add(field);
-					names.add(field.getName());
-				}
-			}
-			currentClass = currentClass.getSuperclass();
+	private static String check(Table table, Check check, int index) {
+		String name = "ck" + "_" + table.name();
+		name = name.length() < 61 ? name : name.substring(0, 61);
+		name = name + "_" + String.format("%02d", index);
+		return String.join(" ", "constraint", name, "check", "(" + check.constraints() + ")");
+	}
+
+	private static String foreignKey(Table table, JoinColumns joinColumns, int index, Field field) {
+		String name = "fk" + "_" + table.name();
+		name = name.length() < 61 ? name : name.substring(0, 61);
+		name = name + "_" + String.format("%02d", index);
+		List<String> fromColumns = new ArrayList<>();
+		List<String> intoColumns = new ArrayList<>();
+		for (JoinColumn joinColumn : joinColumns.value()) {
+			fromColumns.add(joinColumn.name());
+			intoColumns.add(joinColumn.referencedColumnName());
 		}
-		return sortFields(fields);
+		return String.join(" ", "constraint", name, "foreign key", "(" + String.join(", ", fromColumns) + ")", "references", field.getType().getAnnotation(Table.class).name(), "(" + String.join(", ", intoColumns) + ")");
+	}
+
+	private static String uniqueKey(Table table, UniqueConstraint unique, int index) {
+		String name = "uk" + "_" + table.name();
+		name = name.length() < 61 ? name : name.substring(0, 61);
+		name = name + "_" + String.format("%02d", index);
+		return String.join(" ", "constraint", name, "unique key", "(" + String.join(", ", unique.columnNames()) + ")");
 	}
 
 	private static List<String> rowsOfColumn(Class<?> entityClass) {
@@ -110,7 +163,7 @@ public final class DDLGenerator {
 		int maxNames = 0;
 		int maxTypes = 0;
 
-		for (Field field : fields(entityClass)) {
+		for (Field field : fieldsOfColumn(entityClass)) {
 			Column column = field.getAnnotation(Column.class);
 
 			String name = column.name();
@@ -147,20 +200,52 @@ public final class DDLGenerator {
 		return rows;
 	}
 
+	private static List<String> rowsOfUnique(Class<?> entityClass) {
+		List<String> rows = new ArrayList<>();
+
+		Table table = entityClass.getAnnotation(Table.class);
+		for (UniqueConstraint unique : table.uniqueConstraints()) rows.add(uniqueKey(table, unique, rows.size() + 1));
+
+		return rows;
+	}
+
+	private static List<String> rowsOfForeignKey(Class<?> entityClass) {
+		List<String> rows = new ArrayList<>();
+		Table table = entityClass.getAnnotation(Table.class);
+		for (Field field : fieldsOfJoinColumns(entityClass)) {
+			JoinColumns joinColumns = field.getAnnotation(JoinColumns.class);
+			rows.add(foreignKey(table, joinColumns, rows.size() + 1, field));
+		}
+		return rows;
+	}
+
+	private static List<String> rowsOfCheck(Class<?> entityClass) {
+		Table table = entityClass.getAnnotation(Table.class);
+		List<String> rows = new ArrayList<>();
+		if (entityClass.isAnnotationPresent(Checks.class)) {
+			Checks checks = entityClass.getAnnotation(Checks.class);
+			for (Check check : checks.value()) rows.add(check(table, check, rows.size() + 1));
+		}
+		for (Field field : fieldsOfCheck(entityClass)) {
+			Check check = field.getAnnotation(Check.class);
+			rows.add(check(table, check, rows.size() + 1));
+		}
+		return rows;
+	}
+
 	@SneakyThrows
-	public static String generateDDL(Class<?> entityClass) {
+	private static String generateDDL(Class<?> entityClass) {
 		List<String> ddl = new ArrayList<>();
 
 		Table table = entityClass.getAnnotation(Table.class);
-		List<String> rowsOfColumn = rowsOfColumn(entityClass);
 
 		ddl.add("drop table if exists " + table.name() + ";");
 		ddl.add("");
 		ddl.add("create or replace table " + table.name() + " (");
-		for (String row : rowsOfColumn) {
-			boolean endsWithComma = false;
-			ddl.add("\t" + row);
-		}
+		for (String row : rowsOfColumn(entityClass)) ddl.add("\t" + row + ",");
+		for (String row : rowsOfCheck(entityClass)) ddl.add("\t" + row + ",");
+		for (String row : rowsOfForeignKey(entityClass)) ddl.add("\t" + row + ",");
+		for (String row : rowsOfUnique(entityClass)) ddl.add("\t" + row + ",");
 		ddl.add("\t" + "primary key (id)");
 		ddl.add(") engine = innodb");
 		ddl.add("  charset = utf8mb4");
@@ -168,11 +253,26 @@ public final class DDLGenerator {
 		return String.join(System.lineSeparator(), ddl);
 	}
 
+	public static List<String> generateDDLs() {
+		List<String> ddl = new ArrayList<>();
+		for (Class<?> entityClass : entityClasses()) ddl.add(generateDDL(entityClass));
+		return ddl;
+	}
+
 	@SneakyThrows
-	public static void generateDDLToFile(File directory) {
-		for (Class<?> entityClass : entityClasses()) {
-			String ddl = generateDDL(entityClass);
-			System.out.println(ddl);
+	public static void generateDDLsToFile(File directory) {
+		if (directory.exists() || directory.mkdirs()) {
+			List<Class<?>> classes = entityClasses();
+			for (int i = 0; i < classes.size(); i++) {
+				Class<?> entityClass = classes.get(i);
+				String ddl = generateDDL(entityClass);
+
+				String fileName = String.format("%03d", i + 1) + "-" + entityClass.getAnnotation(Table.class).name() + ".sql";
+				File file = new File(directory, fileName);
+				try (FileOutputStream fos = new FileOutputStream(file)) {
+					fos.write(ddl.getBytes());
+				}
+			}
 		}
 	}
 

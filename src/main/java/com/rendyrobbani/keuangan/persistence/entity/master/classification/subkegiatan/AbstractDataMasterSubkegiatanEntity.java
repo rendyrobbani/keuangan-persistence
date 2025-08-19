@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Check;
 
 import java.time.LocalDateTime;
 
@@ -22,13 +23,14 @@ import java.time.LocalDateTime;
 public abstract class AbstractDataMasterSubkegiatanEntity extends AbstractDataMasterClassifcationEntity<DataMasterSubkegiatan> implements DataMasterSubkegiatan {
 
 	@Id
+	@Check(constraints = "id = replace(code, 'X', '0')")
 	@Column(name = "id", length = 17, nullable = false)
 	protected String id;
 
 	@Column(name = "code", length = 17, nullable = false)
 	protected String code;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", length = 510, nullable = false)
 	protected String name;
 
 	@Column(name = "urusan_id", length = 1, nullable = false)

@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Check;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +23,7 @@ import java.time.LocalDateTime;
 public abstract class AbstractDataMasterUrusanEntity extends AbstractDataMasterClassifcationEntity<DataMasterUrusan> implements DataMasterUrusan {
 
 	@Id
+	@Check(constraints = "id = replace(code, 'X', '0')")
 	@Column(name = "id", length = 1, nullable = false, updatable = false)
 	protected String id;
 

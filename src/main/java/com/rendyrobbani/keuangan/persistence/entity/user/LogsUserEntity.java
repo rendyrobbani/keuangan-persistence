@@ -17,7 +17,9 @@ import lombok.experimental.Accessors;
 public class LogsUserEntity extends AbstractLogsUserEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "subject_id", nullable = false, insertable = false, updatable = false)
+	@JoinColumns(value = {
+			@JoinColumn(name = "subject_id", referencedColumnName = "id", insertable = false, updatable = false)
+	})
 	private DataUserEntity subject;
 
 	@Override

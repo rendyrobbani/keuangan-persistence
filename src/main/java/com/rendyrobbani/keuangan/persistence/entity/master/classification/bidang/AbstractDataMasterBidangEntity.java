@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Check;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +23,7 @@ import java.time.LocalDateTime;
 public abstract class AbstractDataMasterBidangEntity extends AbstractDataMasterClassifcationEntity<DataMasterBidang> implements DataMasterBidang {
 
 	@Id
+	@Check(constraints = "id = replace(code, 'X', '0')")
 	@Column(name = "id", length = 4, nullable = false)
 	protected String id;
 

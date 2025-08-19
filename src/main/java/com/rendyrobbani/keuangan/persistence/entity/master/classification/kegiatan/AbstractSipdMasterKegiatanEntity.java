@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Check;
 
 import java.time.LocalDateTime;
 
@@ -28,9 +29,10 @@ public abstract class AbstractSipdMasterKegiatanEntity extends AbstractSipdMaste
 	@Column(name = "code", length = 12, nullable = false)
 	protected String code;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", length = 510, nullable = false)
 	protected String name;
 
+	@Check(constraints = "subject_id = replace(code, 'X', '0')")
 	@Column(name = "subject_id", length = 12, nullable = false)
 	protected String subjectId;
 

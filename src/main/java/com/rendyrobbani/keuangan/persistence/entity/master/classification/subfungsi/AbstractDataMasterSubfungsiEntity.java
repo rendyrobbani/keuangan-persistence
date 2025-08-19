@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Check;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +23,7 @@ import java.time.LocalDateTime;
 public abstract class AbstractDataMasterSubfungsiEntity extends AbstractDataMasterClassifcationEntity<DataMasterSubfungsi> implements DataMasterSubfungsi {
 
 	@Id
+	@Check(constraints = "id = code")
 	@Column(name = "id", length = 5, nullable = false, updatable = false)
 	protected String id;
 

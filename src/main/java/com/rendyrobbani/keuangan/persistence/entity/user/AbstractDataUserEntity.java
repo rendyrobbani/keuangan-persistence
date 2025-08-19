@@ -32,7 +32,7 @@ public abstract class AbstractDataUserEntity extends AbstractDataEntity<DataUser
 	@Column(name = "id", length = 18, nullable = false, updatable = false)
 	protected String id;
 
-	@Check(constraints = "pangkat regexp " + Pangkat.REGEX)
+	@Check(constraints = "pangkat regexp '" + Pangkat.REGEX + "'")
 	@Convert(converter = PangkatConverter.class)
 	@Column(name = "pangkat", length = 2, nullable = false)
 	protected Pangkat pangkat;
@@ -64,11 +64,11 @@ public abstract class AbstractDataUserEntity extends AbstractDataEntity<DataUser
 	@Column(name = "number", nullable = false, updatable = false)
 	protected Short number;
 
-	@Check(constraints = "pangkat regexp " + Pangkat.REGEX_PNS)
+	@Check(constraints = "pangkat regexp '" + Pangkat.REGEX_PNS + "'")
 	@Column(name = "is_pns", nullable = false)
 	protected boolean isPNS;
 
-	@Check(constraints = "pangkat regexp " + Pangkat.REGEX_P3K)
+	@Check(constraints = "pangkat regexp '" + Pangkat.REGEX_P3K + "'")
 	@Column(name = "is_p3k", nullable = false)
 	protected boolean isP3K;
 
