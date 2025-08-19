@@ -1,7 +1,7 @@
 package com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang;
 
+import com.rendyrobbani.keuangan.core.common.classification.urusan.BidangClassification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.bidang.DataMasterBidang;
-import com.rendyrobbani.keuangan.core.domain.vo.classification.urusan.BidangClassification;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassifcationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;

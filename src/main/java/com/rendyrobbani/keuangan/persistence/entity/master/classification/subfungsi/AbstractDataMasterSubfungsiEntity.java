@@ -1,7 +1,7 @@
 package com.rendyrobbani.keuangan.persistence.entity.master.classification.subfungsi;
 
+import com.rendyrobbani.keuangan.core.common.classification.fungsi.SubfungsiClassification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.subfungsi.DataMasterSubfungsi;
-import com.rendyrobbani.keuangan.core.domain.vo.classification.fungsi.SubfungsiClassification;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassifcationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;

@@ -1,7 +1,7 @@
 package com.rendyrobbani.keuangan.persistence.entity.master.classification.program;
 
+import com.rendyrobbani.keuangan.core.common.classification.program.ProgramClassification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.program.DataMasterProgram;
-import com.rendyrobbani.keuangan.core.domain.vo.classification.program.ProgramClassification;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassifcationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;

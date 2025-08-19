@@ -1,7 +1,7 @@
 package com.rendyrobbani.keuangan.persistence.entity.master.classification.kecamatan;
 
+import com.rendyrobbani.keuangan.core.common.classification.lokasi.KecamatanClassification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.kecamatan.DataMasterKecamatan;
-import com.rendyrobbani.keuangan.core.domain.vo.classification.lokasi.KecamatanClassification;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassifcationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
