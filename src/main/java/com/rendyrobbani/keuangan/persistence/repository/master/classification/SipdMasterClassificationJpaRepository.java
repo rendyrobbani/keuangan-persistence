@@ -11,6 +11,7 @@ public interface SipdMasterClassificationJpaRepository<
 		ENTITY extends AbstractSipdMasterClassificationEntity<DOMAIN, SUBJECT>,
 		DOMAIN extends SipdMasterClassificationEntity<SUBJECT>,
 		SUBJECT extends DataMasterClassificationEntity
-		> extends SipdMasterJpaRepository<ENTITY, DOMAIN, SUBJECT, String, Long> {
+		>
+		extends SipdMasterJpaRepository<ENTITY, DOMAIN, SUBJECT, String, Long> {
 
 }
