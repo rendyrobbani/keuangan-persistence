@@ -16,6 +16,7 @@ create or replace table data_master_kabupaten (
 	deleted_by  varchar(18)  null,
 	provinsi_id varchar(2)   not null,
 	constraint ck_data_master_kabupaten_01 check (id = code),
+	constraint ck_data_master_kabupaten_02 check (provinsi_id = left(id, length(provinsi_id))),
 	constraint fk_data_master_kabupaten_01 foreign key (provinsi_id) references data_master_provinsi (id),
 	constraint fk_data_master_kabupaten_02 foreign key (locked_by) references data_user (id),
 	constraint fk_data_master_kabupaten_03 foreign key (created_by) references data_user (id),

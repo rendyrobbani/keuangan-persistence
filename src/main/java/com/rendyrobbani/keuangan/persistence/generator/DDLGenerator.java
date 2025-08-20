@@ -21,6 +21,18 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.progra
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.program.SipdMasterProgramEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.provinsi.DataMasterProvinsiEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.provinsi.SipdMasterProvinsiEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset1.DataMasterRekeningAset1Entity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset1.SipdMasterRekeningAset1Entity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset2.DataMasterRekeningAset2Entity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset2.SipdMasterRekeningAset2Entity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset3.DataMasterRekeningAset3Entity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset3.SipdMasterRekeningAset3Entity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset4.DataMasterRekeningAset4Entity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset4.SipdMasterRekeningAset4Entity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset5.DataMasterRekeningAset5Entity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset5.SipdMasterRekeningAset5Entity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset6.DataMasterRekeningAset6Entity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset6.SipdMasterRekeningAset6Entity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subfungsi.DataMasterSubfungsiEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subkegiatan.DataMasterSubkegiatanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subkegiatan.SipdMasterSubkegiatanEntity;
@@ -81,6 +93,19 @@ public final class DDLGenerator {
 			entityClasses.add(DataMasterOrganisasiEntity.class);
 			entityClasses.add(LogsMasterOrganisasiEntity.class);
 			entityClasses.add(SipdMasterOrganisasiEntity.class);
+
+			entityClasses.add(DataMasterRekeningAset1Entity.class);
+			entityClasses.add(SipdMasterRekeningAset1Entity.class);
+			entityClasses.add(DataMasterRekeningAset2Entity.class);
+			entityClasses.add(SipdMasterRekeningAset2Entity.class);
+			entityClasses.add(DataMasterRekeningAset3Entity.class);
+			entityClasses.add(SipdMasterRekeningAset3Entity.class);
+			entityClasses.add(DataMasterRekeningAset4Entity.class);
+			entityClasses.add(SipdMasterRekeningAset4Entity.class);
+			entityClasses.add(DataMasterRekeningAset5Entity.class);
+			entityClasses.add(SipdMasterRekeningAset5Entity.class);
+			entityClasses.add(DataMasterRekeningAset6Entity.class);
+			entityClasses.add(SipdMasterRekeningAset6Entity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}

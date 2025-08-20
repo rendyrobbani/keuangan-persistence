@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = DataMasterRekeningAset6.TABLE_NAME, uniqueConstraints = {@UniqueConstraint(columnNames = {"rekening1_id", "rekening2_id", "rekening3_id", "rekening4_id", "id"})})
+@Table(name = DataMasterRekeningAset6.TABLE_NAME, uniqueConstraints = {@UniqueConstraint(columnNames = {"rekening1_id", "rekening2_id", "rekening3_id", "rekening4_id", "rekening5_id", "id"})})
 public class DataMasterRekeningAset6Entity extends AbstractDataMasterRekening6Entity<DataMasterRekeningAset6> implements DataMasterRekeningAset6 {
 
 	@ManyToOne(fetch = FetchType.LAZY)

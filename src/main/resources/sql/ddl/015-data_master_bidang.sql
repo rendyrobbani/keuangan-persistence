@@ -16,6 +16,7 @@ create or replace table data_master_bidang (
 	deleted_by varchar(18)  null,
 	urusan_id  varchar(1)   not null,
 	constraint ck_data_master_bidang_01 check (id = replace(code, 'X', '0')),
+	constraint ck_data_master_bidang_02 check (urusan_id = left(id, length(urusan_id))),
 	constraint fk_data_master_bidang_01 foreign key (urusan_id) references data_master_urusan (id),
 	constraint fk_data_master_bidang_02 foreign key (locked_by) references data_user (id),
 	constraint fk_data_master_bidang_03 foreign key (created_by) references data_user (id),

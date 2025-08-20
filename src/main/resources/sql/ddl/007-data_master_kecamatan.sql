@@ -17,6 +17,8 @@ create or replace table data_master_kecamatan (
 	provinsi_id  varchar(2)   not null,
 	kabupaten_id varchar(5)   not null,
 	constraint ck_data_master_kecamatan_01 check (id = code),
+	constraint ck_data_master_kecamatan_02 check (provinsi_id = left(id, length(provinsi_id))),
+	constraint ck_data_master_kecamatan_03 check (kabupaten_id = left(id, length(kabupaten_id))),
 	constraint fk_data_master_kecamatan_01 foreign key (provinsi_id) references data_master_provinsi (id),
 	constraint fk_data_master_kecamatan_02 foreign key (provinsi_id, kabupaten_id) references data_master_kabupaten (provinsi_id, id),
 	constraint fk_data_master_kecamatan_03 foreign key (locked_by) references data_user (id),

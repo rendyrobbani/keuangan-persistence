@@ -16,6 +16,7 @@ create or replace table data_master_subfungsi (
 	deleted_by varchar(18)  null,
 	fungsi_id  varchar(2)   not null,
 	constraint ck_data_master_subfungsi_01 check (id = code),
+	constraint ck_data_master_subfungsi_02 check (fungsi_id = left(id, length(fungsi_id))),
 	constraint fk_data_master_subfungsi_01 foreign key (fungsi_id) references data_master_fungsi (id),
 	constraint fk_data_master_subfungsi_02 foreign key (locked_by) references data_user (id),
 	constraint fk_data_master_subfungsi_03 foreign key (created_by) references data_user (id),

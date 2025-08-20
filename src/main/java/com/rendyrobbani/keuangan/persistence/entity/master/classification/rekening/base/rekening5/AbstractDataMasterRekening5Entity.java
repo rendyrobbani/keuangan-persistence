@@ -30,7 +30,7 @@ public abstract class AbstractDataMasterRekening5Entity<DOMAIN extends DataMaste
 	@Column(name = "code", length = 12, nullable = false)
 	protected String code;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", length = 510, nullable = false)
 	protected String name;
 
 	@Check(constraints = "rekening1_id = left(id, length(rekening1_id))")

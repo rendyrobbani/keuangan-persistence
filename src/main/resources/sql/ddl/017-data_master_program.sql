@@ -17,6 +17,8 @@ create or replace table data_master_program (
 	urusan_id  varchar(1)   not null,
 	bidang_id  varchar(4)   not null,
 	constraint ck_data_master_program_01 check (id = replace(code, 'X', '0')),
+	constraint ck_data_master_program_02 check (urusan_id = left(id, length(urusan_id))),
+	constraint ck_data_master_program_03 check (bidang_id = left(id, length(bidang_id))),
 	constraint fk_data_master_program_01 foreign key (urusan_id) references data_master_urusan (id),
 	constraint fk_data_master_program_02 foreign key (urusan_id, bidang_id) references data_master_bidang (urusan_id, id),
 	constraint fk_data_master_program_03 foreign key (locked_by) references data_user (id),

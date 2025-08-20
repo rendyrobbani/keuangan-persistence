@@ -33,7 +33,7 @@ public abstract class AbstractSipdMasterRekening6Entity<
 	@Column(name = "code", length = 1, nullable = false)
 	protected String code;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", length = 510, nullable = false)
 	protected String name;
 
 	@Check(constraints = "subject_id = code")
