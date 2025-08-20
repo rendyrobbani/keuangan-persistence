@@ -14,6 +14,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Check;
 
 import java.time.LocalDateTime;
 
@@ -65,6 +66,17 @@ public class DataMasterRekeningPembiayaan6Entity extends AbstractDataMasterReken
 	})
 	private DataMasterRekeningPembiayaan5Entity rekening5;
 
+	@Check(constraints = "id like '6.1%'")
+	@Column(name = "is_income", nullable = false)
+	private boolean isIncome;
+
+	@Check(constraints = "id like '6.2%'")
+	@Column(name = "is_expend", nullable = false)
+	private boolean isExpend;
+
+	@Column(name = "is_enabled", nullable = false)
+	private boolean isEnabled;
+
 	@Override
 	public DataMasterRekeningPembiayaan6 toDomain() {
 		return this;
@@ -73,6 +85,8 @@ public class DataMasterRekeningPembiayaan6Entity extends AbstractDataMasterReken
 	@Override
 	public void create(RekeningClassification classification, String name, LocalDateTime createdAt, String createdBy) {
 		if (!classification.isPembiayaan()) throw new RuntimeException("Invalid classification");
+		this.isIncome = classification.rekening2Code().equals("6.1");
+		this.isExpend = classification.rekening2Code().equals("6.2");
 		super.create(classification, name, createdAt, createdBy);
 	}
 
