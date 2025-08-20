@@ -1,7 +1,8 @@
 package com.rendyrobbani.keuangan.persistence.repository.master.classification.subkegiatan;
 
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.subkegiatan.DataMasterSubkegiatan;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subkegiatan.DataMasterSubkegiatanEntity;
 
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.DataMasterClassificationJpaRepository;
 
-public interface DataMasterSubkegiatanJpaRepository extends DataMasterClassificationJpaRepository<DataMasterSubkegiatanEntity> {}
+public interface DataMasterSubkegiatanJpaRepository extends DataMasterClassificationJpaRepository<DataMasterSubkegiatanEntity, DataMasterSubkegiatan> {}
