@@ -34,6 +34,8 @@ public abstract class AbstractDataMasterRekening1Entity<DOMAIN extends DataMaste
 	protected String name;
 
 	public void create(RekeningClassification classification, String name, LocalDateTime createdAt, String createdBy) {
+		if (classification.level() != 1) throw new RuntimeException("Invalid classification");
+
 		this.id = classification.rekening1Code();
 		this.code = classification.rekening1Code();
 
