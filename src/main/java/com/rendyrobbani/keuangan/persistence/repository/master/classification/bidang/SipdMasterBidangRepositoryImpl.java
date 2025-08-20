@@ -7,20 +7,16 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.AbstractSipdMasterClassificationRepository;
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.SipdMasterClassificationJpaRepository;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Repository;
-
-
 
 @Repository
 @RequiredArgsConstructor
+public class SipdMasterBidangRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterBidangEntity, SipdMasterBidang, DataMasterBidang> implements SipdMasterBidangRepository {
 
-public class DataMasterBidangRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterBidangEntity, SipdMasterBidang, DataMasterBidang> implements SipdMasterBidangRepository {
-
-	private final DataMasterBidangJpaRepository repository;
+	private final SipdMasterBidangJpaRepository repository;
 
 	@Override
-	protected SipdMasterClassificationJpaRepository<SipdMasterBidangEntity, SipdMasterBidang, DataMasterBidang> repositoryOfMasterClassifcation() {
+	protected SipdMasterClassificationJpaRepository<SipdMasterBidangEntity, SipdMasterBidang, DataMasterBidang> repositoryOfMasterClassification() {
 		return this.repository;
 	}
 

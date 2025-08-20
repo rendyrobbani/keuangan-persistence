@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-
 public class DataMasterBidangRepositoryImpl extends AbstractDataMasterClassificationRepository<DataMasterBidangEntity, DataMasterBidang> implements DataMasterBidangRepository {
 
 	private final DataMasterBidangJpaRepository repository;

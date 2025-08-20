@@ -7,20 +7,16 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.organi
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.AbstractSipdMasterClassificationRepository;
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.SipdMasterClassificationJpaRepository;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Repository;
-
-
 
 @Repository
 @RequiredArgsConstructor
+public class SipdMasterOrganisasiRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterOrganisasiEntity, SipdMasterOrganisasi, DataMasterOrganisasi> implements SipdMasterOrganisasiRepository {
 
-public class DataMasterOrganisasiRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterOrganisasiEntity, SipdMasterOrganisasi, DataMasterOrganisasi> implements SipdMasterOrganisasiRepository {
-
-	private final DataMasterOrganisasiJpaRepository repository;
+	private final SipdMasterOrganisasiJpaRepository repository;
 
 	@Override
-	protected SipdMasterClassificationJpaRepository<SipdMasterOrganisasiEntity, SipdMasterOrganisasi, DataMasterOrganisasi> repositoryOfMasterClassifcation() {
+	protected SipdMasterClassificationJpaRepository<SipdMasterOrganisasiEntity, SipdMasterOrganisasi, DataMasterOrganisasi> repositoryOfMasterClassification() {
 		return this.repository;
 	}
 

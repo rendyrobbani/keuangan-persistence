@@ -7,20 +7,16 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.progra
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.AbstractSipdMasterClassificationRepository;
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.SipdMasterClassificationJpaRepository;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Repository;
-
-
 
 @Repository
 @RequiredArgsConstructor
+public class SipdMasterProgramRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterProgramEntity, SipdMasterProgram, DataMasterProgram> implements SipdMasterProgramRepository {
 
-public class DataMasterProgramRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterProgramEntity, SipdMasterProgram, DataMasterProgram> implements SipdMasterProgramRepository {
-
-	private final DataMasterProgramJpaRepository repository;
+	private final SipdMasterProgramJpaRepository repository;
 
 	@Override
-	protected SipdMasterClassificationJpaRepository<SipdMasterProgramEntity, SipdMasterProgram, DataMasterProgram> repositoryOfMasterClassifcation() {
+	protected SipdMasterClassificationJpaRepository<SipdMasterProgramEntity, SipdMasterProgram, DataMasterProgram> repositoryOfMasterClassification() {
 		return this.repository;
 	}
 

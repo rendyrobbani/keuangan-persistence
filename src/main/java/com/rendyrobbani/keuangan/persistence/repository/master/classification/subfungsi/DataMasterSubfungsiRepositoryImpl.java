@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-
 public class DataMasterSubfungsiRepositoryImpl extends AbstractDataMasterClassificationRepository<DataMasterSubfungsiEntity, DataMasterSubfungsi> implements DataMasterSubfungsiRepository {
 
 	private final DataMasterSubfungsiJpaRepository repository;

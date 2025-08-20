@@ -7,20 +7,16 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.kabupa
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.AbstractSipdMasterClassificationRepository;
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.SipdMasterClassificationJpaRepository;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Repository;
-
-
 
 @Repository
 @RequiredArgsConstructor
+public class SipdMasterKabupatenRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterKabupatenEntity, SipdMasterKabupaten, DataMasterKabupaten> implements SipdMasterKabupatenRepository {
 
-public class DataMasterKabupatenRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterKabupatenEntity, SipdMasterKabupaten, DataMasterKabupaten> implements SipdMasterKabupatenRepository {
-
-	private final DataMasterKabupatenJpaRepository repository;
+	private final SipdMasterKabupatenJpaRepository repository;
 
 	@Override
-	protected SipdMasterClassificationJpaRepository<SipdMasterKabupatenEntity, SipdMasterKabupaten, DataMasterKabupaten> repositoryOfMasterClassifcation() {
+	protected SipdMasterClassificationJpaRepository<SipdMasterKabupatenEntity, SipdMasterKabupaten, DataMasterKabupaten> repositoryOfMasterClassification() {
 		return this.repository;
 	}
 

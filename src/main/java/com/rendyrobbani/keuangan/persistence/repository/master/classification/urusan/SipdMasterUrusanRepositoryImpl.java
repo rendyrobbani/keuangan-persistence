@@ -7,20 +7,16 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.AbstractSipdMasterClassificationRepository;
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.SipdMasterClassificationJpaRepository;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Repository;
-
-
 
 @Repository
 @RequiredArgsConstructor
+public class SipdMasterUrusanRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterUrusanEntity, SipdMasterUrusan, DataMasterUrusan> implements SipdMasterUrusanRepository {
 
-public class DataMasterUrusanRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterUrusanEntity, SipdMasterUrusan, DataMasterUrusan> implements SipdMasterUrusanRepository {
-
-	private final DataMasterUrusanJpaRepository repository;
+	private final SipdMasterUrusanJpaRepository repository;
 
 	@Override
-	protected SipdMasterClassificationJpaRepository<SipdMasterUrusanEntity, SipdMasterUrusan, DataMasterUrusan> repositoryOfMasterClassifcation() {
+	protected SipdMasterClassificationJpaRepository<SipdMasterUrusanEntity, SipdMasterUrusan, DataMasterUrusan> repositoryOfMasterClassification() {
 		return this.repository;
 	}
 

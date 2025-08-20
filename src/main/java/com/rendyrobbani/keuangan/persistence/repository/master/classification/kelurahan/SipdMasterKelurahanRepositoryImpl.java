@@ -7,20 +7,16 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.kelura
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.AbstractSipdMasterClassificationRepository;
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.SipdMasterClassificationJpaRepository;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Repository;
-
-
 
 @Repository
 @RequiredArgsConstructor
+public class SipdMasterKelurahanRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterKelurahanEntity, SipdMasterKelurahan, DataMasterKelurahan> implements SipdMasterKelurahanRepository {
 
-public class DataMasterKelurahanRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterKelurahanEntity, SipdMasterKelurahan, DataMasterKelurahan> implements SipdMasterKelurahanRepository {
-
-	private final DataMasterKelurahanJpaRepository repository;
+	private final SipdMasterKelurahanJpaRepository repository;
 
 	@Override
-	protected SipdMasterClassificationJpaRepository<SipdMasterKelurahanEntity, SipdMasterKelurahan, DataMasterKelurahan> repositoryOfMasterClassifcation() {
+	protected SipdMasterClassificationJpaRepository<SipdMasterKelurahanEntity, SipdMasterKelurahan, DataMasterKelurahan> repositoryOfMasterClassification() {
 		return this.repository;
 	}
 

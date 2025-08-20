@@ -7,20 +7,16 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.kegiat
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.AbstractSipdMasterClassificationRepository;
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.SipdMasterClassificationJpaRepository;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Repository;
-
-
 
 @Repository
 @RequiredArgsConstructor
+public class SipdMasterKegiatanRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterKegiatanEntity, SipdMasterKegiatan, DataMasterKegiatan> implements SipdMasterKegiatanRepository {
 
-public class DataMasterKegiatanRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterKegiatanEntity, SipdMasterKegiatan, DataMasterKegiatan> implements SipdMasterKegiatanRepository {
-
-	private final DataMasterKegiatanJpaRepository repository;
+	private final SipdMasterKegiatanJpaRepository repository;
 
 	@Override
-	protected SipdMasterClassificationJpaRepository<SipdMasterKegiatanEntity, SipdMasterKegiatan, DataMasterKegiatan> repositoryOfMasterClassifcation() {
+	protected SipdMasterClassificationJpaRepository<SipdMasterKegiatanEntity, SipdMasterKegiatan, DataMasterKegiatan> repositoryOfMasterClassification() {
 		return this.repository;
 	}
 

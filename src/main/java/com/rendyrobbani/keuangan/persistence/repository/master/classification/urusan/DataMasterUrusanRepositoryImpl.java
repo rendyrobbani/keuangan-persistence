@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-
 public class DataMasterUrusanRepositoryImpl extends AbstractDataMasterClassificationRepository<DataMasterUrusanEntity, DataMasterUrusan> implements DataMasterUrusanRepository {
 
 	private final DataMasterUrusanJpaRepository repository;

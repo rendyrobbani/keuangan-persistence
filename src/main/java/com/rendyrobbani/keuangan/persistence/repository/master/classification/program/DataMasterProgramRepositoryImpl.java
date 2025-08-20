@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-
 public class DataMasterProgramRepositoryImpl extends AbstractDataMasterClassificationRepository<DataMasterProgramEntity, DataMasterProgram> implements DataMasterProgramRepository {
 
 	private final DataMasterProgramJpaRepository repository;
