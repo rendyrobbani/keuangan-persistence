@@ -38,4 +38,19 @@ public abstract class AbstractDataMasterRekening3Repository<
 		return this.repositoryOfMasterRekening().findByRekening1IdAndIsDeleted(rekening1Id, true).stream().map(AbstractBaseEntity::toDomain).toList();
 	}
 
+	@Override
+	public List<DOMAIN> findByRekening2Id(String rekening2Id) {
+		return this.repositoryOfMasterRekening().findByRekening2Id(rekening2Id).stream().map(AbstractBaseEntity::toDomain).toList();
+	}
+
+	@Override
+	public List<DOMAIN> findByRekening2IdAndIsDeletedFalse(String rekening2Id) {
+		return this.repositoryOfMasterRekening().findByRekening2IdAndIsDeleted(rekening2Id, false).stream().map(AbstractBaseEntity::toDomain).toList();
+	}
+
+	@Override
+	public List<DOMAIN> findByRekening2IdAndIsDeletedTrue(String rekening2Id) {
+		return this.repositoryOfMasterRekening().findByRekening2IdAndIsDeleted(rekening2Id, true).stream().map(AbstractBaseEntity::toDomain).toList();
+	}
+
 }

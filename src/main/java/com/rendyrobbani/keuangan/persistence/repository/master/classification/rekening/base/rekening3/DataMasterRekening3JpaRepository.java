@@ -18,4 +18,8 @@ public interface DataMasterRekening3JpaRepository<
 
 	List<ENTITY> findByRekening1IdAndIsDeleted(String rekening1Id, boolean isDeleted);
 
+	List<ENTITY> findByRekening2Id(String rekening2Id);
+
+	List<ENTITY> findByRekening2IdAndIsDeleted(String rekening2Id, boolean isDeleted);
+
 }
