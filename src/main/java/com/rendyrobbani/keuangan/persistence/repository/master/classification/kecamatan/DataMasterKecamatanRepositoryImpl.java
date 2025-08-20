@@ -4,31 +4,20 @@ import com.rendyrobbani.keuangan.core.domain.entity.master.classification.kecama
 import com.rendyrobbani.keuangan.core.domain.repository.master.classification.kecamatan.DataMasterKecamatanRepository;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kecamatan.DataMasterKecamatanEntity;
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.AbstractDataMasterClassificationRepository;
+import com.rendyrobbani.keuangan.persistence.repository.master.classification.DataMasterClassificationJpaRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
+
 public class DataMasterKecamatanRepositoryImpl extends AbstractDataMasterClassificationRepository<DataMasterKecamatanEntity, DataMasterKecamatan> implements DataMasterKecamatanRepository {
 
 	private final DataMasterKecamatanJpaRepository repository;
 
 	@Override
-	protected JpaRepository<DataMasterKecamatanEntity, String> repository() {
-		return repository;
-	}
-
-	@Override
-	public List<DataMasterKecamatan> findByIsDeletedFalse() {
-		return this.repository.findByIsDeleted(false).stream().map(DataMasterKecamatanEntity::toDomain).toList();
-	}
-
-	@Override
-	public List<DataMasterKecamatan> findByIsDeletedTrue() {
-		return this.repository.findByIsDeleted(true).stream().map(DataMasterKecamatanEntity::toDomain).toList();
+	protected DataMasterClassificationJpaRepository<DataMasterKecamatanEntity, DataMasterKecamatan> repositoryOfMasterClassifcation() {
+		return this.repository;
 	}
 
 }
