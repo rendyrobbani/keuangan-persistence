@@ -1,0 +1,9 @@
+package com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.type.pendapatan.pendapatan3;
+
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.pendapatan.pendapatan3.DataMasterRekeningPendapatan3;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.pendapatan.pendapatan3.DataMasterRekeningPendapatan3Entity;
+import com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.base.rekening3.DataMasterRekening3JpaRepository;
+
+public interface DataMasterRekeningPendapatan3JpaRepository extends DataMasterRekening3JpaRepository<DataMasterRekeningPendapatan3Entity, DataMasterRekeningPendapatan3> {
+
+}

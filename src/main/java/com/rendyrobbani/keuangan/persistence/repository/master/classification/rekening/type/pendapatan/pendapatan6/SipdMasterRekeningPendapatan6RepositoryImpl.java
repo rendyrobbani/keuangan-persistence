@@ -1,0 +1,23 @@
+package com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.type.pendapatan.pendapatan6;
+
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.pendapatan.pendapatan6.DataMasterRekeningPendapatan6;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.pendapatan.pendapatan6.SipdMasterRekeningPendapatan6;
+import com.rendyrobbani.keuangan.core.domain.repository.master.classification.rekening.type.pendapatan.pendapatan6.SipdMasterRekeningPendapatan6Repository;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.pendapatan.pendapatan6.SipdMasterRekeningPendapatan6Entity;
+import com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.base.rekening6.AbstractSipdMasterRekening6Repository;
+import com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.base.rekening6.SipdMasterRekening6JpaRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@RequiredArgsConstructor
+public class SipdMasterRekeningPendapatan6RepositoryImpl extends AbstractSipdMasterRekening6Repository<SipdMasterRekeningPendapatan6Entity, SipdMasterRekeningPendapatan6, DataMasterRekeningPendapatan6> implements SipdMasterRekeningPendapatan6Repository {
+
+	private final SipdMasterRekeningPendapatan6JpaRepository repository;
+
+	@Override
+	protected SipdMasterRekening6JpaRepository<SipdMasterRekeningPendapatan6Entity, SipdMasterRekeningPendapatan6, DataMasterRekeningPendapatan6> repositoryOfMasterRekening() {
+		return this.repository;
+	}
+
+}

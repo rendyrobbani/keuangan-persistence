@@ -1,0 +1,10 @@
+package com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.type.pendapatan.pendapatan5;
+
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.pendapatan.pendapatan5.DataMasterRekeningPendapatan5;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.pendapatan.pendapatan5.SipdMasterRekeningPendapatan5;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.pendapatan.pendapatan5.SipdMasterRekeningPendapatan5Entity;
+import com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.base.rekening5.SipdMasterRekening5JpaRepository;
+
+public interface SipdMasterRekeningPendapatan5JpaRepository extends SipdMasterRekening5JpaRepository<SipdMasterRekeningPendapatan5Entity, SipdMasterRekeningPendapatan5, DataMasterRekeningPendapatan5> {
+
+}
