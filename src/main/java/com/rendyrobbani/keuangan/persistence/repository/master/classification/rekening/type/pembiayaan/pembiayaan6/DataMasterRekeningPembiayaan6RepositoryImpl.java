@@ -8,6 +8,8 @@ import com.rendyrobbani.keuangan.persistence.repository.master.classification.re
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class DataMasterRekeningPembiayaan6RepositoryImpl extends AbstractDataMasterRekening6Repository<DataMasterRekeningPembiayaan6Entity, DataMasterRekeningPembiayaan6> implements DataMasterRekeningPembiayaan6Repository {
@@ -17,6 +19,46 @@ public class DataMasterRekeningPembiayaan6RepositoryImpl extends AbstractDataMas
 	@Override
 	protected DataMasterRekening6JpaRepository<DataMasterRekeningPembiayaan6Entity, DataMasterRekeningPembiayaan6> repositoryOfMasterRekening() {
 		return this.repository;
+	}
+
+	@Override
+	public List<DataMasterRekeningPembiayaan6> findByIsEnabledFalse() {
+		return this.repository.findByIsEnabled(false).stream().map(DataMasterRekeningPembiayaan6Entity::toDomain).toList();
+	}
+
+	@Override
+	public List<DataMasterRekeningPembiayaan6> findByIsEnabledTrue() {
+		return this.repository.findByIsEnabled(true).stream().map(DataMasterRekeningPembiayaan6Entity::toDomain).toList();
+	}
+
+	@Override
+	public List<DataMasterRekeningPembiayaan6> findByIsIncomeTrue() {
+		return this.repository.findByIsIncomeIsTrue().stream().map(DataMasterRekeningPembiayaan6Entity::toDomain).toList();
+	}
+
+	@Override
+	public List<DataMasterRekeningPembiayaan6> findByIsIncomeTrueIsEnabledFalse() {
+		return this.repository.findByIsIncomeIsTrueAndIsEnabled(false).stream().map(DataMasterRekeningPembiayaan6Entity::toDomain).toList();
+	}
+
+	@Override
+	public List<DataMasterRekeningPembiayaan6> findByIsIncomeTrueIsEnabledTrue() {
+		return this.repository.findByIsIncomeIsTrueAndIsEnabled(true).stream().map(DataMasterRekeningPembiayaan6Entity::toDomain).toList();
+	}
+
+	@Override
+	public List<DataMasterRekeningPembiayaan6> findByIsExpendTrue() {
+		return this.repository.findByIsExpendIsTrue().stream().map(DataMasterRekeningPembiayaan6Entity::toDomain).toList();
+	}
+
+	@Override
+	public List<DataMasterRekeningPembiayaan6> findByIsExpendTrueIsEnabledFalse() {
+		return this.repository.findByIsExpendIsTrueAndIsEnabled(false).stream().map(DataMasterRekeningPembiayaan6Entity::toDomain).toList();
+	}
+
+	@Override
+	public List<DataMasterRekeningPembiayaan6> findByIsExpendTrueIsEnabledTrue() {
+		return this.repository.findByIsExpendIsTrueAndIsEnabled(true).stream().map(DataMasterRekeningPembiayaan6Entity::toDomain).toList();
 	}
 
 }
