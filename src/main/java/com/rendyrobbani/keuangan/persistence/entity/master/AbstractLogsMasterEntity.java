@@ -17,4 +17,7 @@ import lombok.experimental.Accessors;
 @MappedSuperclass
 public abstract class AbstractLogsMasterEntity<DOMAIN extends LogsMasterEntity<SUBJECT, SUBJECTID>, SUBJECT extends DataMasterEntity<SUBJECTID>, SUBJECTID> extends AbstractLogsEntity<DOMAIN, SUBJECT, SUBJECTID> implements LogsMasterEntity<SUBJECT, SUBJECTID> {
 
+	@Override
+	public abstract SUBJECTID subjectId();
+
 }

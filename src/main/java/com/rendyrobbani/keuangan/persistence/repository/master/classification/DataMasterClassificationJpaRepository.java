@@ -7,6 +7,7 @@ import com.rendyrobbani.keuangan.persistence.repository.master.DataMasterJpaRepo
 public interface DataMasterClassificationJpaRepository<
 		ENTITY extends AbstractDataMasterClassificationEntity<DOMAIN>,
 		DOMAIN extends DataMasterClassificationEntity
-		> extends DataMasterJpaRepository<ENTITY, DOMAIN, String> {
+		>
+		extends DataMasterJpaRepository<ENTITY, DOMAIN, String> {
 
 }
