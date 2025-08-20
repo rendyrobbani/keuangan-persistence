@@ -5,46 +5,23 @@ import com.rendyrobbani.keuangan.core.domain.entity.master.classification.kabupa
 import com.rendyrobbani.keuangan.core.domain.repository.master.classification.kabupaten.SipdMasterKabupatenRepository;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kabupaten.SipdMasterKabupatenEntity;
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.AbstractSipdMasterClassificationRepository;
+import com.rendyrobbani.keuangan.persistence.repository.master.classification.SipdMasterClassificationJpaRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+
 
 @Repository
 @RequiredArgsConstructor
-public class SipdMasterKabupatenRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterKabupatenEntity, SipdMasterKabupaten, DataMasterKabupaten> implements SipdMasterKabupatenRepository {
 
-	private final SipdMasterKabupatenJpaRepository repository;
+public class DataMasterKabupatenRepositoryImpl extends AbstractSipdMasterClassificationRepository<SipdMasterKabupatenEntity, SipdMasterKabupaten, DataMasterKabupaten> implements SipdMasterKabupatenRepository {
 
-	@Override
-	protected JpaRepository<SipdMasterKabupatenEntity, Long> repository() {
-		return repository;
-	}
+	private final DataMasterKabupatenJpaRepository repository;
 
 	@Override
-	public List<SipdMasterKabupaten> findByIsDeletedFalse() {
-		return this.repository.findByIsDeleted(false).stream().map(SipdMasterKabupatenEntity::toDomain).toList();
-	}
-
-	@Override
-	public List<SipdMasterKabupaten> findByIsDeletedTrue() {
-		return this.repository.findByIsDeleted(true).stream().map(SipdMasterKabupatenEntity::toDomain).toList();
-	}
-
-	@Override
-	public List<SipdMasterKabupaten> findBySubjectId(String subjectId) {
-		return this.repository.findBySubjectId(subjectId).stream().map(SipdMasterKabupatenEntity::toDomain).toList();
-	}
-
-	@Override
-	public List<SipdMasterKabupaten> findBySubjectIdAndIsDeletedFalse(String subjectId) {
-		return this.repository.findBySubjectIdAndIsDeleted(subjectId, false).stream().map(SipdMasterKabupatenEntity::toDomain).toList();
-	}
-
-	@Override
-	public List<SipdMasterKabupaten> findBySubjectIdAndIsDeletedTrue(String subjectId) {
-		return this.repository.findBySubjectIdAndIsDeleted(subjectId, true).stream().map(SipdMasterKabupatenEntity::toDomain).toList();
+	protected SipdMasterClassificationJpaRepository<SipdMasterKabupatenEntity, SipdMasterKabupaten, DataMasterKabupaten> repositoryOfMasterClassifcation() {
+		return this.repository;
 	}
 
 }
