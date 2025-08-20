@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Check;
+import org.hibernate.annotations.Checks;
 
 @Data
 @Setter(AccessLevel.NONE)
@@ -16,6 +18,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = DataMasterRekeningAset1.TABLE_NAME)
+@Checks(value = {@Check(constraints = "id like '1%'")})
 public class DataMasterRekeningAset1Entity extends AbstractDataMasterRekening1Entity<DataMasterRekeningAset1> implements DataMasterRekeningAset1 {
 
 	@Override
