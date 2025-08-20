@@ -18,6 +18,9 @@ import lombok.experimental.Accessors;
 @MappedSuperclass
 public abstract class AbstractLogsMasterClassificationEntity<DOMAIN extends LogsMasterClassificationEntity<SUBJECT>, SUBJECT extends DataMasterClassificationEntity> extends AbstractLogsMasterEntity<DOMAIN, SUBJECT, String> implements LogsMasterClassificationEntity<SUBJECT> {
 
+	@Override
+	public abstract String subjectId();
+
 	@Column(name = "is_locked", nullable = false)
 	protected boolean isLocked;
 

@@ -4,7 +4,9 @@ import com.rendyrobbani.keuangan.core.domain.entity.master.classification.DataMa
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.LogsMasterClassificationEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractLogsMasterClassificationEntity;
 import com.rendyrobbani.keuangan.persistence.repository.master.LogsMasterJpaRepository;
+import org.springframework.data.repository.NoRepositoryBean;
 
+@NoRepositoryBean
 public interface LogsMasterClassificationJpaRepository<
 		ENTITY extends AbstractLogsMasterClassificationEntity<DOMAIN, SUBJECT>,
 		DOMAIN extends LogsMasterClassificationEntity<SUBJECT>,

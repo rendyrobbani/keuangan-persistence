@@ -4,9 +4,11 @@ import com.rendyrobbani.keuangan.core.domain.entity.master.DataMasterEntity;
 import com.rendyrobbani.keuangan.core.domain.entity.master.SipdMasterEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.AbstractSipdMasterEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.NoRepositoryBean;
 
 import java.util.List;
 
+@NoRepositoryBean
 public interface SipdMasterJpaRepository<
 		ENTITY extends AbstractSipdMasterEntity<DOMAIN, SUBJECT, SUBJECTID, ID>,
 		DOMAIN extends SipdMasterEntity<SUBJECT, SUBJECTID, ID>,

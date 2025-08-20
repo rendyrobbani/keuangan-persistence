@@ -1,4 +1,4 @@
-package com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.rekening1;
+package com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.base.rekening1;
 
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.base.rekening1.DataMasterRekening1;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.base.rekening1.SipdMasterRekening1;
@@ -20,7 +20,11 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractSipdMasterRekening1Entity<DOMAIN extends SipdMasterRekening1<SUBJECT>, SUBJECT extends DataMasterRekening1> extends AbstractSipdMasterClassificationEntity<DOMAIN, SUBJECT> implements SipdMasterRekening1<SUBJECT> {
+public abstract class AbstractSipdMasterRekening1Entity<
+		DOMAIN extends SipdMasterRekening1<SUBJECT>,
+		SUBJECT extends DataMasterRekening1
+		>
+		extends AbstractSipdMasterClassificationEntity<DOMAIN, SUBJECT> implements SipdMasterRekening1<SUBJECT> {
 
 	@Id
 	@Column(name = "id", nullable = false, updatable = false)

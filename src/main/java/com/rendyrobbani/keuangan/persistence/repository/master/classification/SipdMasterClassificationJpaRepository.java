@@ -4,7 +4,9 @@ import com.rendyrobbani.keuangan.core.domain.entity.master.classification.DataMa
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.SipdMasterClassificationEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractSipdMasterClassificationEntity;
 import com.rendyrobbani.keuangan.persistence.repository.master.SipdMasterJpaRepository;
+import org.springframework.data.repository.NoRepositoryBean;
 
+@NoRepositoryBean
 public interface SipdMasterClassificationJpaRepository<
 		ENTITY extends AbstractSipdMasterClassificationEntity<DOMAIN, SUBJECT>,
 		DOMAIN extends SipdMasterClassificationEntity<SUBJECT>,
