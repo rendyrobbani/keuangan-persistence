@@ -4,6 +4,8 @@ import com.rendyrobbani.keuangan.core.common.classification.rekening.RekeningCla
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.belanja.belanja6.DataMasterRekeningBelanja6;
 import com.rendyrobbani.keuangan.core.domain.vo.BelanjaJenis;
 import com.rendyrobbani.keuangan.core.domain.vo.BelanjaLokus;
+import com.rendyrobbani.keuangan.persistence.converter.BelanjaJenisConverter;
+import com.rendyrobbani.keuangan.persistence.converter.BelanjaLokusConverter;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.base.rekening6.AbstractDataMasterRekening6Entity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.belanja.belanja1.DataMasterRekeningBelanja1Entity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.belanja.belanja2.DataMasterRekeningBelanja2Entity;
@@ -70,10 +72,12 @@ public class DataMasterRekeningBelanja6Entity extends AbstractDataMasterRekening
 	@Column(name = "is_enabled", nullable = false)
 	private boolean isEnabled;
 
-	@Column(name = "jenis", nullable = false)
+	@Convert(converter = BelanjaJenisConverter.class)
+	@Column(name = "jenis", length = 50)
 	private BelanjaJenis jenis;
 
-	@Column(name = "lokus", nullable = false)
+	@Convert(converter = BelanjaLokusConverter.class)
+	@Column(name = "lokus", length = 50)
 	private BelanjaLokus lokus;
 
 	@Override
