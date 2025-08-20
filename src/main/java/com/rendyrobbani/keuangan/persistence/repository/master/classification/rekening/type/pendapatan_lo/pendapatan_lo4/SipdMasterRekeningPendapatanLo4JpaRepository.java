@@ -1,0 +1,10 @@
+package com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.type.pendapatan_lo.pendapatan_lo4;
+
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.pendapatan_lo.pendapatan_lo4.DataMasterRekeningPendapatanLo4;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.pendapatan_lo.pendapatan_lo4.SipdMasterRekeningPendapatanLo4;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.pendapatan_lo.pendapatan_lo4.SipdMasterRekeningPendapatanLo4Entity;
+import com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.base.rekening4.SipdMasterRekening4JpaRepository;
+
+public interface SipdMasterRekeningPendapatanLo4JpaRepository extends SipdMasterRekening4JpaRepository<SipdMasterRekeningPendapatanLo4Entity, SipdMasterRekeningPendapatanLo4, DataMasterRekeningPendapatanLo4> {
+
+}

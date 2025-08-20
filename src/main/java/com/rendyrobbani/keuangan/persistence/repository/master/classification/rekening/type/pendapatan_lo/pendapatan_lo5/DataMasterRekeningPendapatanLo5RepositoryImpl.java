@@ -1,0 +1,22 @@
+package com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.type.pendapatan_lo.pendapatan_lo5;
+
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.pendapatan_lo.pendapatan_lo5.DataMasterRekeningPendapatanLo5;
+import com.rendyrobbani.keuangan.core.domain.repository.master.classification.rekening.type.pendapatan_lo.pendapatan_lo5.DataMasterRekeningPendapatanLo5Repository;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.pendapatan_lo.pendapatan_lo5.DataMasterRekeningPendapatanLo5Entity;
+import com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.base.rekening5.AbstractDataMasterRekening5Repository;
+import com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.base.rekening5.DataMasterRekening5JpaRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@RequiredArgsConstructor
+public class DataMasterRekeningPendapatanLo5RepositoryImpl extends AbstractDataMasterRekening5Repository<DataMasterRekeningPendapatanLo5Entity, DataMasterRekeningPendapatanLo5> implements DataMasterRekeningPendapatanLo5Repository {
+
+	private final DataMasterRekeningPendapatanLo5JpaRepository repository;
+
+	@Override
+	protected DataMasterRekening5JpaRepository<DataMasterRekeningPendapatanLo5Entity, DataMasterRekeningPendapatanLo5> repositoryOfMasterRekening() {
+		return this.repository;
+	}
+
+}
