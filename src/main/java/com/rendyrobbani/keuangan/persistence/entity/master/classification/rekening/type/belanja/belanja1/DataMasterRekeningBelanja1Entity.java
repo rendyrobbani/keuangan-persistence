@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = DataMasterRekeningBelanja1.TABLE_NAME)
-@Checks(value = {@Check(constraints = "id like '1%'")})
+@Checks(value = {@Check(constraints = "id like '5%'")})
 public class DataMasterRekeningBelanja1Entity extends AbstractDataMasterRekening1Entity<DataMasterRekeningBelanja1> implements DataMasterRekeningBelanja1 {
 
 	@Override
