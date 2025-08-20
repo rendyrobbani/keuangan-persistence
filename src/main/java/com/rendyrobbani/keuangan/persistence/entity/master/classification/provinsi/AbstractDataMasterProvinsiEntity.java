@@ -2,7 +2,7 @@ package com.rendyrobbani.keuangan.persistence.entity.master.classification.provi
 
 import com.rendyrobbani.keuangan.core.common.classification.daerah.ProvinsiClassification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.provinsi.DataMasterProvinsi;
-import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassifcationEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassificationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataMasterProvinsiEntity extends AbstractDataMasterClassifcationEntity<DataMasterProvinsi> implements DataMasterProvinsi {
+public abstract class AbstractDataMasterProvinsiEntity extends AbstractDataMasterClassificationEntity<DataMasterProvinsi> implements DataMasterProvinsi {
 
 	@Id
 	@Check(constraints = "id = code")

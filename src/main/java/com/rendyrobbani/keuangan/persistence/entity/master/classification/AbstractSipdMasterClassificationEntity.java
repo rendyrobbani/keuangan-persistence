@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractSipdMasterClassifcationEntity<DOMAIN extends SipdMasterClassificationEntity<SUBJECT>, SUBJECT extends DataMasterClassificationEntity> extends AbstractSipdMasterEntity<DOMAIN, SUBJECT, String, Long> implements SipdMasterClassificationEntity<SUBJECT> {
+public abstract class AbstractSipdMasterClassificationEntity<DOMAIN extends SipdMasterClassificationEntity<SUBJECT>, SUBJECT extends DataMasterClassificationEntity> extends AbstractSipdMasterEntity<DOMAIN, SUBJECT, String, Long> implements SipdMasterClassificationEntity<SUBJECT> {
 
 	@Column(name = "is_locked", nullable = false)
 	protected boolean isLocked;

@@ -2,7 +2,7 @@ package com.rendyrobbani.keuangan.persistence.entity.master.classification.kegia
 
 import com.rendyrobbani.keuangan.core.common.classification.kegiatan.KegiatanClassification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.kegiatan.DataMasterKegiatan;
-import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassifcationEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassificationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataMasterKegiatanEntity extends AbstractDataMasterClassifcationEntity<DataMasterKegiatan> implements DataMasterKegiatan {
+public abstract class AbstractDataMasterKegiatanEntity extends AbstractDataMasterClassificationEntity<DataMasterKegiatan> implements DataMasterKegiatan {
 
 	@Id
 	@Check(constraints = "id = replace(code, 'X', '0')")

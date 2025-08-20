@@ -2,7 +2,7 @@ package com.rendyrobbani.keuangan.persistence.entity.master.classification.fungs
 
 import com.rendyrobbani.keuangan.core.common.classification.fungsi.FungsiClassification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.fungsi.DataMasterFungsi;
-import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassifcationEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassificationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataMasterFungsiEntity extends AbstractDataMasterClassifcationEntity<DataMasterFungsi> implements DataMasterFungsi {
+public abstract class AbstractDataMasterFungsiEntity extends AbstractDataMasterClassificationEntity<DataMasterFungsi> implements DataMasterFungsi {
 
 	@Id
 	@Check(constraints = "id = code")

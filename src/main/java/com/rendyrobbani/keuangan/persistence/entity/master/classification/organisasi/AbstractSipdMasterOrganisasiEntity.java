@@ -2,7 +2,7 @@ package com.rendyrobbani.keuangan.persistence.entity.master.classification.organ
 
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.organisasi.DataMasterOrganisasi;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.organisasi.SipdMasterOrganisasi;
-import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractSipdMasterClassifcationEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractSipdMasterClassificationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractSipdMasterOrganisasiEntity extends AbstractSipdMasterClassifcationEntity<SipdMasterOrganisasi, DataMasterOrganisasi> implements SipdMasterOrganisasi {
+public abstract class AbstractSipdMasterOrganisasiEntity extends AbstractSipdMasterClassificationEntity<SipdMasterOrganisasi, DataMasterOrganisasi> implements SipdMasterOrganisasi {
 
 	@Id
 	@Column(name = "id", nullable = false, updatable = false)

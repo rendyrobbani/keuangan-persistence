@@ -2,7 +2,7 @@ package com.rendyrobbani.keuangan.persistence.entity.master.classification.bidan
 
 import com.rendyrobbani.keuangan.core.common.classification.urusan.BidangClassification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.bidang.DataMasterBidang;
-import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassifcationEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractDataMasterClassificationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataMasterBidangEntity extends AbstractDataMasterClassifcationEntity<DataMasterBidang> implements DataMasterBidang {
+public abstract class AbstractDataMasterBidangEntity extends AbstractDataMasterClassificationEntity<DataMasterBidang> implements DataMasterBidang {
 
 	@Id
 	@Check(constraints = "id = replace(code, 'X', '0')")

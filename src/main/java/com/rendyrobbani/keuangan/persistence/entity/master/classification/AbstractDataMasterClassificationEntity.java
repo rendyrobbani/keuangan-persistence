@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataMasterClassifcationEntity<DOMAIN extends DataMasterClassificationEntity> extends AbstractDataMasterEntity<DOMAIN, String> implements DataMasterClassificationEntity {
+public abstract class AbstractDataMasterClassificationEntity<DOMAIN extends DataMasterClassificationEntity> extends AbstractDataMasterEntity<DOMAIN, String> implements DataMasterClassificationEntity {
 
 	@Column(name = "is_locked", nullable = false)
 	protected boolean isLocked;

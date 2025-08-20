@@ -2,7 +2,7 @@ package com.rendyrobbani.keuangan.persistence.entity.master.classification.kecam
 
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.kecamatan.DataMasterKecamatan;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.kecamatan.SipdMasterKecamatan;
-import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractSipdMasterClassifcationEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractSipdMasterClassificationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractSipdMasterKecamatanEntity extends AbstractSipdMasterClassifcationEntity<SipdMasterKecamatan, DataMasterKecamatan> implements SipdMasterKecamatan {
+public abstract class AbstractSipdMasterKecamatanEntity extends AbstractSipdMasterClassificationEntity<SipdMasterKecamatan, DataMasterKecamatan> implements SipdMasterKecamatan {
 
 	@Id
 	@Column(name = "id", nullable = false, updatable = false)

@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractLogsMasterClassifcationEntity<DOMAIN extends LogsMasterClassificationEntity<SUBJECT>, SUBJECT extends DataMasterClassificationEntity> extends AbstractLogsMasterEntity<DOMAIN, SUBJECT, String> implements LogsMasterClassificationEntity<SUBJECT> {
+public abstract class AbstractLogsMasterClassificationEntity<DOMAIN extends LogsMasterClassificationEntity<SUBJECT>, SUBJECT extends DataMasterClassificationEntity> extends AbstractLogsMasterEntity<DOMAIN, SUBJECT, String> implements LogsMasterClassificationEntity<SUBJECT> {
 
 	@Column(name = "is_locked", nullable = false)
 	protected boolean isLocked;

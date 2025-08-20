@@ -4,7 +4,7 @@ import com.rendyrobbani.keuangan.core.domain.entity.master.classification.organi
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.organisasi.LogsMasterOrganisasi;
 import com.rendyrobbani.keuangan.core.domain.vo.JabatanStatus;
 import com.rendyrobbani.keuangan.persistence.converter.JabatanStatusConverter;
-import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractLogsMasterClassifcationEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractLogsMasterClassificationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.MappedSuperclass;
@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractLogsMasterOrganisasiEntity extends AbstractLogsMasterClassifcationEntity<LogsMasterOrganisasi, DataMasterOrganisasi> implements LogsMasterOrganisasi {
+public abstract class AbstractLogsMasterOrganisasiEntity extends AbstractLogsMasterClassificationEntity<LogsMasterOrganisasi, DataMasterOrganisasi> implements LogsMasterOrganisasi {
 
 	@Column(name = "code", length = 22, nullable = false, updatable = false)
 	protected String code;
