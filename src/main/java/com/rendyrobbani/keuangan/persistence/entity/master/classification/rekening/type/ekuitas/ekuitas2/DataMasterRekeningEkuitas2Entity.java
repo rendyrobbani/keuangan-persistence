@@ -1,9 +1,9 @@
-package com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset2;
+package com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.ekuitas.ekuitas2;
 
 import com.rendyrobbani.keuangan.core.common.classification.rekening.RekeningClassification;
-import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.aset.aset2.DataMasterRekeningAset2;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.ekuitas.ekuitas2.DataMasterRekeningEkuitas2;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.base.rekening2.AbstractDataMasterRekening2Entity;
-import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset1.DataMasterRekeningAset1Entity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.ekuitas.ekuitas1.DataMasterRekeningEkuitas1Entity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -18,23 +18,23 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = DataMasterRekeningAset2.TABLE_NAME, uniqueConstraints = {@UniqueConstraint(columnNames = {"rekening1_id", "id"})})
-public class DataMasterRekeningAset2Entity extends AbstractDataMasterRekening2Entity<DataMasterRekeningAset2> implements DataMasterRekeningAset2 {
+@Table(name = DataMasterRekeningEkuitas2.TABLE_NAME, uniqueConstraints = {@UniqueConstraint(columnNames = {"rekening1_id", "id"})})
+public class DataMasterRekeningEkuitas2Entity extends AbstractDataMasterRekening2Entity<DataMasterRekeningEkuitas2> implements DataMasterRekeningEkuitas2 {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {
 			@JoinColumn(name = "rekening1_id", referencedColumnName = "id", insertable = false, updatable = false),
 	})
-	private DataMasterRekeningAset1Entity rekening1;
+	private DataMasterRekeningEkuitas1Entity rekening1;
 
 	@Override
-	public DataMasterRekeningAset2 toDomain() {
+	public DataMasterRekeningEkuitas2 toDomain() {
 		return this;
 	}
 
 	@Override
 	public void create(RekeningClassification classification, String name, LocalDateTime createdAt, String createdBy) {
-		if (!classification.isAset()) throw new RuntimeException("Invalid classification");
+		if (!classification.isEkuitas()) throw new RuntimeException("Invalid classification");
 		super.create(classification, name, createdAt, createdBy);
 	}
 

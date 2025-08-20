@@ -1,7 +1,7 @@
-package com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset1;
+package com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.ekuitas.ekuitas1;
 
 import com.rendyrobbani.keuangan.core.common.classification.rekening.RekeningClassification;
-import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.aset.aset1.DataMasterRekeningAset1;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.ekuitas.ekuitas1.DataMasterRekeningEkuitas1;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.base.rekening1.AbstractDataMasterRekening1Entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -20,18 +20,18 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = DataMasterRekeningAset1.TABLE_NAME)
+@Table(name = DataMasterRekeningEkuitas1.TABLE_NAME)
 @Checks(value = {@Check(constraints = "id like '1%'")})
-public class DataMasterRekeningAset1Entity extends AbstractDataMasterRekening1Entity<DataMasterRekeningAset1> implements DataMasterRekeningAset1 {
+public class DataMasterRekeningEkuitas1Entity extends AbstractDataMasterRekening1Entity<DataMasterRekeningEkuitas1> implements DataMasterRekeningEkuitas1 {
 
 	@Override
-	public DataMasterRekeningAset1 toDomain() {
+	public DataMasterRekeningEkuitas1 toDomain() {
 		return this;
 	}
 
 	@Override
 	public void create(RekeningClassification classification, String name, LocalDateTime createdAt, String createdBy) {
-		if (!classification.isAset()) throw new RuntimeException("Invalid classification");
+		if (!classification.isEkuitas()) throw new RuntimeException("Invalid classification");
 		super.create(classification, name, createdAt, createdBy);
 	}
 

@@ -51,6 +51,10 @@ public abstract class AbstractDataMasterRekening5Entity<DOMAIN extends DataMaste
 
 	public void create(RekeningClassification classification, String name, LocalDateTime createdAt, String createdBy) {
 		if (classification.level() != 5) throw new RuntimeException("Invalid classification");
+		this.rekening1Id = classification.rekening1Code();
+		this.rekening2Id = classification.rekening2Code();
+		this.rekening3Id = classification.rekening3Code();
+		this.rekening4Id = classification.rekening4Code();
 
 		this.id = classification.rekening5Code();
 		this.code = classification.rekening5Code();

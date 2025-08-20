@@ -1,5 +1,6 @@
 package com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.kewajiban.kewajiban3;
 
+import com.rendyrobbani.keuangan.core.common.classification.rekening.RekeningClassification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.kewajiban.kewajiban3.DataMasterRekeningKewajiban3;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.base.rekening3.AbstractDataMasterRekening3Entity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.kewajiban.kewajiban1.DataMasterRekeningKewajiban1Entity;
@@ -10,6 +11,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+
+import java.time.LocalDateTime;
 
 @Data
 @Setter(AccessLevel.NONE)
@@ -35,6 +38,12 @@ public class DataMasterRekeningKewajiban3Entity extends AbstractDataMasterRekeni
 	@Override
 	public DataMasterRekeningKewajiban3 toDomain() {
 		return this;
+	}
+
+	@Override
+	public void create(RekeningClassification classification, String name, LocalDateTime createdAt, String createdBy) {
+		if (!classification.isKewajiban()) throw new RuntimeException("Invalid classification");
+		super.create(classification, name, createdAt, createdBy);
 	}
 
 }

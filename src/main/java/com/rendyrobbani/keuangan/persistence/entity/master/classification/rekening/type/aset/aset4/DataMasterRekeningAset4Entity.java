@@ -1,5 +1,6 @@
 package com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset4;
 
+import com.rendyrobbani.keuangan.core.common.classification.rekening.RekeningClassification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.aset.aset4.DataMasterRekeningAset4;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.base.rekening4.AbstractDataMasterRekening4Entity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.aset.aset1.DataMasterRekeningAset1Entity;
@@ -11,6 +12,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+
+import java.time.LocalDateTime;
 
 @Data
 @Setter(AccessLevel.NONE)
@@ -44,6 +47,12 @@ public class DataMasterRekeningAset4Entity extends AbstractDataMasterRekening4En
 	@Override
 	public DataMasterRekeningAset4 toDomain() {
 		return this;
+	}
+
+	@Override
+	public void create(RekeningClassification classification, String name, LocalDateTime createdAt, String createdBy) {
+		if (!classification.isAset()) throw new RuntimeException("Invalid classification");
+		super.create(classification, name, createdAt, createdBy);
 	}
 
 }
