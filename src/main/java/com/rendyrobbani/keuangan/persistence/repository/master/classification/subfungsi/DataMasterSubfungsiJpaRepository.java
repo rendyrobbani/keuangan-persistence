@@ -2,7 +2,8 @@ package com.rendyrobbani.keuangan.persistence.repository.master.classification.s
 
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.subfungsi.DataMasterSubfungsi;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subfungsi.DataMasterSubfungsiEntity;
-
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.DataMasterClassificationJpaRepository;
 
-public interface DataMasterSubfungsiJpaRepository extends DataMasterClassificationJpaRepository<DataMasterSubfungsiEntity, DataMasterSubfungsi> {}
+public interface DataMasterSubfungsiJpaRepository extends DataMasterClassificationJpaRepository<DataMasterSubfungsiEntity, DataMasterSubfungsi> {
+
+}

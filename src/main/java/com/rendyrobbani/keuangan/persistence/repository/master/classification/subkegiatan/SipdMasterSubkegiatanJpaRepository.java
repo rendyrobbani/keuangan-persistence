@@ -3,7 +3,8 @@ package com.rendyrobbani.keuangan.persistence.repository.master.classification.s
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.subkegiatan.DataMasterSubkegiatan;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.subkegiatan.SipdMasterSubkegiatan;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subkegiatan.SipdMasterSubkegiatanEntity;
-
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.SipdMasterClassificationJpaRepository;
 
-public interface SipdMasterSubkegiatanJpaRepository extends SipdMasterClassificationJpaRepository<SipdMasterSubkegiatanEntity, SipdMasterSubkegiatan, DataMasterSubkegiatan> {}
+public interface SipdMasterSubkegiatanJpaRepository extends SipdMasterClassificationJpaRepository<SipdMasterSubkegiatanEntity, SipdMasterSubkegiatan, DataMasterSubkegiatan> {
+
+}

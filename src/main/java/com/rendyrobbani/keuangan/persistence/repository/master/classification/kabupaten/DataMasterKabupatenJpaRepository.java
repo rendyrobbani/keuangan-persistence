@@ -2,7 +2,8 @@ package com.rendyrobbani.keuangan.persistence.repository.master.classification.k
 
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.kabupaten.DataMasterKabupaten;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kabupaten.DataMasterKabupatenEntity;
-
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.DataMasterClassificationJpaRepository;
 
-public interface DataMasterKabupatenJpaRepository extends DataMasterClassificationJpaRepository<DataMasterKabupatenEntity, DataMasterKabupaten> {}
+public interface DataMasterKabupatenJpaRepository extends DataMasterClassificationJpaRepository<DataMasterKabupatenEntity, DataMasterKabupaten> {
+
+}

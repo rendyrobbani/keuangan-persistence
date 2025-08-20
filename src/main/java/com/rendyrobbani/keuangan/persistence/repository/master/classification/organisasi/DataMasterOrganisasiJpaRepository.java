@@ -2,7 +2,8 @@ package com.rendyrobbani.keuangan.persistence.repository.master.classification.o
 
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.organisasi.DataMasterOrganisasi;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.organisasi.DataMasterOrganisasiEntity;
-
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.DataMasterClassificationJpaRepository;
 
-public interface DataMasterOrganisasiJpaRepository extends DataMasterClassificationJpaRepository<DataMasterOrganisasiEntity, DataMasterOrganisasi> {}
+public interface DataMasterOrganisasiJpaRepository extends DataMasterClassificationJpaRepository<DataMasterOrganisasiEntity, DataMasterOrganisasi> {
+
+}
