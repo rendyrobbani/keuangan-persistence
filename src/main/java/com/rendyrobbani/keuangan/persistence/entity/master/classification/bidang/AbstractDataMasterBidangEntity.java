@@ -33,6 +33,7 @@ public abstract class AbstractDataMasterBidangEntity extends AbstractDataMasterC
 	@Column(name = "name", nullable = false)
 	protected String name;
 
+	@Check(constraints = "urusan_id = left(id, length(urusan_id))")
 	@Column(name = "urusan_id", length = 1, nullable = false)
 	protected String urusanId;
 

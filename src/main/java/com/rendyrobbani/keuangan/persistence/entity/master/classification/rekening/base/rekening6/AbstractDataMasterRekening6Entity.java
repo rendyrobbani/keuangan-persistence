@@ -33,18 +33,23 @@ public abstract class AbstractDataMasterRekening6Entity<DOMAIN extends DataMaste
 	@Column(name = "name", nullable = false)
 	protected String name;
 
+	@Check(constraints = "rekening1_id = left(id, length(rekening1_id))")
 	@Column(name = "rekening1_id", length = 1, nullable = false)
 	protected String rekening1Id;
 
+	@Check(constraints = "rekening2_id = left(id, length(rekening2_id))")
 	@Column(name = "rekening2_id", length = 3, nullable = false)
 	protected String rekening2Id;
 
+	@Check(constraints = "rekening3_id = left(id, length(rekening3_id))")
 	@Column(name = "rekening3_id", length = 6, nullable = false)
 	protected String rekening3Id;
 
+	@Check(constraints = "rekening4_id = left(id, length(rekening4_id))")
 	@Column(name = "rekening4_id", length = 9, nullable = false)
 	protected String rekening4Id;
 
+	@Check(constraints = "rekening5_id = left(id, length(rekening5_id))")
 	@Column(name = "rekening5_id", length = 12, nullable = false)
 	protected String rekening5Id;
 

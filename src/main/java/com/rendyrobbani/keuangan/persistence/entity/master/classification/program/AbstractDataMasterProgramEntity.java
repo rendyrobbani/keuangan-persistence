@@ -33,9 +33,11 @@ public abstract class AbstractDataMasterProgramEntity extends AbstractDataMaster
 	@Column(name = "name", nullable = false)
 	protected String name;
 
+	@Check(constraints = "urusan_id = left(id, length(urusan_id))")
 	@Column(name = "urusan_id", length = 1, nullable = false)
 	protected String urusanId;
 
+	@Check(constraints = "bidang_id = left(id, length(bidang_id))")
 	@Column(name = "bidang_id", length = 4, nullable = false)
 	protected String bidangId;
 

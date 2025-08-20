@@ -33,6 +33,7 @@ public abstract class AbstractDataMasterKabupatenEntity extends AbstractDataMast
 	@Column(name = "name", nullable = false)
 	protected String name;
 
+	@Check(constraints = "provinsi_id = left(id, length(provinsi_id))")
 	@Column(name = "provinsi_id", length = 2, nullable = false)
 	protected String provinsiId;
 

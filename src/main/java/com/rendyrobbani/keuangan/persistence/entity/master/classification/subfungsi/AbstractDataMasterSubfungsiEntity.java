@@ -33,6 +33,7 @@ public abstract class AbstractDataMasterSubfungsiEntity extends AbstractDataMast
 	@Column(name = "name", nullable = false)
 	protected String name;
 
+	@Check(constraints = "fungsi_id = left(id, length(fungsi_id))")
 	@Column(name = "fungsi_id", length = 2, nullable = false)
 	protected String fungsiId;
 

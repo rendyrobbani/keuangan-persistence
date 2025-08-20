@@ -33,6 +33,7 @@ public abstract class AbstractDataMasterRekening2Entity<DOMAIN extends DataMaste
 	@Column(name = "name", nullable = false)
 	protected String name;
 
+	@Check(constraints = "rekening1_id = left(id, length(rekening1_id))")
 	@Column(name = "rekening1_id", length = 1, nullable = false)
 	protected String rekening1Id;
 

@@ -33,15 +33,19 @@ public abstract class AbstractDataMasterSubkegiatanEntity extends AbstractDataMa
 	@Column(name = "name", length = 510, nullable = false)
 	protected String name;
 
+	@Check(constraints = "urusan_id = left(id, length(urusan_id))")
 	@Column(name = "urusan_id", length = 1, nullable = false)
 	protected String urusanId;
 
+	@Check(constraints = "bidang_id = left(id, length(bidang_id))")
 	@Column(name = "bidang_id", length = 4, nullable = false)
 	protected String bidangId;
 
+	@Check(constraints = "program_id = left(id, length(program_id))")
 	@Column(name = "program_id", length = 7, nullable = false)
 	protected String programId;
 
+	@Check(constraints = "kegiatan_id = left(id, length(kegiatan_id))")
 	@Column(name = "kegiatan_id", length = 12, nullable = false)
 	protected String kegiatanId;
 
