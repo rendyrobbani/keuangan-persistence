@@ -43,6 +43,7 @@ public abstract class AbstractSipdMasterProvinsiEntity extends AbstractSipdMaste
 		this.name = name;
 		this.subjectId = subjectId;
 		this.isLocked = isLocked;
+		this.isDeleted = false;
 		this.create(createdAt, createdBy);
 	}
 

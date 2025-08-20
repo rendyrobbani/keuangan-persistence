@@ -1,7 +1,7 @@
-package com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan;
+package com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.rekening1;
 
-import com.rendyrobbani.keuangan.core.domain.entity.master.classification.urusan.DataMasterUrusan;
-import com.rendyrobbani.keuangan.core.domain.entity.master.classification.urusan.SipdMasterUrusan;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.base.rekening1.DataMasterRekening1;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.base.rekening1.SipdMasterRekening1;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractSipdMasterClassificationEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractSipdMasterUrusanEntity extends AbstractSipdMasterClassificationEntity<SipdMasterUrusan, DataMasterUrusan> implements SipdMasterUrusan {
+public abstract class AbstractSipdMasterRekening1Entity<DOMAIN extends SipdMasterRekening1<SUBJECT>, SUBJECT extends DataMasterRekening1> extends AbstractSipdMasterClassificationEntity<DOMAIN, SUBJECT> implements SipdMasterRekening1<SUBJECT> {
 
 	@Id
 	@Column(name = "id", nullable = false, updatable = false)
@@ -32,7 +32,7 @@ public abstract class AbstractSipdMasterUrusanEntity extends AbstractSipdMasterC
 	@Column(name = "name", nullable = false)
 	protected String name;
 
-	@Check(constraints = "subject_id = replace(code, 'X', '0')")
+	@Check(constraints = "subject_id = code")
 	@Column(name = "subject_id", length = 1, nullable = false)
 	protected String subjectId;
 
