@@ -5,8 +5,8 @@ import com.rendyrobbani.keuangan.core.domain.entity.master.classification.organi
 import com.rendyrobbani.keuangan.core.domain.repository.master.classification.organisasi.LogsMasterOrganisasiRepository;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.organisasi.LogsMasterOrganisasiEntity;
 import com.rendyrobbani.keuangan.persistence.repository.master.classification.AbstractLogsMasterClassificationRepository;
+import com.rendyrobbani.keuangan.persistence.repository.master.classification.LogsMasterClassificationJpaRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -16,8 +16,8 @@ public class LogsMasterOrganisasiRepositoryImpl extends AbstractLogsMasterClassi
 	private final LogsMasterOrganisasiJpaRepository repository;
 
 	@Override
-	protected JpaRepository<LogsMasterOrganisasiEntity, Long> repository() {
-		return repository;
+	protected LogsMasterClassificationJpaRepository<LogsMasterOrganisasiEntity, LogsMasterOrganisasi, DataMasterOrganisasi> repositoryOfMasterClassifcation() {
+		return this.repository;
 	}
 
 }
