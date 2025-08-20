@@ -65,15 +65,25 @@ public class DataMasterRekeningPendapatan6Entity extends AbstractDataMasterReken
 	})
 	private DataMasterRekeningPendapatan5Entity rekening5;
 
+	@Column(name = "is_enabled", nullable = false)
+	private boolean isEnabled;
+
 	@Override
 	public DataMasterRekeningPendapatan6 toDomain() {
 		return this;
 	}
 
 	@Override
-	public void create(RekeningClassification classification, String name, LocalDateTime createdAt, String createdBy) {
+	public void create(RekeningClassification classification, String name, boolean isEnabled, LocalDateTime createdAt, String createdBy) {
 		if (!classification.isPendapatan()) throw new RuntimeException("Invalid classification");
+		this.isEnabled = isEnabled;
 		super.create(classification, name, createdAt, createdBy);
+	}
+
+	@Override
+	public void update(String name, boolean isEnabled, LocalDateTime updatedAt, String updatedBy) {
+		this.isEnabled = isEnabled;
+		super.update(name, updatedAt, updatedBy);
 	}
 
 }

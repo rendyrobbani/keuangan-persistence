@@ -83,11 +83,18 @@ public class DataMasterRekeningPembiayaan6Entity extends AbstractDataMasterReken
 	}
 
 	@Override
-	public void create(RekeningClassification classification, String name, LocalDateTime createdAt, String createdBy) {
+	public void create(RekeningClassification classification, String name, boolean isEnabled, LocalDateTime createdAt, String createdBy) {
 		if (!classification.isPembiayaan()) throw new RuntimeException("Invalid classification");
 		this.isIncome = classification.rekening2Code().equals("6.1");
 		this.isExpend = classification.rekening2Code().equals("6.2");
+		this.isEnabled = isEnabled;
 		super.create(classification, name, createdAt, createdBy);
+	}
+
+	@Override
+	public void update(String name, boolean isEnabled, LocalDateTime updatedAt, String updatedBy) {
+		this.isEnabled = isEnabled;
+		super.update(name, updatedAt, updatedBy);
 	}
 
 }

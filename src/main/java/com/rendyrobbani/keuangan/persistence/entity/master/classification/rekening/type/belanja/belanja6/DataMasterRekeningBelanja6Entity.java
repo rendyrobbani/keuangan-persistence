@@ -2,6 +2,8 @@ package com.rendyrobbani.keuangan.persistence.entity.master.classification.reken
 
 import com.rendyrobbani.keuangan.core.common.classification.rekening.RekeningClassification;
 import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.belanja.belanja6.DataMasterRekeningBelanja6;
+import com.rendyrobbani.keuangan.core.domain.vo.BelanjaJenis;
+import com.rendyrobbani.keuangan.core.domain.vo.BelanjaLokus;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.base.rekening6.AbstractDataMasterRekening6Entity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.belanja.belanja1.DataMasterRekeningBelanja1Entity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.belanja.belanja2.DataMasterRekeningBelanja2Entity;
@@ -65,15 +67,35 @@ public class DataMasterRekeningBelanja6Entity extends AbstractDataMasterRekening
 	})
 	private DataMasterRekeningBelanja5Entity rekening5;
 
+	@Column(name = "is_enabled", nullable = false)
+	private boolean isEnabled;
+
+	@Column(name = "jenis", nullable = false)
+	private BelanjaJenis jenis;
+
+	@Column(name = "lokus", nullable = false)
+	private BelanjaLokus lokus;
+
 	@Override
 	public DataMasterRekeningBelanja6 toDomain() {
 		return this;
 	}
 
 	@Override
-	public void create(RekeningClassification classification, String name, LocalDateTime createdAt, String createdBy) {
+	public void create(RekeningClassification classification, String name, boolean isEnabled, BelanjaJenis jenis, BelanjaLokus lokus, LocalDateTime createdAt, String createdBy) {
 		if (!classification.isBelanja()) throw new RuntimeException("Invalid classification");
+		this.isEnabled = isEnabled;
+		this.jenis = jenis;
+		this.lokus = lokus;
 		super.create(classification, name, createdAt, createdBy);
+	}
+
+	@Override
+	public void update(String name, boolean isEnabled, BelanjaJenis jenis, BelanjaLokus lokus, LocalDateTime createdAt, String createdBy) {
+		this.isEnabled = isEnabled;
+		this.jenis = jenis;
+		this.lokus = lokus;
+		super.update(name, updatedAt, updatedBy);
 	}
 
 }
