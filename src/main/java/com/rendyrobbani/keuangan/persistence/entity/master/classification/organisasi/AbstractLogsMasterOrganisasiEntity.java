@@ -30,6 +30,21 @@ public abstract class AbstractLogsMasterOrganisasiEntity extends AbstractLogsMas
 	@Column(name = "name", nullable = false)
 	protected String name;
 
+	@Check(constraints = "code like '%0000'")
+	@Column(name = "is_skpd", nullable = false)
+	protected boolean isSkpd;
+
+	@Check(constraints = "code not like '%0000'")
+	@Column(name = "is_unit", nullable = false)
+	protected boolean isUnit;
+
+	@Check(constraints = "code like '4.01%0000'")
+	@Column(name = "is_setda", nullable = false)
+	protected boolean isSetda;
+
+	@Column(name = "is_skpkd", nullable = false)
+	protected boolean isSkpkd;
+
 	@Check(constraints = "skpd_id = concat(left(unit_id, 18), '0000')")
 	@Column(name = "skpd_id", length = 22, nullable = false, updatable = false)
 	protected String skpdId;
@@ -66,6 +81,10 @@ public abstract class AbstractLogsMasterOrganisasiEntity extends AbstractLogsMas
 	public void create(DataMasterOrganisasi data, LocalDateTime createdAt, String createdBy) {
 		this.code = data.code();
 		this.name = data.name();
+		this.isSkpd = data.isSkpd();
+		this.isUnit = data.isUnit();
+		this.isSetda = data.isSetda();
+		this.isSkpkd = data.isSkpkd();
 		this.skpdId = data.skpdId();
 		this.unitId = data.unitId();
 		this.mainBidangIndex = data.mainBidangIndex();

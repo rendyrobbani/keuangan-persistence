@@ -37,6 +37,21 @@ public abstract class AbstractDataMasterOrganisasiEntity extends AbstractDataMas
 	@Column(name = "name", nullable = false)
 	protected String name;
 
+	@Check(constraints = "code like '%0000'")
+	@Column(name = "is_skpd", nullable = false)
+	protected boolean isSkpd;
+
+	@Check(constraints = "code not like '%0000'")
+	@Column(name = "is_unit", nullable = false)
+	protected boolean isUnit;
+
+	@Check(constraints = "code like '4.01%0000'")
+	@Column(name = "is_setda", nullable = false)
+	protected boolean isSetda;
+
+	@Column(name = "is_skpkd", nullable = false)
+	protected boolean isSkpkd;
+
 	@Check(constraints = "skpd_id = concat(left(unit_id, 18), '0000')")
 	@Column(name = "skpd_id", length = 22, nullable = false, updatable = false)
 	protected String skpdId;
@@ -66,7 +81,7 @@ public abstract class AbstractDataMasterOrganisasiEntity extends AbstractDataMas
 	protected JabatanStatus headStatus;
 
 	@Override
-	public void create(OrganisasiClassification classification, String name, Byte mainBidangIndex, String headId, JabatanStatus headStatus, LocalDateTime createdAt, String createdBy) {
+	public void create(OrganisasiClassification classification, String name, boolean isSetda, boolean isSkpkd, Byte mainBidangIndex, String headId, JabatanStatus headStatus, LocalDateTime createdAt, String createdBy) {
 		this.id = classification.unitCode();
 		this.code = classification.unitCode();
 		this.skpdId = classification.skpdCode();
@@ -75,6 +90,10 @@ public abstract class AbstractDataMasterOrganisasiEntity extends AbstractDataMas
 		this.bidang2Id = classification.bidang2Code();
 		this.bidang3Id = classification.bidang3Code();
 		this.name = name;
+		this.isSkpd = classification.isSkpd();
+		this.isUnit = classification.isUnit();
+		this.isSetda = isSetda;
+		this.isSkpkd = isSkpkd;
 		this.mainBidangIndex = mainBidangIndex;
 		this.headId = headId;
 		this.headStatus = headStatus;
@@ -82,8 +101,10 @@ public abstract class AbstractDataMasterOrganisasiEntity extends AbstractDataMas
 	}
 
 	@Override
-	public void update(String name, Byte mainBidangIndex, String headId, JabatanStatus headStatus, LocalDateTime updatedAt, String updatedBy) {
+	public void update(String name, boolean isSetda, boolean isSkpkd, Byte mainBidangIndex, String headId, JabatanStatus headStatus, LocalDateTime updatedAt, String updatedBy) {
 		this.name = name;
+		this.isSetda = isSetda;
+		this.isSkpkd = isSkpkd;
 		this.mainBidangIndex = mainBidangIndex;
 		this.headId = headId;
 		this.headStatus = headStatus;
