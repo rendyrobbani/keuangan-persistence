@@ -1,9 +1,12 @@
-package com.rendyrobbani.keuangan.persistence.entity.master.classification.sumber;
+package com.rendyrobbani.keuangan.persistence.entity.master.classification.kelompok;
 
-import com.rendyrobbani.keuangan.core.domain.entity.master.classification.sumber.DataMasterSumber;
-import com.rendyrobbani.keuangan.core.domain.entity.master.classification.sumber.SipdMasterSumber;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.kelompok.DataMasterKelompok;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.kelompok.SipdMasterKelompok;
+import com.rendyrobbani.keuangan.core.domain.vo.KomponenType;
+import com.rendyrobbani.keuangan.persistence.converter.KomponenTypeConverter;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.AbstractSipdMasterClassificationEntity;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.AccessLevel;
@@ -20,7 +23,7 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractSipdMasterSumberEntity extends AbstractSipdMasterClassificationEntity<SipdMasterSumber, DataMasterSumber> implements SipdMasterSumber {
+public abstract class AbstractSipdMasterKelompokEntity extends AbstractSipdMasterClassificationEntity<SipdMasterKelompok, DataMasterKelompok> implements SipdMasterKelompok {
 
 	@Id
 	@Column(name = "id", nullable = false, updatable = false)
@@ -31,6 +34,10 @@ public abstract class AbstractSipdMasterSumberEntity extends AbstractSipdMasterC
 
 	@Column(name = "name", length = 510, nullable = false)
 	protected String name;
+
+	@Convert(converter = KomponenTypeConverter.class)
+	@Column(name = "name", nullable = false)
+	protected KomponenType type;
 
 	@Check(constraints = "subject_id = code")
 	@Column(name = "subject_id", length = 17, nullable = false)

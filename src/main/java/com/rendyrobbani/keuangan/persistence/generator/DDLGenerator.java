@@ -1,6 +1,7 @@
 package com.rendyrobbani.keuangan.persistence.generator;
 
 import com.rendyrobbani.keuangan.core.domain.vo.*;
+import com.rendyrobbani.keuangan.persistence.converter.KomponenTypeConverter;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.DataMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.SipdMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.fungsi.DataMasterFungsiEntity;
@@ -292,18 +293,32 @@ public final class DDLGenerator {
 
 	private static String type(Field field) {
 		Column column = field.getAnnotation(Column.class);
-		if (List.of(Long.class, long.class).contains(field.getType())) return "bigint";
-		if (List.of(Integer.class, int.class).contains(field.getType())) return "int";
-		if (List.of(Short.class, short.class).contains(field.getType())) return "smallint";
-		if (List.of(Byte.class, byte.class, Gender.class, JabatanStatus.class).contains(field.getType())) return "tinyint";
-		if (List.of(Boolean.class, boolean.class).contains(field.getType())) return "bit";
-		if (List.of(Double.class, double.class).contains(field.getType())) return "double";
-		if (List.of(Float.class, float.class).contains(field.getType())) return "float";
+		if (List.of(Long.class,
+		            long.class).contains(field.getType())) return "bigint";
+		if (List.of(Integer.class,
+		            int.class).contains(field.getType())) return "int";
+		if (List.of(Short.class,
+		            short.class).contains(field.getType())) return "smallint";
+		if (List.of(Byte.class,
+		            byte.class,
+		            Gender.class,
+		            JabatanStatus.class,
+		            KomponenTypeConverter.class).contains(field.getType())) return "tinyint";
+		if (List.of(Boolean.class,
+		            boolean.class).contains(field.getType())) return "bit";
+		if (List.of(Double.class,
+		            double.class).contains(field.getType())) return "double";
+		if (List.of(Float.class,
+		            float.class).contains(field.getType())) return "float";
 		if (field.getType() == LocalDate.class) return "date";
 		if (field.getType() == LocalDateTime.class) return "datetime";
 		if (field.getType() == BigDecimal.class) return "decimal(38, 2)";
-		if (List.of(Character.class, char.class, Pangkat.class).contains(field.getType())) return "char(" + column.length() + ")";
-		if (List.of(String.class, BelanjaJenis.class, BelanjaLokus.class).contains(field.getType())) return "varchar(" + column.length() + ")";
+		if (List.of(Character.class,
+		            char.class,
+		            Pangkat.class).contains(field.getType())) return "char(" + column.length() + ")";
+		if (List.of(String.class,
+		            BelanjaJenis.class,
+		            BelanjaLokus.class).contains(field.getType())) return "varchar(" + column.length() + ")";
 		throw new IllegalArgumentException("Type '" + field.getType().getName() + "' is not supported");
 	}
 

@@ -31,7 +31,7 @@ public abstract class AbstractDataMasterSumberEntity extends AbstractDataMasterC
 	@Column(name = "code", length = 17, nullable = false, updatable = false)
 	protected String code;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", length = 510, nullable = false)
 	protected String name;
 
 	@Check(constraints = "level = (case when sumber6_id is not null then 6 when sumber5_id is not null then 5 when sumber4_id is not null then 4 when sumber3_id is not null then 3 when sumber2_id is not null then 2 when sumber1_id is not null then 1 end)")
@@ -67,8 +67,8 @@ public abstract class AbstractDataMasterSumberEntity extends AbstractDataMasterC
 	@Column(name = "sumber5_id", length = 12, updatable = false)
 	protected String sumber5Id;
 
-	@Check(constraints = "sumber6_Id = left(id, length(sumber6_Id))")
-	@Column(name = "sumber6_Id", length = 17, updatable = false)
+	@Check(constraints = "sumber6_id = left(id, length(sumber6_id))")
+	@Column(name = "sumber6_id", length = 17, updatable = false)
 	protected String sumber6Id;
 
 	@Override
