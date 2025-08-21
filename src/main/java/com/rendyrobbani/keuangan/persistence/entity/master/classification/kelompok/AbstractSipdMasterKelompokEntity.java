@@ -36,7 +36,7 @@ public abstract class AbstractSipdMasterKelompokEntity extends AbstractSipdMaste
 	protected String name;
 
 	@Convert(converter = KomponenTypeConverter.class)
-	@Column(name = "name", nullable = false)
+	@Column(name = "type")
 	protected KomponenType type;
 
 	@Check(constraints = "subject_id = code")
@@ -44,10 +44,23 @@ public abstract class AbstractSipdMasterKelompokEntity extends AbstractSipdMaste
 	protected String subjectId;
 
 	@Override
+	public void create(Long id, String code, String name, KomponenType type, String subjectId, boolean isLocked, LocalDateTime createdAt, String createdBy) {
+		this.type = type;
+		this.create(id, code, name, subjectId, isLocked, createdAt, createdBy);
+	}
+
+	@Override
+	public void update(String code, String name, KomponenType type, String subjectId, boolean isLocked, LocalDateTime updatedAt, String updatedBy) {
+		this.type = type;
+		this.update(code, name, subjectId, isLocked, updatedAt, updatedBy);
+	}
+
+	@Override
 	public void create(Long id, String code, String name, String subjectId, boolean isLocked, LocalDateTime createdAt, String createdBy) {
 		this.id = id;
 		this.code = code;
 		this.name = name;
+
 		this.subjectId = subjectId;
 		this.isLocked = isLocked;
 		this.isDeleted = false;

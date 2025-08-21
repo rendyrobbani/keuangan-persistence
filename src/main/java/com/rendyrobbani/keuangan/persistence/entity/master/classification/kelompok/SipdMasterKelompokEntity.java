@@ -25,4 +25,5 @@ public class SipdMasterKelompokEntity extends AbstractSipdMasterKelompokEntity {
 		return this;
 	}
 
+
 }

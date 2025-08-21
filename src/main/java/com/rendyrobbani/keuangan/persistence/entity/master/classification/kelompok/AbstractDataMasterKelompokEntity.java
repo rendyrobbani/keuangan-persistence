@@ -37,8 +37,9 @@ public abstract class AbstractDataMasterKelompokEntity extends AbstractDataMaste
 	@Column(name = "name", length = 510, nullable = false)
 	protected String name;
 
+	@Check(constraints = "if(level = 6, type is not null, type is null)")
 	@Convert(converter = KomponenTypeConverter.class)
-	@Column(name = "name", nullable = false)
+	@Column(name = "type")
 	protected KomponenType type;
 
 	@Check(constraints = "level = (case when kelompok6_id is not null then 6 when kelompok5_id is not null then 5 when kelompok4_id is not null then 4 when kelompok3_id is not null then 3 when kelompok2_id is not null then 2 when kelompok1_id is not null then 1 end)")
@@ -79,7 +80,7 @@ public abstract class AbstractDataMasterKelompokEntity extends AbstractDataMaste
 	protected String kelompok6Id;
 
 	@Override
-	public void create(KelompokClassification classification, String name, boolean isEnabled, KomponenType type, LocalDateTime createdAt, String createdBy) {
+	public void create(KelompokClassification classification, String name, KomponenType type, boolean isEnabled, LocalDateTime createdAt, String createdBy) {
 		this.kelompok1Id = classification.kelompok1Code();
 		this.kelompok2Id = classification.kelompok2Code();
 		this.kelompok3Id = classification.kelompok3Code();
@@ -105,7 +106,7 @@ public abstract class AbstractDataMasterKelompokEntity extends AbstractDataMaste
 	}
 
 	@Override
-	public void update(String name, boolean isEnabled, KomponenType type, LocalDateTime updatedAt, String updatedBy) {
+	public void update(String name, KomponenType type, boolean isEnabled, LocalDateTime updatedAt, String updatedBy) {
 		this.name = name;
 		this.type = type;
 		this.isEnabled = isEnabled;
