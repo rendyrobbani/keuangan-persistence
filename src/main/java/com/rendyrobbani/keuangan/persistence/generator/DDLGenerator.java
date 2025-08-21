@@ -118,6 +118,8 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekeni
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subfungsi.DataMasterSubfungsiEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subkegiatan.DataMasterSubkegiatanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.subkegiatan.SipdMasterSubkegiatanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.sumber.DataMasterSumberEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.sumber.SipdMasterSumberEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan.DataMasterUrusanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan.SipdMasterUrusanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.user.DataUserEntity;
@@ -279,6 +281,9 @@ public final class DDLGenerator {
 			entityClasses.add(SipdMasterBeban5Entity.class);
 			entityClasses.add(DataMasterBeban6Entity.class);
 			entityClasses.add(SipdMasterBeban6Entity.class);
+
+			entityClasses.add(DataMasterSumberEntity.class);
+			entityClasses.add(SipdMasterSumberEntity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}
