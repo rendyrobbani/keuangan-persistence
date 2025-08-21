@@ -1,9 +1,0 @@
-package com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.type.kewajiban.kewajiban5;
-
-import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.kewajiban.kewajiban5.DataMasterRekeningKewajiban5;
-import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.kewajiban.kewajiban5.DataMasterRekeningKewajiban5Entity;
-import com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.base.rekening5.DataMasterRekening5JpaRepository;
-
-public interface DataMasterRekeningKewajiban5JpaRepository extends DataMasterRekening5JpaRepository<DataMasterRekeningKewajiban5Entity, DataMasterRekeningKewajiban5> {
-
-}

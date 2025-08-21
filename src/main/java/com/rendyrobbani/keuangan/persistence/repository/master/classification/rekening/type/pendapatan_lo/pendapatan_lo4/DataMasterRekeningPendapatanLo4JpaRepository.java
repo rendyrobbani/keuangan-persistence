@@ -1,9 +1,0 @@
-package com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.type.pendapatan_lo.pendapatan_lo4;
-
-import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.pendapatan_lo.pendapatan_lo4.DataMasterRekeningPendapatanLo4;
-import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.pendapatan_lo.pendapatan_lo4.DataMasterRekeningPendapatanLo4Entity;
-import com.rendyrobbani.keuangan.persistence.repository.master.classification.rekening.base.rekening4.DataMasterRekening4JpaRepository;
-
-public interface DataMasterRekeningPendapatanLo4JpaRepository extends DataMasterRekening4JpaRepository<DataMasterRekeningPendapatanLo4Entity, DataMasterRekeningPendapatanLo4> {
-
-}
