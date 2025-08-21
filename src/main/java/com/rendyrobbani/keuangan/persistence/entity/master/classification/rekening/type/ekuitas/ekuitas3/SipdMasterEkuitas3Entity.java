@@ -1,0 +1,32 @@
+package com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.ekuitas.ekuitas3;
+
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.ekuitas.ekuitas3.DataMasterEkuitas3;
+import com.rendyrobbani.keuangan.core.domain.entity.master.classification.rekening.type.ekuitas.ekuitas3.SipdMasterEkuitas3;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.base.rekening3.AbstractSipdMasterRekening3Entity;
+import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
+@Data
+@Setter(AccessLevel.NONE)
+@Accessors(fluent = true)
+@EqualsAndHashCode(callSuper = true)
+@Entity
+@Table(name = SipdMasterEkuitas3.TABLE_NAME)
+public class SipdMasterEkuitas3Entity extends AbstractSipdMasterRekening3Entity<SipdMasterEkuitas3, DataMasterEkuitas3> implements SipdMasterEkuitas3 {
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns(value = {
+			@JoinColumn(name = "subject_id", referencedColumnName = "id", insertable = false, updatable = false),
+	})
+	private DataMasterEkuitas3Entity subject;
+
+	@Override
+	public SipdMasterEkuitas3 toDomain() {
+		return this;
+	}
+
+}
