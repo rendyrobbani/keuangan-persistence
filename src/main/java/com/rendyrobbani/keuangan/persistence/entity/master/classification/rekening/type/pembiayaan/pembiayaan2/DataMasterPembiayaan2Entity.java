@@ -28,11 +28,11 @@ public class DataMasterPembiayaan2Entity extends AbstractDataMasterRekening2Enti
 	})
 	private DataMasterPembiayaan1Entity rekening1;
 
-	@Check(constraints = "id like '6.1%'")
+	@Check(constraints = "is_income = (id like '6.1%')")
 	@Column(name = "is_income", nullable = false)
 	private boolean isIncome;
 
-	@Check(constraints = "id like '6.2%'")
+	@Check(constraints = "is_expend = (id like '6.2%')")
 	@Column(name = "is_expend", nullable = false)
 	private boolean isExpend;
 

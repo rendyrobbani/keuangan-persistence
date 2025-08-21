@@ -37,15 +37,15 @@ public abstract class AbstractDataMasterOrganisasiEntity extends AbstractDataMas
 	@Column(name = "name", nullable = false)
 	protected String name;
 
-	@Check(constraints = "code like '%0000'")
+	@Check(constraints = "is_skpd is null or (is_skpd = (code like '%0000'))")
 	@Column(name = "is_skpd", nullable = false)
 	protected boolean isSkpd;
 
-	@Check(constraints = "code not like '%0000'")
+	@Check(constraints = "is_unit is null or (is_unit = (code not like '%0000'))")
 	@Column(name = "is_unit", nullable = false)
 	protected boolean isUnit;
 
-	@Check(constraints = "code like '4.01%0000'")
+	@Check(constraints = "is_setda is null or (is_setda = (code like '4.01%0000'))")
 	@Column(name = "is_setda", nullable = false)
 	protected boolean isSetda;
 
