@@ -38,6 +38,12 @@ public class DataMasterOrganisasiEntity extends AbstractDataMasterOrganisasiEnti
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {
+			@JoinColumn(name = "skpd_id", referencedColumnName = "id", insertable = false, updatable = false)
+	})
+	private DataMasterOrganisasiEntity skpd;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns(value = {
 			@JoinColumn(name = "head_id", referencedColumnName = "id", insertable = false, updatable = false)
 	})
 	private DataUserEntity head;
