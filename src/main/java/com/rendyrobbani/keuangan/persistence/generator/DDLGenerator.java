@@ -123,6 +123,14 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.sumber
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.sumber.SipdMasterSumberEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan.DataMasterUrusanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan.SipdMasterUrusanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.priority.kabupaten.DataMasterPriorityOfKabupatenEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.priority.kabupaten.SelfMasterPriorityOfKabupatenEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.priority.kegiatan.DataMasterPriorityOfKegiatanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.priority.kegiatan.SelfMasterPriorityOfKegiatanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.priority.nasional.DataMasterPriorityOfNasionalEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.priority.nasional.SelfMasterPriorityOfNasionalEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.priority.provinsi.DataMasterPriorityOfProvinsiEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.priority.provinsi.SelfMasterPriorityOfProvinsiEntity;
 import com.rendyrobbani.keuangan.persistence.entity.user.DataUserEntity;
 import com.rendyrobbani.keuangan.persistence.entity.user.LogsUserEntity;
 import jakarta.persistence.*;
@@ -285,6 +293,15 @@ public final class DDLGenerator {
 
 			entityClasses.add(DataMasterSumberEntity.class);
 			entityClasses.add(SipdMasterSumberEntity.class);
+
+			entityClasses.add(DataMasterPriorityOfNasionalEntity.class);
+			entityClasses.add(SelfMasterPriorityOfNasionalEntity.class);
+			entityClasses.add(DataMasterPriorityOfProvinsiEntity.class);
+			entityClasses.add(SelfMasterPriorityOfProvinsiEntity.class);
+			entityClasses.add(DataMasterPriorityOfKabupatenEntity.class);
+			entityClasses.add(SelfMasterPriorityOfKabupatenEntity.class);
+			entityClasses.add(DataMasterPriorityOfKegiatanEntity.class);
+			entityClasses.add(SelfMasterPriorityOfKegiatanEntity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}

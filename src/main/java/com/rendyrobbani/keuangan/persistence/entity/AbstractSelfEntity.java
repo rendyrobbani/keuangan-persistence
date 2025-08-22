@@ -20,6 +20,7 @@ public abstract class AbstractSelfEntity<DOMAIN extends SelfEntity> extends Abst
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false, updatable = false)
 	protected Long id;
 
 	@Column(name = "created_at", updatable = false)

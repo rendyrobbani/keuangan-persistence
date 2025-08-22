@@ -32,7 +32,7 @@ public abstract class AbstractDataMasterPriorityEntity<DOMAIN extends DataMaster
 	@Column(name = "name", nullable = false)
 	protected String name;
 
-	@Column(name = "sipdName", nullable = false)
+	@Column(name = "sipd_name", nullable = false)
 	protected String sipdName;
 
 	@Column(name = "is_locked", nullable = false)
