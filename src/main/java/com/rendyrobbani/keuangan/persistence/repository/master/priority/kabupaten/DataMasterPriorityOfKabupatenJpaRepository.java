@@ -1,0 +1,9 @@
+package com.rendyrobbani.keuangan.persistence.repository.master.priority.kabupaten;
+
+import com.rendyrobbani.keuangan.core.domain.entity.master.priority.kabupaten.DataMasterPriorityOfKabupaten;
+import com.rendyrobbani.keuangan.persistence.entity.master.priority.kabupaten.DataMasterPriorityOfKabupatenEntity;
+import com.rendyrobbani.keuangan.persistence.repository.master.priority.DataMasterPriorityJpaRepository;
+
+public interface DataMasterPriorityOfKabupatenJpaRepository extends DataMasterPriorityJpaRepository<DataMasterPriorityOfKabupatenEntity, DataMasterPriorityOfKabupaten> {
+
+}
