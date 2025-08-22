@@ -17,7 +17,9 @@ import lombok.experimental.Accessors;
 public class SipdMasterSubkegiatanEntity extends AbstractSipdMasterSubkegiatanEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "subject_id", insertable = false, updatable = false)
+	@JoinColumns(value = {
+			@JoinColumn(name = "subject_id", insertable = false, updatable = false)
+	})
 	private DataMasterSubkegiatanEntity subject;
 
 	@Override
