@@ -18,7 +18,7 @@ public class SipdMasterSumberEntity extends AbstractSipdMasterSumberEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {
-			@JoinColumn(name = "subject_id", insertable = false, updatable = false)
+			@JoinColumn(name = "subject_id", referencedColumnName = "id", insertable = false, updatable = false)
 	})
 	private DataMasterSumberEntity subject;
 

@@ -18,7 +18,7 @@ public class SipdMasterBidangEntity extends AbstractSipdMasterBidangEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {
-			@JoinColumn(name = "subject_id", insertable = false, updatable = false)
+			@JoinColumn(name = "subject_id", referencedColumnName = "id", insertable = false, updatable = false)
 	})
 	private DataMasterBidangEntity subject;
 
