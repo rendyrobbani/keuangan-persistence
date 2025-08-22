@@ -16,6 +16,12 @@ import lombok.experimental.Accessors;
 @Table(name = DataUser.TABLE_NAME)
 public class DataUserEntity extends AbstractDataUserEntity {
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns(value = {
+			@JoinColumn(name = "locked_by", referencedColumnName = "id", insertable = false, updatable = false)
+	})
+	protected DataUserEntity lockedByAsDataUser;
+
 	@Override
 	public DataUser toDomain() {
 		return this;

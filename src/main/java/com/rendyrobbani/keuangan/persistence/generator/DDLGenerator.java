@@ -175,152 +175,152 @@ public final class DDLGenerator {
 			entityClasses.add(SipdMasterKecamatanEntity.class);
 			entityClasses.add(DataMasterKelurahanEntity.class);
 			entityClasses.add(SipdMasterKelurahanEntity.class);
-
-			entityClasses.add(DataMasterFungsiEntity.class);
-			entityClasses.add(DataMasterSubfungsiEntity.class);
-
-			entityClasses.add(DataMasterUrusanEntity.class);
-			entityClasses.add(SipdMasterUrusanEntity.class);
-			entityClasses.add(DataMasterBidangEntity.class);
-			entityClasses.add(SipdMasterBidangEntity.class);
-			entityClasses.add(DataMasterProgramEntity.class);
-			entityClasses.add(SipdMasterProgramEntity.class);
-			entityClasses.add(DataMasterKegiatanEntity.class);
-			entityClasses.add(SipdMasterKegiatanEntity.class);
-			entityClasses.add(DataMasterSubkegiatanEntity.class);
-			entityClasses.add(SipdMasterSubkegiatanEntity.class);
-
-			entityClasses.add(DataMasterOrganisasiEntity.class);
-			entityClasses.add(LogsMasterOrganisasiEntity.class);
-			entityClasses.add(SipdMasterOrganisasiEntity.class);
-
-			entityClasses.add(DataMasterAset1Entity.class);
-			entityClasses.add(SipdMasterAset1Entity.class);
-			entityClasses.add(DataMasterAset2Entity.class);
-			entityClasses.add(SipdMasterAset2Entity.class);
-			entityClasses.add(DataMasterAset3Entity.class);
-			entityClasses.add(SipdMasterAset3Entity.class);
-			entityClasses.add(DataMasterAset4Entity.class);
-			entityClasses.add(SipdMasterAset4Entity.class);
-			entityClasses.add(DataMasterAset5Entity.class);
-			entityClasses.add(SipdMasterAset5Entity.class);
-			entityClasses.add(DataMasterAset6Entity.class);
-			entityClasses.add(SipdMasterAset6Entity.class);
-
-			entityClasses.add(DataMasterKewajiban1Entity.class);
-			entityClasses.add(SipdMasterKewajiban1Entity.class);
-			entityClasses.add(DataMasterKewajiban2Entity.class);
-			entityClasses.add(SipdMasterKewajiban2Entity.class);
-			entityClasses.add(DataMasterKewajiban3Entity.class);
-			entityClasses.add(SipdMasterKewajiban3Entity.class);
-			entityClasses.add(DataMasterKewajiban4Entity.class);
-			entityClasses.add(SipdMasterKewajiban4Entity.class);
-			entityClasses.add(DataMasterKewajiban5Entity.class);
-			entityClasses.add(SipdMasterKewajiban5Entity.class);
-			entityClasses.add(DataMasterKewajiban6Entity.class);
-			entityClasses.add(SipdMasterKewajiban6Entity.class);
-
-			entityClasses.add(DataMasterEkuitas1Entity.class);
-			entityClasses.add(SipdMasterEkuitas1Entity.class);
-			entityClasses.add(DataMasterEkuitas2Entity.class);
-			entityClasses.add(SipdMasterEkuitas2Entity.class);
-			entityClasses.add(DataMasterEkuitas3Entity.class);
-			entityClasses.add(SipdMasterEkuitas3Entity.class);
-			entityClasses.add(DataMasterEkuitas4Entity.class);
-			entityClasses.add(SipdMasterEkuitas4Entity.class);
-			entityClasses.add(DataMasterEkuitas5Entity.class);
-			entityClasses.add(SipdMasterEkuitas5Entity.class);
-			entityClasses.add(DataMasterEkuitas6Entity.class);
-			entityClasses.add(SipdMasterEkuitas6Entity.class);
-
-			entityClasses.add(DataMasterPendapatan1Entity.class);
-			entityClasses.add(SipdMasterPendapatan1Entity.class);
-			entityClasses.add(DataMasterPendapatan2Entity.class);
-			entityClasses.add(SipdMasterPendapatan2Entity.class);
-			entityClasses.add(DataMasterPendapatan3Entity.class);
-			entityClasses.add(SipdMasterPendapatan3Entity.class);
-			entityClasses.add(DataMasterPendapatan4Entity.class);
-			entityClasses.add(SipdMasterPendapatan4Entity.class);
-			entityClasses.add(DataMasterPendapatan5Entity.class);
-			entityClasses.add(SipdMasterPendapatan5Entity.class);
-			entityClasses.add(DataMasterPendapatan6Entity.class);
-			entityClasses.add(SipdMasterPendapatan6Entity.class);
-
-			entityClasses.add(DataMasterBelanja1Entity.class);
-			entityClasses.add(SipdMasterBelanja1Entity.class);
-			entityClasses.add(DataMasterBelanja2Entity.class);
-			entityClasses.add(SipdMasterBelanja2Entity.class);
-			entityClasses.add(DataMasterBelanja3Entity.class);
-			entityClasses.add(SipdMasterBelanja3Entity.class);
-			entityClasses.add(DataMasterBelanja4Entity.class);
-			entityClasses.add(SipdMasterBelanja4Entity.class);
-			entityClasses.add(DataMasterBelanja5Entity.class);
-			entityClasses.add(SipdMasterBelanja5Entity.class);
-			entityClasses.add(DataMasterBelanja6Entity.class);
-			entityClasses.add(SipdMasterBelanja6Entity.class);
-
-			entityClasses.add(DataMasterPembiayaan1Entity.class);
-			entityClasses.add(SipdMasterPembiayaan1Entity.class);
-			entityClasses.add(DataMasterPembiayaan2Entity.class);
-			entityClasses.add(SipdMasterPembiayaan2Entity.class);
-			entityClasses.add(DataMasterPembiayaan3Entity.class);
-			entityClasses.add(SipdMasterPembiayaan3Entity.class);
-			entityClasses.add(DataMasterPembiayaan4Entity.class);
-			entityClasses.add(SipdMasterPembiayaan4Entity.class);
-			entityClasses.add(DataMasterPembiayaan5Entity.class);
-			entityClasses.add(SipdMasterPembiayaan5Entity.class);
-			entityClasses.add(DataMasterPembiayaan6Entity.class);
-			entityClasses.add(SipdMasterPembiayaan6Entity.class);
-
-			entityClasses.add(DataMasterPendapatanLo1Entity.class);
-			entityClasses.add(SipdMasterPendapatanLo1Entity.class);
-			entityClasses.add(DataMasterPendapatanLo2Entity.class);
-			entityClasses.add(SipdMasterPendapatanLo2Entity.class);
-			entityClasses.add(DataMasterPendapatanLo3Entity.class);
-			entityClasses.add(SipdMasterPendapatanLo3Entity.class);
-			entityClasses.add(DataMasterPendapatanLo4Entity.class);
-			entityClasses.add(SipdMasterPendapatanLo4Entity.class);
-			entityClasses.add(DataMasterPendapatanLo5Entity.class);
-			entityClasses.add(SipdMasterPendapatanLo5Entity.class);
-			entityClasses.add(DataMasterPendapatanLo6Entity.class);
-			entityClasses.add(SipdMasterPendapatanLo6Entity.class);
-
-			entityClasses.add(DataMasterBeban1Entity.class);
-			entityClasses.add(SipdMasterBeban1Entity.class);
-			entityClasses.add(DataMasterBeban2Entity.class);
-			entityClasses.add(SipdMasterBeban2Entity.class);
-			entityClasses.add(DataMasterBeban3Entity.class);
-			entityClasses.add(SipdMasterBeban3Entity.class);
-			entityClasses.add(DataMasterBeban4Entity.class);
-			entityClasses.add(SipdMasterBeban4Entity.class);
-			entityClasses.add(DataMasterBeban5Entity.class);
-			entityClasses.add(SipdMasterBeban5Entity.class);
-			entityClasses.add(DataMasterBeban6Entity.class);
-			entityClasses.add(SipdMasterBeban6Entity.class);
-
-			entityClasses.add(DataMasterSumberEntity.class);
-			entityClasses.add(SipdMasterSumberEntity.class);
-
-			entityClasses.add(DataMasterKelompokEntity.class);
-			entityClasses.add(SipdMasterKelompokEntity.class);
-
-			entityClasses.add(DataMasterPriorityOfNasionalEntity.class);
-			entityClasses.add(SelfMasterPriorityOfNasionalEntity.class);
-			entityClasses.add(DataMasterPriorityOfProvinsiEntity.class);
-			entityClasses.add(SelfMasterPriorityOfProvinsiEntity.class);
-			entityClasses.add(DataMasterPriorityOfKabupatenEntity.class);
-			entityClasses.add(SelfMasterPriorityOfKabupatenEntity.class);
-			entityClasses.add(DataMasterPriorityOfKegiatanEntity.class);
-			entityClasses.add(SelfMasterPriorityOfKegiatanEntity.class);
-
-			entityClasses.add(DataMasterSatuanEntity.class);
-			entityClasses.add(SelfMasterSatuanEntity.class);
-
-			entityClasses.add(DataMasterPenerimaEntity.class);
-			entityClasses.add(SelfMasterPenerimaEntity.class);
-
-			entityClasses.add(DataMasterKomponenEntity.class);
-			entityClasses.add(SelfMasterKomponenEntity.class);
+//
+//			entityClasses.add(DataMasterFungsiEntity.class);
+//			entityClasses.add(DataMasterSubfungsiEntity.class);
+//
+//			entityClasses.add(DataMasterUrusanEntity.class);
+//			entityClasses.add(SipdMasterUrusanEntity.class);
+//			entityClasses.add(DataMasterBidangEntity.class);
+//			entityClasses.add(SipdMasterBidangEntity.class);
+//			entityClasses.add(DataMasterProgramEntity.class);
+//			entityClasses.add(SipdMasterProgramEntity.class);
+//			entityClasses.add(DataMasterKegiatanEntity.class);
+//			entityClasses.add(SipdMasterKegiatanEntity.class);
+//			entityClasses.add(DataMasterSubkegiatanEntity.class);
+//			entityClasses.add(SipdMasterSubkegiatanEntity.class);
+//
+//			entityClasses.add(DataMasterOrganisasiEntity.class);
+//			entityClasses.add(LogsMasterOrganisasiEntity.class);
+//			entityClasses.add(SipdMasterOrganisasiEntity.class);
+//
+//			entityClasses.add(DataMasterAset1Entity.class);
+//			entityClasses.add(SipdMasterAset1Entity.class);
+//			entityClasses.add(DataMasterAset2Entity.class);
+//			entityClasses.add(SipdMasterAset2Entity.class);
+//			entityClasses.add(DataMasterAset3Entity.class);
+//			entityClasses.add(SipdMasterAset3Entity.class);
+//			entityClasses.add(DataMasterAset4Entity.class);
+//			entityClasses.add(SipdMasterAset4Entity.class);
+//			entityClasses.add(DataMasterAset5Entity.class);
+//			entityClasses.add(SipdMasterAset5Entity.class);
+//			entityClasses.add(DataMasterAset6Entity.class);
+//			entityClasses.add(SipdMasterAset6Entity.class);
+//
+//			entityClasses.add(DataMasterKewajiban1Entity.class);
+//			entityClasses.add(SipdMasterKewajiban1Entity.class);
+//			entityClasses.add(DataMasterKewajiban2Entity.class);
+//			entityClasses.add(SipdMasterKewajiban2Entity.class);
+//			entityClasses.add(DataMasterKewajiban3Entity.class);
+//			entityClasses.add(SipdMasterKewajiban3Entity.class);
+//			entityClasses.add(DataMasterKewajiban4Entity.class);
+//			entityClasses.add(SipdMasterKewajiban4Entity.class);
+//			entityClasses.add(DataMasterKewajiban5Entity.class);
+//			entityClasses.add(SipdMasterKewajiban5Entity.class);
+//			entityClasses.add(DataMasterKewajiban6Entity.class);
+//			entityClasses.add(SipdMasterKewajiban6Entity.class);
+//
+//			entityClasses.add(DataMasterEkuitas1Entity.class);
+//			entityClasses.add(SipdMasterEkuitas1Entity.class);
+//			entityClasses.add(DataMasterEkuitas2Entity.class);
+//			entityClasses.add(SipdMasterEkuitas2Entity.class);
+//			entityClasses.add(DataMasterEkuitas3Entity.class);
+//			entityClasses.add(SipdMasterEkuitas3Entity.class);
+//			entityClasses.add(DataMasterEkuitas4Entity.class);
+//			entityClasses.add(SipdMasterEkuitas4Entity.class);
+//			entityClasses.add(DataMasterEkuitas5Entity.class);
+//			entityClasses.add(SipdMasterEkuitas5Entity.class);
+//			entityClasses.add(DataMasterEkuitas6Entity.class);
+//			entityClasses.add(SipdMasterEkuitas6Entity.class);
+//
+//			entityClasses.add(DataMasterPendapatan1Entity.class);
+//			entityClasses.add(SipdMasterPendapatan1Entity.class);
+//			entityClasses.add(DataMasterPendapatan2Entity.class);
+//			entityClasses.add(SipdMasterPendapatan2Entity.class);
+//			entityClasses.add(DataMasterPendapatan3Entity.class);
+//			entityClasses.add(SipdMasterPendapatan3Entity.class);
+//			entityClasses.add(DataMasterPendapatan4Entity.class);
+//			entityClasses.add(SipdMasterPendapatan4Entity.class);
+//			entityClasses.add(DataMasterPendapatan5Entity.class);
+//			entityClasses.add(SipdMasterPendapatan5Entity.class);
+//			entityClasses.add(DataMasterPendapatan6Entity.class);
+//			entityClasses.add(SipdMasterPendapatan6Entity.class);
+//
+//			entityClasses.add(DataMasterBelanja1Entity.class);
+//			entityClasses.add(SipdMasterBelanja1Entity.class);
+//			entityClasses.add(DataMasterBelanja2Entity.class);
+//			entityClasses.add(SipdMasterBelanja2Entity.class);
+//			entityClasses.add(DataMasterBelanja3Entity.class);
+//			entityClasses.add(SipdMasterBelanja3Entity.class);
+//			entityClasses.add(DataMasterBelanja4Entity.class);
+//			entityClasses.add(SipdMasterBelanja4Entity.class);
+//			entityClasses.add(DataMasterBelanja5Entity.class);
+//			entityClasses.add(SipdMasterBelanja5Entity.class);
+//			entityClasses.add(DataMasterBelanja6Entity.class);
+//			entityClasses.add(SipdMasterBelanja6Entity.class);
+//
+//			entityClasses.add(DataMasterPembiayaan1Entity.class);
+//			entityClasses.add(SipdMasterPembiayaan1Entity.class);
+//			entityClasses.add(DataMasterPembiayaan2Entity.class);
+//			entityClasses.add(SipdMasterPembiayaan2Entity.class);
+//			entityClasses.add(DataMasterPembiayaan3Entity.class);
+//			entityClasses.add(SipdMasterPembiayaan3Entity.class);
+//			entityClasses.add(DataMasterPembiayaan4Entity.class);
+//			entityClasses.add(SipdMasterPembiayaan4Entity.class);
+//			entityClasses.add(DataMasterPembiayaan5Entity.class);
+//			entityClasses.add(SipdMasterPembiayaan5Entity.class);
+//			entityClasses.add(DataMasterPembiayaan6Entity.class);
+//			entityClasses.add(SipdMasterPembiayaan6Entity.class);
+//
+//			entityClasses.add(DataMasterPendapatanLo1Entity.class);
+//			entityClasses.add(SipdMasterPendapatanLo1Entity.class);
+//			entityClasses.add(DataMasterPendapatanLo2Entity.class);
+//			entityClasses.add(SipdMasterPendapatanLo2Entity.class);
+//			entityClasses.add(DataMasterPendapatanLo3Entity.class);
+//			entityClasses.add(SipdMasterPendapatanLo3Entity.class);
+//			entityClasses.add(DataMasterPendapatanLo4Entity.class);
+//			entityClasses.add(SipdMasterPendapatanLo4Entity.class);
+//			entityClasses.add(DataMasterPendapatanLo5Entity.class);
+//			entityClasses.add(SipdMasterPendapatanLo5Entity.class);
+//			entityClasses.add(DataMasterPendapatanLo6Entity.class);
+//			entityClasses.add(SipdMasterPendapatanLo6Entity.class);
+//
+//			entityClasses.add(DataMasterBeban1Entity.class);
+//			entityClasses.add(SipdMasterBeban1Entity.class);
+//			entityClasses.add(DataMasterBeban2Entity.class);
+//			entityClasses.add(SipdMasterBeban2Entity.class);
+//			entityClasses.add(DataMasterBeban3Entity.class);
+//			entityClasses.add(SipdMasterBeban3Entity.class);
+//			entityClasses.add(DataMasterBeban4Entity.class);
+//			entityClasses.add(SipdMasterBeban4Entity.class);
+//			entityClasses.add(DataMasterBeban5Entity.class);
+//			entityClasses.add(SipdMasterBeban5Entity.class);
+//			entityClasses.add(DataMasterBeban6Entity.class);
+//			entityClasses.add(SipdMasterBeban6Entity.class);
+//
+//			entityClasses.add(DataMasterSumberEntity.class);
+//			entityClasses.add(SipdMasterSumberEntity.class);
+//
+//			entityClasses.add(DataMasterKelompokEntity.class);
+//			entityClasses.add(SipdMasterKelompokEntity.class);
+//
+//			entityClasses.add(DataMasterPriorityOfNasionalEntity.class);
+//			entityClasses.add(SelfMasterPriorityOfNasionalEntity.class);
+//			entityClasses.add(DataMasterPriorityOfProvinsiEntity.class);
+//			entityClasses.add(SelfMasterPriorityOfProvinsiEntity.class);
+//			entityClasses.add(DataMasterPriorityOfKabupatenEntity.class);
+//			entityClasses.add(SelfMasterPriorityOfKabupatenEntity.class);
+//			entityClasses.add(DataMasterPriorityOfKegiatanEntity.class);
+//			entityClasses.add(SelfMasterPriorityOfKegiatanEntity.class);
+//
+//			entityClasses.add(DataMasterSatuanEntity.class);
+//			entityClasses.add(SelfMasterSatuanEntity.class);
+//
+//			entityClasses.add(DataMasterPenerimaEntity.class);
+//			entityClasses.add(SelfMasterPenerimaEntity.class);
+//
+//			entityClasses.add(DataMasterKomponenEntity.class);
+//			entityClasses.add(SelfMasterKomponenEntity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}
@@ -519,8 +519,8 @@ public final class DDLGenerator {
 
 		Table table = entityClass.getAnnotation(Table.class);
 
-		ddl.add("drop table if exists " + table.name() + ";");
-		ddl.add("");
+//		ddl.add("drop table if exists " + table.name() + ";");
+//		ddl.add("");
 		ddl.add("create or replace table " + table.name() + " (");
 		for (String row : rowsOfColumn(entityClass)) ddl.add("\t" + row + ",");
 		for (String row : rowsOfCheck(entityClass)) ddl.add("\t" + row + ",");
