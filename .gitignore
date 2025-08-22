@@ -32,6 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
+/.*/
 /src/main/java/com/rendyrobbani/keuangan/persistence/*.java
 /src/main/resources/application.properties
 /src/test
