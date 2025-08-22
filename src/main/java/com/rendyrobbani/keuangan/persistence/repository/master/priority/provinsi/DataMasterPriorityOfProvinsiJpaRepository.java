@@ -1,0 +1,9 @@
+package com.rendyrobbani.keuangan.persistence.repository.master.priority.provinsi;
+
+import com.rendyrobbani.keuangan.core.domain.entity.master.priority.provinsi.DataMasterPriorityOfProvinsi;
+import com.rendyrobbani.keuangan.persistence.entity.master.priority.provinsi.DataMasterPriorityOfProvinsiEntity;
+import com.rendyrobbani.keuangan.persistence.repository.master.priority.DataMasterPriorityJpaRepository;
+
+public interface DataMasterPriorityOfProvinsiJpaRepository extends DataMasterPriorityJpaRepository<DataMasterPriorityOfProvinsiEntity, DataMasterPriorityOfProvinsi> {
+
+}
