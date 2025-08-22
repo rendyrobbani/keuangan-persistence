@@ -64,11 +64,11 @@ public abstract class AbstractDataUserEntity extends AbstractDataEntity<DataUser
 	@Column(name = "number", nullable = false, updatable = false)
 	protected Short number;
 
-	@Check(constraints = "pangkat regexp '" + Pangkat.REGEX_PNS + "'")
+	@Check(constraints = "is_pns = (pangkat regexp '" + Pangkat.REGEX_PNS + "')")
 	@Column(name = "is_pns", nullable = false)
 	protected boolean isPNS;
 
-	@Check(constraints = "pangkat regexp '" + Pangkat.REGEX_P3K + "'")
+	@Check(constraints = "is_p3k = (pangkat regexp '" + Pangkat.REGEX_P3K + "')")
 	@Column(name = "is_p3k", nullable = false)
 	protected boolean isP3K;
 

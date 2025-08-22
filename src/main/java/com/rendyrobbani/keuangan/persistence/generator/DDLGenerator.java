@@ -1,7 +1,6 @@
 package com.rendyrobbani.keuangan.persistence.generator;
 
 import com.rendyrobbani.keuangan.core.domain.vo.*;
-import com.rendyrobbani.keuangan.persistence.converter.KomponenTypeConverter;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.DataMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.SipdMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.fungsi.DataMasterFungsiEntity;
@@ -11,6 +10,8 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.kecama
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kecamatan.SipdMasterKecamatanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kegiatan.DataMasterKegiatanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kegiatan.SipdMasterKegiatanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.kelompok.DataMasterKelompokEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.classification.kelompok.SipdMasterKelompokEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kelurahan.DataMasterKelurahanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.kelurahan.SipdMasterKelurahanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.organisasi.DataMasterOrganisasiEntity;
@@ -123,6 +124,8 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.sumber
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.sumber.SipdMasterSumberEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan.DataMasterUrusanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan.SipdMasterUrusanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.komponen.DataMasterKomponenEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.komponen.SelfMasterKomponenEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.penerima.DataMasterPenerimaEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.penerima.SelfMasterPenerimaEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.priority.kabupaten.DataMasterPriorityOfKabupatenEntity;
@@ -298,6 +301,9 @@ public final class DDLGenerator {
 			entityClasses.add(DataMasterSumberEntity.class);
 			entityClasses.add(SipdMasterSumberEntity.class);
 
+			entityClasses.add(DataMasterKelompokEntity.class);
+			entityClasses.add(SipdMasterKelompokEntity.class);
+
 			entityClasses.add(DataMasterPriorityOfNasionalEntity.class);
 			entityClasses.add(SelfMasterPriorityOfNasionalEntity.class);
 			entityClasses.add(DataMasterPriorityOfProvinsiEntity.class);
@@ -312,6 +318,9 @@ public final class DDLGenerator {
 
 			entityClasses.add(DataMasterPenerimaEntity.class);
 			entityClasses.add(SelfMasterPenerimaEntity.class);
+
+			entityClasses.add(DataMasterKomponenEntity.class);
+			entityClasses.add(SelfMasterKomponenEntity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}
@@ -330,7 +339,7 @@ public final class DDLGenerator {
 		            byte.class,
 		            Gender.class,
 		            JabatanStatus.class,
-		            KomponenTypeConverter.class).contains(field.getType())) return "tinyint";
+		            KomponenType.class).contains(field.getType())) return "tinyint";
 		if (List.of(Boolean.class,
 		            boolean.class).contains(field.getType())) return "bit";
 		if (List.of(Double.class,
