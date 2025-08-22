@@ -19,7 +19,6 @@ import java.time.LocalDateTime;
 public abstract class AbstractDataMasterSatuanEntity extends AbstractDataMasterEntity<DataMasterSatuan, Long> implements DataMasterSatuan {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, updatable = false)
 	protected Long id;
 
