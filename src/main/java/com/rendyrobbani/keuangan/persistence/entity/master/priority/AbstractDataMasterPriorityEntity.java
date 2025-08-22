@@ -51,6 +51,25 @@ public abstract class AbstractDataMasterPriorityEntity<DOMAIN extends DataMaster
 	protected DataUserEntity lockedByAsDataUser;
 
 	@Override
+	public void create(Long id, Short year, Byte number, String name, String sipdName, LocalDateTime createdAt, String createdBy) {
+		this.id = id;
+		this.year = year;
+		this.number = number;
+		this.name = name;
+		this.sipdName = sipdName;
+		this.create(createdAt, createdBy);
+	}
+
+	@Override
+	public void update(Short year, Byte number, String name, String sipdName, LocalDateTime updatedAt, String updatedBy) {
+		this.year = year;
+		this.number = number;
+		this.name = name;
+		this.sipdName = sipdName;
+		this.update(createdAt, createdBy);
+	}
+
+	@Override
 	public void lock(LocalDateTime lockedAt, String lockedBy) {
 		this.isLocked = true;
 		this.lockedAt = lockedAt;
@@ -71,7 +90,5 @@ public abstract class AbstractDataMasterPriorityEntity<DOMAIN extends DataMaster
 		lock(deletedAt, deletedBy);
 		super.delete(deletedAt, deletedBy);
 	}
-
-
 
 }
