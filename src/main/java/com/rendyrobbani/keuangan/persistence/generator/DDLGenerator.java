@@ -123,6 +123,8 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.sumber
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.sumber.SipdMasterSumberEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan.DataMasterUrusanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan.SipdMasterUrusanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.penerima.DataMasterPenerimaEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.penerima.SelfMasterPenerimaEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.priority.kabupaten.DataMasterPriorityOfKabupatenEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.priority.kabupaten.SelfMasterPriorityOfKabupatenEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.priority.kegiatan.DataMasterPriorityOfKegiatanEntity;
@@ -131,6 +133,8 @@ import com.rendyrobbani.keuangan.persistence.entity.master.priority.nasional.Dat
 import com.rendyrobbani.keuangan.persistence.entity.master.priority.nasional.SelfMasterPriorityOfNasionalEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.priority.provinsi.DataMasterPriorityOfProvinsiEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.priority.provinsi.SelfMasterPriorityOfProvinsiEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.satuan.DataMasterSatuanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.satuan.SelfMasterSatuanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.user.DataUserEntity;
 import com.rendyrobbani.keuangan.persistence.entity.user.LogsUserEntity;
 import jakarta.persistence.*;
@@ -303,6 +307,12 @@ public final class DDLGenerator {
 			entityClasses.add(DataMasterPriorityOfKegiatanEntity.class);
 			entityClasses.add(SelfMasterPriorityOfKegiatanEntity.class);
 
+			entityClasses.add(DataMasterSatuanEntity.class);
+			entityClasses.add(SelfMasterSatuanEntity.class);
+
+			entityClasses.add(DataMasterPenerimaEntity.class);
+			entityClasses.add(SelfMasterPenerimaEntity.class);
+
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}
 		return entityClasses;
@@ -335,7 +345,8 @@ public final class DDLGenerator {
 		            Pangkat.class).contains(field.getType())) return "char(" + column.length() + ")";
 		if (List.of(String.class,
 		            BelanjaJenis.class,
-		            BelanjaLokus.class).contains(field.getType())) return "varchar(" + column.length() + ")";
+		            BelanjaLokus.class,
+		            PenerimaJenis.class).contains(field.getType())) return "varchar(" + column.length() + ")";
 		throw new IllegalArgumentException("Type '" + field.getType().getName() + "' is not supported");
 	}
 
