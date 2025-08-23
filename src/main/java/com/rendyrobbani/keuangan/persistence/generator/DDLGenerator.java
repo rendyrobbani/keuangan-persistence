@@ -189,11 +189,11 @@ public final class DDLGenerator {
 			entityClasses.add(SipdMasterKegiatanEntity.class);
 			entityClasses.add(DataMasterSubkegiatanEntity.class);
 			entityClasses.add(SipdMasterSubkegiatanEntity.class);
-//
-//			entityClasses.add(DataMasterOrganisasiEntity.class);
-//			entityClasses.add(LogsMasterOrganisasiEntity.class);
-//			entityClasses.add(SipdMasterOrganisasiEntity.class);
-//
+
+			entityClasses.add(DataMasterOrganisasiEntity.class);
+			entityClasses.add(LogsMasterOrganisasiEntity.class);
+			entityClasses.add(SipdMasterOrganisasiEntity.class);
+
 //			entityClasses.add(DataMasterAset1Entity.class);
 //			entityClasses.add(SipdMasterAset1Entity.class);
 //			entityClasses.add(DataMasterAset2Entity.class);

@@ -66,10 +66,10 @@ public abstract class AbstractDataMasterOrganisasiEntity extends AbstractDataMas
 	@Column(name = "bidang1_id", length = 4, nullable = false, updatable = false)
 	protected String bidang1Id;
 
-	@Column(name = "bidang2_id", length = 4, nullable = false, updatable = false)
+	@Column(name = "bidang2_id", length = 4, updatable = false)
 	protected String bidang2Id;
 
-	@Column(name = "bidang3_id", length = 4, nullable = false, updatable = false)
+	@Column(name = "bidang3_id", length = 4, updatable = false)
 	protected String bidang3Id;
 
 	@Column(name = "head_id", length = 22)
