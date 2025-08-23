@@ -1,25 +1,32 @@
-create or replace table sipd_master_subkegiatan (
-	id         bigint       not null,
-	code       varchar(17)  not null,
-	name       varchar(510) not null,
-	is_locked  bit          not null,
-	locked_at  datetime     null,
-	locked_by  varchar(18)  null,
-	created_at datetime     null,
-	created_by varchar(18)  null,
-	updated_at datetime     null,
-	updated_by varchar(18)  null,
-	is_deleted bit          null,
-	deleted_at datetime     null,
-	deleted_by varchar(18)  null,
-	subject_id varchar(17)  not null,
-	constraint ck_sipd_master_subkegiatan_01 check (subject_id = replace(code, 'X', '0')),
-	constraint fk_sipd_master_subkegiatan_01 foreign key (subject_id) references data_master_subkegiatan (id),
-	constraint fk_sipd_master_subkegiatan_02 foreign key (locked_by) references data_user (id),
-	constraint fk_sipd_master_subkegiatan_03 foreign key (created_by) references data_user (id),
-	constraint fk_sipd_master_subkegiatan_04 foreign key (updated_by) references data_user (id),
-	constraint fk_sipd_master_subkegiatan_05 foreign key (deleted_by) references data_user (id),
-	primary key (id)
-) engine = innodb
-  charset = utf8mb4
-  collate = utf8mb4_unicode_ci;
+insert into keuangan_dev.sipd_master_subkegiatan (id, code, name, is_locked, locked_at, locked_by, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by, subject_id)
+select *
+from (
+	select a.id                                                       as id
+		 , a.kode                                                     as code
+		 , b.nama                                                     as name
+		 , false                                                      as is_locked
+		 , null                                                       as locked_at
+		 , null                                                       as locked_by
+		 , @action_at                                                 as created_at
+		 , @action_by                                                 as created_by
+		 , null                                                       as updated_at
+		 , null                                                       as updated_by
+		 , a.is_deleted is null or a.is_deleted                       as is_deleted
+		 , if(a.is_deleted is null or a.is_deleted, @action_at, null) as deleted_at
+		 , if(a.is_deleted is null or a.is_deleted, @action_by, null) as deleted_by
+		 , replace(a.kode, 'X', '0')                                  as subject_id
+	from espresso_2025_preproduction.sipd_master_subkegiatan a
+	left join espresso_2025_preproduction.data_master_subkegiatan b on a.kode = b.kode
+) t
+on duplicate key update code       = t.code
+                      , name       = t.name
+                      , is_locked  = t.is_locked
+                      , locked_at  = t.locked_at
+                      , locked_by  = t.locked_by
+                      , created_at = t.created_at
+                      , created_by = t.created_by
+                      , updated_at = t.updated_at
+                      , updated_by = t.updated_by
+                      , is_deleted = t.is_deleted
+                      , deleted_at = t.deleted_at
+                      , deleted_by = t.deleted_by

@@ -1,22 +1,22 @@
-insert into keuangan_dev.sipd_master_kabupaten (id, code, name, is_locked, locked_at, locked_by, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by, subject_id)
+insert into keuangan_dev.sipd_master_bidang (id, code, name, is_locked, locked_at, locked_by, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by, subject_id)
 select *
 from (
-    select a.id                                                       as id
-         , a.kode                                                     as code
-         , b.nama                                                     as name
-         , false                                                      as is_locked
-         , null                                                       as locked_at
-         , null                                                       as locked_by
-         , @action_at                                                 as created_at
-         , @action_by                                                 as created_by
-         , null                                                       as updated_at
-         , null                                                       as updated_by
-         , a.is_deleted is null or a.is_deleted                       as is_deleted
-         , if(a.is_deleted is null or a.is_deleted, @action_at, null) as deleted_at
-         , if(a.is_deleted is null or a.is_deleted, @action_by, null) as deleted_by
-         , a.kode                                                     as subject_id
-    from espresso_2025_preproduction.sipd_master_kabupaten a
-    left join espresso_2025_preproduction.data_master_kabupaten b on a.kode = b.kode
+	select a.id                                                       as id
+		 , a.kode                                                     as code
+		 , b.nama                                                     as name
+		 , false                                                      as is_locked
+		 , null                                                       as locked_at
+		 , null                                                       as locked_by
+		 , @action_at                                                 as created_at
+		 , @action_by                                                 as created_by
+		 , null                                                       as updated_at
+		 , null                                                       as updated_by
+		 , a.is_deleted is null or a.is_deleted                       as is_deleted
+		 , if(a.is_deleted is null or a.is_deleted, @action_at, null) as deleted_at
+		 , if(a.is_deleted is null or a.is_deleted, @action_by, null) as deleted_by
+		 , replace(a.kode, 'X', '0')                                  as subject_id
+	from espresso_2025_preproduction.sipd_master_bidang a
+	left join espresso_2025_preproduction.data_master_bidang b on a.kode = b.kode
 ) t
 on duplicate key update code       = t.code
                       , name       = t.name

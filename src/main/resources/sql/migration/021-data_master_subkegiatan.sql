@@ -1,42 +1,36 @@
-create or replace table data_master_subkegiatan (
-	id           varchar(17)  not null,
-	code         varchar(17)  not null,
-	name         varchar(510) not null,
-	is_locked    bit          not null,
-	locked_at    datetime     null,
-	locked_by    varchar(18)  null,
-	created_at   datetime     null,
-	created_by   varchar(18)  null,
-	updated_at   datetime     null,
-	updated_by   varchar(18)  null,
-	is_deleted   bit          null,
-	deleted_at   datetime     null,
-	deleted_by   varchar(18)  null,
-	urusan_id    varchar(1)   not null,
-	bidang_id    varchar(4)   not null,
-	program_id   varchar(7)   not null,
-	kegiatan_id  varchar(12)  not null,
-	fungsi_id    varchar(2)   not null,
-	subfungsi_id varchar(5)   not null,
-	constraint ck_data_master_subkegiatan_01 check (id = replace(code, 'X', '0')),
-	constraint ck_data_master_subkegiatan_02 check (urusan_id = left(id, length(urusan_id))),
-	constraint ck_data_master_subkegiatan_03 check (bidang_id = left(id, length(bidang_id))),
-	constraint ck_data_master_subkegiatan_04 check (program_id = left(id, length(program_id))),
-	constraint ck_data_master_subkegiatan_05 check (kegiatan_id = left(id, length(kegiatan_id))),
-	constraint fk_data_master_subkegiatan_01 foreign key (urusan_id) references data_master_urusan (id),
-	constraint fk_data_master_subkegiatan_02 foreign key (urusan_id, bidang_id) references data_master_bidang (urusan_id, id),
-	constraint fk_data_master_subkegiatan_03 foreign key (urusan_id, bidang_id, program_id) references data_master_program (urusan_id, bidang_id, id),
-	constraint fk_data_master_subkegiatan_04 foreign key (fungsi_id, subfungsi_id, urusan_id, bidang_id, program_id, kegiatan_id) references data_master_kegiatan (fungsi_id, subfungsi_id, urusan_id, bidang_id, program_id, id),
-	constraint fk_data_master_subkegiatan_05 foreign key (fungsi_id) references data_master_fungsi (id),
-	constraint fk_data_master_subkegiatan_06 foreign key (fungsi_id, subfungsi_id) references data_master_subfungsi (fungsi_id, id),
-	constraint fk_data_master_subkegiatan_07 foreign key (locked_by) references data_user (id),
-	constraint fk_data_master_subkegiatan_08 foreign key (created_by) references data_user (id),
-	constraint fk_data_master_subkegiatan_09 foreign key (updated_by) references data_user (id),
-	constraint fk_data_master_subkegiatan_10 foreign key (deleted_by) references data_user (id),
-	constraint uk_data_master_subkegiatan_01 unique key (urusan_id, bidang_id, program_id, kegiatan_id, id),
-	constraint uk_data_master_subkegiatan_02 unique key (fungsi_id, subfungsi_id, urusan_id, bidang_id, program_id, kegiatan_id, id),
-	constraint uk_data_master_subkegiatan_03 unique key (fungsi_id, subfungsi_id, program_id, kegiatan_id, id),
-	primary key (id)
-) engine = innodb
-  charset = utf8mb4
-  collate = utf8mb4_unicode_ci;
+insert into keuangan_dev.data_master_subkegiatan (id, code, name, is_locked, locked_at, locked_by, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by, urusan_id, bidang_id, program_id, kegiatan_id, fungsi_id, subfungsi_id)
+select *
+from (
+	select replace(kode, 'X', '0')                                as id
+		 , kode                                                   as code
+		 , nama                                                   as name
+		 , false                                                  as is_locked
+		 , null                                                   as locked_at
+		 , null                                                   as locked_by
+		 , @action_at                                             as created_at
+		 , @action_by                                             as created_by
+		 , null                                                   as updated_at
+		 , null                                                   as updated_by
+		 , is_deleted is null or is_deleted                       as is_deleted
+		 , if(is_deleted is null or is_deleted, @action_at, null) as deleted_at
+		 , if(is_deleted is null or is_deleted, @action_by, null) as deleted_by
+		 , left(replace(kode, 'X', '0'), 1)                       as urusan_id
+		 , left(replace(kode, 'X', '0'), 4)                       as bidang_id
+		 , left(replace(kode, 'X', '0'), 7)                       as program_id
+		 , left(replace(kode, 'X', '0'), 12)                      as kegiatan_id
+		 , kode_fungsi                                            as fungsi_id
+		 , kode_subfungsi                                         as subfungsi_id
+	from espresso_2025_preproduction.data_master_subkegiatan
+) t
+on duplicate key update code       = t.code
+                      , name       = t.name
+                      , is_locked  = t.is_locked
+                      , locked_at  = t.locked_at
+                      , locked_by  = t.locked_by
+                      , created_at = t.created_at
+                      , created_by = t.created_by
+                      , updated_at = t.updated_at
+                      , updated_by = t.updated_by
+                      , is_deleted = t.is_deleted
+                      , deleted_at = t.deleted_at
+                      , deleted_by = t.deleted_by
