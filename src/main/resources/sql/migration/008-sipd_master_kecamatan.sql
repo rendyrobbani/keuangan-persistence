@@ -1,6 +1,3 @@
-set @action_at = now();
-set @action_by = '199510172019031003';
-
 insert into keuangan_dev.sipd_master_kecamatan (id, code, name, is_locked, locked_at, locked_by, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by, subject_id)
 select *
 from (

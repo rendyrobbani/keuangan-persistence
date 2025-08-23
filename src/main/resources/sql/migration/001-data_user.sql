@@ -1,33 +1,30 @@
-set @action_by = '199510172019031003';
-set @action_at = now();
-
 insert into keuangan_dev.data_user (id, pangkat, name, title_prefix, title_suffix, password, date_of_birth, date_of_start, gender, number, is_pns, is_p3k, is_locked, locked_at, locked_by, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by)
 select *
 from (
-    select nip                            id
-         , id_pangkat                     pangkat
-         , nama                           name
-         , gelar_1                        title_prefix
-         , gelar_2                        title_suffix
-         , password                       password
-         , ttl                            date_of_birth
-         , tmt                            date_of_start
-         , jenis                          gender
-         , nomor                          number
-         , id_pangkat regexp '[0-9][A-Z]' is_pns
-         , id_pangkat regexp '[0-9][0-9]' is_p3k
-         , true                           is_locked
-         , @action_at                     locked_at
-         , @action_by                     locked_by
-         , @action_at                     created_at
-         , @action_by                     created_by
-         , null                           updated_at
-         , null                           updated_by
-         , true                           is_deleted
-         , @action_at                     deleted_at
-         , @action_by                     deleted_by
-    from espresso_2025_preproduction.data_user
-    where nip like @action_by
+	select nip                            as id
+		 , id_pangkat                     as pangkat
+		 , nama                           as name
+		 , gelar_1                        as title_prefix
+		 , gelar_2                        as title_suffix
+		 , password                       as password
+		 , ttl                            as date_of_birth
+		 , tmt                            as date_of_start
+		 , jenis                          as gender
+		 , right(nip, 3)                  as number
+		 , id_pangkat regexp '[0-9][A-Z]' as is_pns
+		 , id_pangkat regexp '[0-9][0-9]' as is_p3k
+		 , true                           as is_locked
+		 , @action_at                     as locked_at
+		 , @action_by                     as locked_by
+		 , @action_at                     as created_at
+		 , @action_by                     as created_by
+		 , null                           as updated_at
+		 , null                           as updated_by
+		 , true                           as is_deleted
+		 , @action_at                     as deleted_at
+		 , @action_by                     as deleted_by
+	from espresso_2025_preproduction.data_user
+	where nip like @action_by
 ) t
 on duplicate key update pangkat       = t.pangkat
                       , name          = t.name
@@ -54,30 +51,30 @@ on duplicate key update pangkat       = t.pangkat
 insert into keuangan_dev.data_user (id, pangkat, name, title_prefix, title_suffix, password, date_of_birth, date_of_start, gender, number, is_pns, is_p3k, is_locked, locked_at, locked_by, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by)
 select *
 from (
-    select nip                                                    id
-         , id_pangkat                                             pangkat
-         , nama                                                   name
-         , gelar_1                                                title_prefix
-         , gelar_2                                                title_suffix
-         , '12345'                                                password
-         , ttl                                                    date_of_birth
-         , tmt                                                    date_of_start
-         , jenis                                                  gender
-         , nomor                                                  number
-         , id_pangkat regexp '[0-9][A-Z]'                         is_pns
-         , id_pangkat regexp '[0-9][0-9]'                         is_p3k
-         , is_kunci is null or is_kunci                           is_locked
-         , if(is_kunci is null or is_kunci, @action_at, null)     locked_at
-         , if(is_kunci is null or is_kunci, @action_by, null)     locked_by
-         , @action_at                                             created_at
-         , @action_by                                             created_by
-         , null                                                   updated_at
-         , null                                                   updated_by
-         , is_deleted is null or is_deleted                       is_deleted
-         , if(is_deleted is null or is_deleted, @action_at, null) deleted_at
-         , if(is_deleted is null or is_deleted, @action_by, null) deleted_by
-    from espresso_2025_preproduction.data_user
-    where nip not like @action_by
+	select nip                                                    as id
+		 , id_pangkat                                             as pangkat
+		 , nama                                                   as name
+		 , gelar_1                                                as title_prefix
+		 , gelar_2                                                as title_suffix
+		 , '12345'                                                as password
+		 , ttl                                                    as date_of_birth
+		 , tmt                                                    as date_of_start
+		 , jenis                                                  as gender
+		 , nomor                                                  as number
+		 , id_pangkat regexp '[0-9][A-Z]'                         as is_pns
+		 , id_pangkat regexp '[0-9][0-9]'                         as is_p3k
+		 , is_kunci is null or is_kunci                           as is_locked
+		 , if(is_kunci is null or is_kunci, @action_at, null)     as locked_at
+		 , if(is_kunci is null or is_kunci, @action_by, null)     as locked_by
+		 , @action_at                                             as created_at
+		 , @action_by                                             as created_by
+		 , null                                                   as updated_at
+		 , null                                                   as updated_by
+		 , is_deleted is null or is_deleted                       as is_deleted
+		 , if(is_deleted is null or is_deleted, @action_at, null) as deleted_at
+		 , if(is_deleted is null or is_deleted, @action_by, null) as deleted_by
+	from espresso_2025_preproduction.data_user
+	where nip not like @action_by
 ) t
 on duplicate key update pangkat       = t.pangkat
                       , name          = t.name
