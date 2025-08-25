@@ -57,7 +57,7 @@
         <dependency>
             <groupId>com.github.rendyrobbani</groupId>
             <artifactId>keuangan-core</artifactId>
-            <version>0c0c838</version>
+            <version>431b1ea</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

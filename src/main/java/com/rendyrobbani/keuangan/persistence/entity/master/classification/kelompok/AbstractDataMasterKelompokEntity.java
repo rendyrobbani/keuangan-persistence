@@ -37,23 +37,13 @@ public abstract class AbstractDataMasterKelompokEntity extends AbstractDataMaste
 	@Column(name = "name", length = 510, nullable = false)
 	protected String name;
 
-	@Check(constraints = "if(level = 6, type is not null, type is null)")
 	@Convert(converter = KomponenTypeConverter.class)
 	@Column(name = "type")
 	protected KomponenType type;
 
 	@Check(constraints = "level = (case when kelompok6_id is not null then 6 when kelompok5_id is not null then 5 when kelompok4_id is not null then 4 when kelompok3_id is not null then 3 when kelompok2_id is not null then 2 when kelompok1_id is not null then 1 end)")
 	@Column(name = "level", nullable = false)
-	private Integer level;
-
-	@Column(name = "is_enabled", nullable = false)
-	private boolean isEnabled;
-
-	@Column(name = "is_umum", nullable = false)
-	private boolean isUmum;
-
-	@Column(name = "is_khusus", nullable = false)
-	private boolean isKhusus;
+	private Byte level;
 
 	@Check(constraints = "kelompok1_id = left(id, length(kelompok1_id))")
 	@Column(name = "kelompok1_id", length = 1, updatable = false)
@@ -101,7 +91,6 @@ public abstract class AbstractDataMasterKelompokEntity extends AbstractDataMaste
 		this.code = this.id;
 		this.name = name;
 		this.type = type;
-		this.isEnabled = isEnabled;
 		this.create(createdAt, createdBy);
 	}
 
@@ -109,7 +98,6 @@ public abstract class AbstractDataMasterKelompokEntity extends AbstractDataMaste
 	public void update(String name, KomponenType type, boolean isEnabled, LocalDateTime updatedAt, String updatedBy) {
 		this.name = name;
 		this.type = type;
-		this.isEnabled = isEnabled;
 		this.create(createdAt, createdBy);
 	}
 

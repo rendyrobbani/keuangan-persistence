@@ -36,7 +36,7 @@ public abstract class AbstractDataMasterSumberEntity extends AbstractDataMasterC
 
 	@Check(constraints = "level = (case when sumber6_id is not null then 6 when sumber5_id is not null then 5 when sumber4_id is not null then 4 when sumber3_id is not null then 3 when sumber2_id is not null then 2 when sumber1_id is not null then 1 end)")
 	@Column(name = "level", nullable = false)
-	private Integer level;
+	private Byte level;
 
 	@Column(name = "is_enabled", nullable = false)
 	private boolean isEnabled;
