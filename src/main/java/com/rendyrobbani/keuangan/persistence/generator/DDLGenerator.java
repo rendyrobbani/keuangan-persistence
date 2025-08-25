@@ -297,30 +297,30 @@ public final class DDLGenerator {
 			entityClasses.add(SipdMasterBeban5Entity.class);
 			entityClasses.add(DataMasterBeban6Entity.class);
 			entityClasses.add(SipdMasterBeban6Entity.class);
-//
-//			entityClasses.add(DataMasterSumberEntity.class);
-//			entityClasses.add(SipdMasterSumberEntity.class);
-//
-//			entityClasses.add(DataMasterKelompokEntity.class);
-//			entityClasses.add(SipdMasterKelompokEntity.class);
-//
-//			entityClasses.add(DataMasterPriorityOfNasionalEntity.class);
-//			entityClasses.add(SelfMasterPriorityOfNasionalEntity.class);
-//			entityClasses.add(DataMasterPriorityOfProvinsiEntity.class);
-//			entityClasses.add(SelfMasterPriorityOfProvinsiEntity.class);
-//			entityClasses.add(DataMasterPriorityOfKabupatenEntity.class);
-//			entityClasses.add(SelfMasterPriorityOfKabupatenEntity.class);
-//			entityClasses.add(DataMasterPriorityOfKegiatanEntity.class);
-//			entityClasses.add(SelfMasterPriorityOfKegiatanEntity.class);
-//
-//			entityClasses.add(DataMasterSatuanEntity.class);
-//			entityClasses.add(SelfMasterSatuanEntity.class);
-//
-//			entityClasses.add(DataMasterPenerimaEntity.class);
-//			entityClasses.add(SelfMasterPenerimaEntity.class);
-//
-//			entityClasses.add(DataMasterKomponenEntity.class);
-//			entityClasses.add(SelfMasterKomponenEntity.class);
+
+			entityClasses.add(DataMasterSumberEntity.class);
+			entityClasses.add(SipdMasterSumberEntity.class);
+
+			entityClasses.add(DataMasterKelompokEntity.class);
+			entityClasses.add(SipdMasterKelompokEntity.class);
+
+			entityClasses.add(DataMasterPriorityOfNasionalEntity.class);
+			entityClasses.add(SelfMasterPriorityOfNasionalEntity.class);
+			entityClasses.add(DataMasterPriorityOfProvinsiEntity.class);
+			entityClasses.add(SelfMasterPriorityOfProvinsiEntity.class);
+			entityClasses.add(DataMasterPriorityOfKabupatenEntity.class);
+			entityClasses.add(SelfMasterPriorityOfKabupatenEntity.class);
+			entityClasses.add(DataMasterPriorityOfKegiatanEntity.class);
+			entityClasses.add(SelfMasterPriorityOfKegiatanEntity.class);
+
+			entityClasses.add(DataMasterSatuanEntity.class);
+			entityClasses.add(SelfMasterSatuanEntity.class);
+
+			entityClasses.add(DataMasterPenerimaEntity.class);
+			entityClasses.add(SelfMasterPenerimaEntity.class);
+
+			entityClasses.add(DataMasterKomponenEntity.class);
+			entityClasses.add(SelfMasterKomponenEntity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}
