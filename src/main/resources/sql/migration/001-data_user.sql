@@ -6,7 +6,7 @@ from (
 		 , nama                           as name
 		 , gelar_1                        as title_prefix
 		 , gelar_2                        as title_suffix
-		 , password                       as password
+		 , ifnull(password, '12345')      as password
 		 , ttl                            as date_of_birth
 		 , tmt                            as date_of_start
 		 , jenis                          as gender
@@ -60,7 +60,7 @@ from (
 		 , ttl                                                    as date_of_birth
 		 , tmt                                                    as date_of_start
 		 , jenis                                                  as gender
-		 , nomor                                                  as number
+		 , right(nip, 3)                                          as number
 		 , id_pangkat regexp '[0-9][A-Z]'                         as is_pns
 		 , id_pangkat regexp '[0-9][0-9]'                         as is_p3k
 		 , is_kunci is null or is_kunci                           as is_locked

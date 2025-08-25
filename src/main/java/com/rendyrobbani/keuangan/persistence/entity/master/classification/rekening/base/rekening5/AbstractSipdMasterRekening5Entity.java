@@ -30,14 +30,14 @@ public abstract class AbstractSipdMasterRekening5Entity<
 	@Column(name = "id", nullable = false, updatable = false)
 	protected Long id;
 
-	@Column(name = "code", length = 1, nullable = false)
+	@Column(name = "code", length = 12, nullable = false)
 	protected String code;
 
 	@Column(name = "name", length = 510, nullable = false)
 	protected String name;
 
 	@Check(constraints = "subject_id = code")
-	@Column(name = "subject_id", length = 1, nullable = false)
+	@Column(name = "subject_id", length = 12, nullable = false)
 	protected String subjectId;
 
 	@Override

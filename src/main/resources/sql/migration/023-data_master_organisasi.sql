@@ -4,17 +4,18 @@ from (
 	select kode                                                   as id
 		 , kode                                                   as code
 		 , nama                                                   as name
-		 , is_skpd                                                as is_skpd
-		 , is_unit                                                as is_unit
+		 , kode like '%0000'                                      as is_skpd
+		 , kode not like '%0000'                                  as is_unit
 		 , is_setda                                               as is_setda
 		 , is_skpkd                                               as is_skpkd
-		 , bidang_utama                                           as main_bidang
+		 , ifnull(bidang_utama, 1)                                as main_bidang
 		 , nip_kepala                                             as head_id
-		 , case when status_kepala like 'Definitif' then 1
-		        when status_kepala like 'Pj' then 2
-		        when status_kepala like 'Pjs' then 3
-		        when status_kepala like 'Plt' then 4
-		        when status_kepala like 'Plh' then 5 end          as head_status
+		 , case
+			   when status_kepala like 'Definitif' then 1
+			   when status_kepala like 'Pj' then 2
+			   when status_kepala like 'Pjs' then 3
+			   when status_kepala like 'Plt' then 4
+			   when status_kepala like 'Plh' then 5 end           as head_status
 		 , false                                                  as is_locked
 		 , null                                                   as locked_at
 		 , null                                                   as locked_by
