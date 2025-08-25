@@ -1,0 +1,32 @@
+create or replace table data_master_komponen (
+	id          bigint         not null,
+	type        tinyint        not null,
+	code        varchar(255)   not null,
+	name        varchar(255)   not null,
+	spec        varchar(2550)  null,
+	unit        varchar(255)   not null,
+	price       decimal(38, 2) not null,
+	is_pdn      bit            not null,
+	tkdn_value  float          not null,
+	is_locked   bit            not null,
+	locked_at   datetime       null,
+	locked_by   varchar(18)    null,
+	created_at  datetime       null,
+	created_by  varchar(18)    null,
+	updated_at  datetime       null,
+	updated_by  varchar(18)    null,
+	is_deleted  bit            null,
+	deleted_at  datetime       null,
+	deleted_by  varchar(18)    null,
+	kelompok_id varchar(255)   not null,
+	rekening_id varchar(2550)  null,
+	constraint ck_data_master_komponen_01 check (length(kelompok_id) = 17),
+	constraint fk_data_master_komponen_01 foreign key (kelompok_id) references data_master_kelompok (id),
+	constraint fk_data_master_komponen_02 foreign key (locked_by) references data_user (id),
+	constraint fk_data_master_komponen_03 foreign key (created_by) references data_user (id),
+	constraint fk_data_master_komponen_04 foreign key (updated_by) references data_user (id),
+	constraint fk_data_master_komponen_05 foreign key (deleted_by) references data_user (id),
+	primary key (id)
+) engine = innodb
+  charset = utf8mb4
+  collate = utf8mb4_unicode_ci;

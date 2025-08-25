@@ -37,7 +37,7 @@ public abstract class AbstractDataMasterKomponenEntity extends AbstractDataMaste
 	@Column(name = "name", nullable = false)
 	protected String name;
 
-	@Column(name = "spec", length = 2550, nullable = false)
+	@Column(name = "spec", length = 2550)
 	protected String spec;
 
 	@Column(name = "unit", nullable = false)
@@ -49,7 +49,7 @@ public abstract class AbstractDataMasterKomponenEntity extends AbstractDataMaste
 	@Column(name = "is_pdn", nullable = false)
 	protected boolean isPDN;
 
-	@Column(name = "tkdn_value", nullable = false)
+	@Column(name = "tkdn_value")
 	protected Float tkdnValue;
 
 	@Column(name = "is_locked", nullable = false)

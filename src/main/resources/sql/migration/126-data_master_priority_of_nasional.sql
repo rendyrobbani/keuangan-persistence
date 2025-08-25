@@ -5,7 +5,7 @@ from (
 		 , tahun_awal                                             as from_year
 		 , tahun_akhir                                            as into_year
 		 , 2025                                                   as year
-		 , nomor                                                  as number
+		 , ifnull(nomor, 0)                                       as number
 		 , nama                                                   as name
 		 , nama                                                   as sipd_name
 		 , is_kunci is null or is_kunci                           as is_locked

@@ -3,7 +3,7 @@ select *
 from (
 	select id                                                     as id
 		 , tahun                                                  as year
-		 , nomor                                                  as number
+		 , ifnull(nomor, 0)                                       as number
 		 , nama                                                   as name
 		 , nama                                                   as sipd_name
 		 , is_kunci is null or is_kunci                           as is_locked
