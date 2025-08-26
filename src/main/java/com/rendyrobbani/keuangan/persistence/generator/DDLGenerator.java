@@ -570,4 +570,14 @@ public final class DDLGenerator {
 		}
 	}
 
+	private static List<String> tableNames;
+
+	public static List<String> tableNames() {
+		if (tableNames == null) {
+			tableNames = new ArrayList<>();
+			for (Class<?> entityClass : entityClasses()) tableNames.add(entityClass.getAnnotation(Table.class).name());
+		}
+		return tableNames;
+	}
+
 }
