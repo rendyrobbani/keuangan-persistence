@@ -21,21 +21,21 @@ public class DataMasterTapdSignOfSkpdEntity extends AbstractDataMasterTapdSignOf
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {
-			@JoinColumn(name = "tapd_id", referencedColumnName = "id", insertable = false, updatable = false)
+			@JoinColumn(name = "team_id", referencedColumnName = "id", insertable = false, updatable = false)
 	})
 	private DataUserEntity user;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {
-			@JoinColumn(name = "tapd_id", referencedColumnName = "id", insertable = false, updatable = false)
+			@JoinColumn(name = "team_id", referencedColumnName = "id", insertable = false, updatable = false)
 	})
-	private DataMasterTapdTeamEntity tapdTeam;
+	private DataMasterTapdTeamEntity team;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {
-			@JoinColumn(name = "tapd_id", referencedColumnName = "id", insertable = false, updatable = false)
+			@JoinColumn(name = "sign_id", referencedColumnName = "id", insertable = false, updatable = false)
 	})
-	private DataMasterTapdSignEntity tapdSign;
+	private DataMasterTapdSignEntity sign;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {

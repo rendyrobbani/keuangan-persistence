@@ -20,15 +20,15 @@ public class DataMasterTapdSignEntity extends AbstractDataMasterTapdSignEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {
-			@JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
+			@JoinColumn(name = "team_id", referencedColumnName = "id", insertable = false, updatable = false)
 	})
 	private DataUserEntity user;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {
-			@JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
+			@JoinColumn(name = "team_id", referencedColumnName = "id", insertable = false, updatable = false)
 	})
-	private DataMasterTapdTeamEntity tapd;
+	private DataMasterTapdTeamEntity team;
 
 	@Override
 	public DataMasterTapdSign toDomain() {

@@ -22,21 +22,25 @@ import java.time.LocalDateTime;
 public abstract class AbstractDataMasterTapdSignOfSkpdEntity extends AbstractDataMasterEntity<DataMasterTapdSignOfSkpd, String> implements DataMasterTapdSignOfSkpd {
 
 	@Id
-	@Check(constraints = "id = concat_ws('|', tapd_id, skpd_id)")
-	@Column(name = "id", length = 41, nullable = false, updatable = false)
+	@Check(constraints = "id = concat_ws('|', sign_id, skpd_id)")
+	@Column(name = "id", length = 44, nullable = false, updatable = false)
 	protected String id;
 
-	@Column(name = "tapd_id", length = 18, nullable = false, updatable = false)
-	protected String tapdId;
+	@Column(name = "team_id", length = 18, nullable = false, updatable = false)
+	protected String teamId;
+
+	@Column(name = "sign_id", length = 21, nullable = false, updatable = false)
+	protected String signId;
 
 	@Check(constraints = "skpd_id like '%0000'")
 	@Column(name = "skpd_id", length = 22, nullable = false, updatable = false)
 	protected String skpdId;
 
 	@Override
-	public void create(String id, String tapdId, String skpdId, LocalDateTime createdAt, String createdBy) {
-		this.id = String.join("|", tapdId, skpdId);
-		this.tapdId = tapdId;
+	public void create(String teamId, String signId, String skpdId, LocalDateTime createdAt, String createdBy) {
+		this.id = String.join("|", signId, skpdId);
+		this.teamId = teamId;
+		this.signId = signId;
 		this.skpdId = skpdId;
 		this.create(createdAt, createdBy);
 	}

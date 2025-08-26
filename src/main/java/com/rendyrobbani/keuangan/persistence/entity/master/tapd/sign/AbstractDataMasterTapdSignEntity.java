@@ -1,5 +1,6 @@
 package com.rendyrobbani.keuangan.persistence.entity.master.tapd.sign;
 
+import com.rendyrobbani.keuangan.core.common.util.number.NumberUtil;
 import com.rendyrobbani.keuangan.core.domain.entity.master.tapd.sign.DataMasterTapdSign;
 import com.rendyrobbani.keuangan.core.domain.entity.user.DataUser;
 import com.rendyrobbani.keuangan.persistence.entity.master.AbstractDataMasterEntity;
@@ -10,6 +11,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Check;
 
 import java.time.LocalDateTime;
 
@@ -21,11 +23,15 @@ import java.time.LocalDateTime;
 public abstract class AbstractDataMasterTapdSignEntity extends AbstractDataMasterEntity<DataMasterTapdSign, String> implements DataMasterTapdSign {
 
 	@Id
-	@Column(name = "id", length = 18, nullable = false, updatable = false)
+	@Check(constraints = "id = concat_ws('|', lpad(number, 2, '0'), team_id)")
+	@Column(name = "id", length = 21, nullable = false, updatable = false)
 	protected String id;
 
 	@Column(name = "number")
 	protected Short number;
+
+	@Column(name = "team_id", length = 18, nullable = false, updatable = false)
+	protected String teamId;
 
 	@Column(name = "position")
 	protected String position;
@@ -69,7 +75,7 @@ public abstract class AbstractDataMasterTapdSignEntity extends AbstractDataMaste
 
 	@Override
 	public void create(DataUser user, Short number, String position, LocalDateTime createdAt, String createdBy) {
-		this.id = user().id();
+		this.id = String.join("|", NumberUtil.lpadZero(number.intValue(), 2), user.id());
 		this.number = number;
 		this.position = position;
 		this.create(createdAt, createdBy);
@@ -77,7 +83,7 @@ public abstract class AbstractDataMasterTapdSignEntity extends AbstractDataMaste
 
 	@Override
 	public void update(DataUser user, Short number, String position, LocalDateTime updatedAt, String updatedBy) {
-		this.id = user().id();
+		this.id = String.join("|", NumberUtil.lpadZero(number.intValue(), 2), user.id());
 		this.number = number;
 		this.position = position;
 		this.update(updatedAt, updatedBy);

@@ -23,6 +23,9 @@ public abstract class AbstractLogsMasterTapdSignEntity extends AbstractLogsMaste
 	@Column(name = "number")
 	protected Short number;
 
+	@Column(name = "team_id", length = 18, nullable = false, updatable = false)
+	protected String teamId;
+
 	@Column(name = "position")
 	protected String position;
 
@@ -38,6 +41,7 @@ public abstract class AbstractLogsMasterTapdSignEntity extends AbstractLogsMaste
 	@Override
 	public void create(DataMasterTapdSign data, LocalDateTime createdAt, String createdBy) {
 		this.number = data.number();
+		this.teamId = data.teamId();
 		this.position = data.position();
 		this.isLocked = data.isLocked();
 		this.isDeleted = data.isDeleted();

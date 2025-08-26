@@ -8,6 +8,8 @@ import com.rendyrobbani.keuangan.persistence.repository.master.DataMasterJpaRepo
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class DataMasterTapdSignRepositoryImpl extends AbstractDataMasterRepository<DataMasterTapdSignEntity, DataMasterTapdSign, String> implements DataMasterTapdSignRepository {
@@ -17,6 +19,11 @@ public class DataMasterTapdSignRepositoryImpl extends AbstractDataMasterReposito
 	@Override
 	protected DataMasterJpaRepository<DataMasterTapdSignEntity, DataMasterTapdSign, String> repositoryOfMaster() {
 		return this.repository;
+	}
+
+	@Override
+	public List<DataMasterTapdSign> findByIsDeletedFalseAndIsLockedFalse() {
+		return this.repository.findByIsDeletedFalseAndIsLockedFalse().stream().map(DataMasterTapdSignEntity::toDomain).toList();
 	}
 
 }

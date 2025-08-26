@@ -34,7 +34,7 @@ public abstract class AbstractDataMasterTapdTeamOfSkpdEntity extends AbstractDat
 	protected String skpdId;
 
 	@Override
-	public void create(String id, String tapdId, String skpdId, LocalDateTime createdAt, String createdBy) {
+	public void create(String tapdId, String skpdId, LocalDateTime createdAt, String createdBy) {
 		this.id = String.join("|", tapdId, skpdId);
 		this.tapdId = tapdId;
 		this.skpdId = skpdId;
