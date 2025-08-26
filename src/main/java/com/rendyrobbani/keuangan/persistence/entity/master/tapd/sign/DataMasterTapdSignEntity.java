@@ -1,6 +1,7 @@
 package com.rendyrobbani.keuangan.persistence.entity.master.tapd.sign;
 
 import com.rendyrobbani.keuangan.core.domain.entity.master.tapd.sign.DataMasterTapdSign;
+import com.rendyrobbani.keuangan.persistence.entity.master.tapd.team.DataMasterTapdTeamEntity;
 import com.rendyrobbani.keuangan.persistence.entity.user.DataUserEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -22,6 +23,12 @@ public class DataMasterTapdSignEntity extends AbstractDataMasterTapdSignEntity {
 			@JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
 	})
 	private DataUserEntity user;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns(value = {
+			@JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
+	})
+	private DataMasterTapdTeamEntity tapd;
 
 	@Override
 	public DataMasterTapdSign toDomain() {

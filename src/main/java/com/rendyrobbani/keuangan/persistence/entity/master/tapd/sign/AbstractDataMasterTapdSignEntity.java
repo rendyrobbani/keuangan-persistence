@@ -24,7 +24,7 @@ public abstract class AbstractDataMasterTapdSignEntity extends AbstractDataMaste
 	@Column(name = "id", length = 18, nullable = false, updatable = false)
 	protected String id;
 
-	@Column(name = "number", nullable = false)
+	@Column(name = "number")
 	protected Short number;
 
 	@Column(name = "position")
@@ -68,15 +68,17 @@ public abstract class AbstractDataMasterTapdSignEntity extends AbstractDataMaste
 	}
 
 	@Override
-	public void create(DataUser user, String position, boolean isCanLockCreate, boolean isCanLockUpdate, boolean isCanLockDetail, LocalDateTime createdAt, String createdBy) {
+	public void create(DataUser user, Short number, String position, LocalDateTime createdAt, String createdBy) {
 		this.id = user().id();
+		this.number = number;
 		this.position = position;
 		this.create(createdAt, createdBy);
 	}
 
 	@Override
-	public void update(DataUser user, String position, boolean isCanLockCreate, boolean isCanLockUpdate, boolean isCanLockDetail, LocalDateTime updatedAt, String updatedBy) {
+	public void update(DataUser user, Short number, String position, LocalDateTime updatedAt, String updatedBy) {
 		this.id = user().id();
+		this.number = number;
 		this.position = position;
 		this.update(updatedAt, updatedBy);
 	}
