@@ -38,7 +38,7 @@ public abstract class AbstractLogsMasterTapdTeamEntity extends AbstractLogsMaste
 	@Column(name = "is_deleted", nullable = false)
 	protected boolean isDeleted;
 
-	@Column(name = "subject_id", nullable = false)
+	@Column(name = "subject_id", length = 18, nullable = false)
 	protected String subjectId;
 
 	@Override

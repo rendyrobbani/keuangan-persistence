@@ -138,6 +138,12 @@ import com.rendyrobbani.keuangan.persistence.entity.master.priority.provinsi.Dat
 import com.rendyrobbani.keuangan.persistence.entity.master.priority.provinsi.SelfMasterPriorityOfProvinsiEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.satuan.DataMasterSatuanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.satuan.SelfMasterSatuanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.tapd.sign.DataMasterTapdSignEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.tapd.sign.DataMasterTapdSignOfSkpdEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.tapd.sign.LogsMasterTapdSignEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.tapd.team.DataMasterTapdTeamEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.tapd.team.DataMasterTapdTeamOfSkpdEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.tapd.team.LogsMasterTapdTeamEntity;
 import com.rendyrobbani.keuangan.persistence.entity.user.DataUserEntity;
 import com.rendyrobbani.keuangan.persistence.entity.user.LogsUserEntity;
 import jakarta.persistence.*;
@@ -321,6 +327,14 @@ public final class DDLGenerator {
 
 			entityClasses.add(DataMasterKomponenEntity.class);
 			entityClasses.add(SelfMasterKomponenEntity.class);
+
+			entityClasses.add(DataMasterTapdTeamEntity.class);
+			entityClasses.add(DataMasterTapdTeamOfSkpdEntity.class);
+			entityClasses.add(LogsMasterTapdTeamEntity.class);
+
+			entityClasses.add(DataMasterTapdSignEntity.class);
+			entityClasses.add(DataMasterTapdSignOfSkpdEntity.class);
+			entityClasses.add(LogsMasterTapdSignEntity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}

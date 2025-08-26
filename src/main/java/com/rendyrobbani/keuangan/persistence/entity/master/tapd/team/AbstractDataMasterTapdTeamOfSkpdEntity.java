@@ -22,14 +22,15 @@ import java.time.LocalDateTime;
 public abstract class AbstractDataMasterTapdTeamOfSkpdEntity extends AbstractDataMasterEntity<DataMasterTapdTeamOfSkpd, String> implements DataMasterTapdTeamOfSkpd {
 
 	@Id
-	@Column(name = "id", nullable = false, updatable = false)
+	@Check(constraints = "id = concat_ws('|', tapd_id, skpd_id)")
+	@Column(name = "id", length = 41, nullable = false, updatable = false)
 	protected String id;
 
-	@Column(name = "tapd_id", nullable = false, updatable = false)
+	@Column(name = "tapd_id", length = 18, nullable = false, updatable = false)
 	protected String tapdId;
 
 	@Check(constraints = "skpd_id like '%0000'")
-	@Column(name = "skpd_id", nullable = false, updatable = false)
+	@Column(name = "skpd_id", length = 22, nullable = false, updatable = false)
 	protected String skpdId;
 
 	@Override
