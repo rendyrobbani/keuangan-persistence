@@ -1,6 +1,8 @@
 package com.rendyrobbani.keuangan.persistence.generator;
 
 import com.rendyrobbani.keuangan.core.domain.vo.*;
+import com.rendyrobbani.keuangan.persistence.entity.budget.jadwal.DataBudgetJadwalEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.jadwal.LogsBudgetJadwalEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.DataMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.SipdMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.fungsi.DataMasterFungsiEntity;
@@ -336,6 +338,9 @@ public final class DDLGenerator {
 			entityClasses.add(DataMasterTapdSignOfSkpdEntity.class);
 			entityClasses.add(LogsMasterTapdSignEntity.class);
 
+			entityClasses.add(DataBudgetJadwalEntity.class);
+			entityClasses.add(LogsBudgetJadwalEntity.class);
+
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}
 		return entityClasses;
@@ -344,7 +349,8 @@ public final class DDLGenerator {
 	private static String type(Field field) {
 		Column column = field.getAnnotation(Column.class);
 		if (List.of(Long.class,
-		            long.class).contains(field.getType())) return "bigint";
+		            long.class,
+		            BudgetTahapan.class).contains(field.getType())) return "bigint";
 		if (List.of(Integer.class,
 		            int.class).contains(field.getType())) return "int";
 		if (List.of(Short.class,

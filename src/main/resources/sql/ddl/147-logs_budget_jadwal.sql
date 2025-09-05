@@ -1,0 +1,31 @@
+create or replace table logs_budget_jadwal (
+	id             bigint       not null auto_increment,
+	year           smallint     not null,
+	name           varchar(255) not null,
+	from_time      datetime     null,
+	into_time      datetime     null,
+	is_perda       bit          not null,
+	perda_date     date         null,
+	perda_number   varchar(255) null,
+	is_perkada     bit          not null,
+	perkada_date   date         null,
+	perkada_number varchar(255) null,
+	is_locked      bit          not null,
+	is_deleted     bit          not null,
+	tahapan_id     bigint       not null,
+	rkpd_id        bigint       null,
+	ppas_id        bigint       null,
+	apbd_id        bigint       null,
+	sipd_id        bigint       null,
+	logged_at      datetime     not null,
+	logged_by      varchar(18)  not null,
+	subject_id     bigint       null,
+	constraint fk_logs_budget_jadwal_01 foreign key (rkpd_id) references data_budget_jadwal (id),
+	constraint fk_logs_budget_jadwal_02 foreign key (ppas_id) references data_budget_jadwal (id),
+	constraint fk_logs_budget_jadwal_03 foreign key (apbd_id) references data_budget_jadwal (id),
+	constraint fk_logs_budget_jadwal_04 foreign key (subject_id) references data_budget_jadwal (id),
+	constraint fk_logs_budget_jadwal_05 foreign key (logged_by) references data_user (id),
+	primary key (id)
+) engine = innodb
+  charset = utf8mb4
+  collate = utf8mb4_unicode_ci;
