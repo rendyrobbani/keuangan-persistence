@@ -3,6 +3,7 @@ package com.rendyrobbani.keuangan.persistence.generator;
 import com.rendyrobbani.keuangan.core.domain.vo.*;
 import com.rendyrobbani.keuangan.persistence.entity.budget.jadwal.DataBudgetJadwalEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.jadwal.LogsBudgetJadwalEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.record.mayor.DataBudgetRecordMayorEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.DataMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.SipdMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.fungsi.DataMasterFungsiEntity;
@@ -128,6 +129,7 @@ import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.urusan.SipdMasterUrusanEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.komponen.DataMasterKomponenEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.komponen.SelfMasterKomponenEntity;
+import com.rendyrobbani.keuangan.persistence.entity.master.mayor.DataMasterMayorEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.penerima.DataMasterPenerimaEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.penerima.SelfMasterPenerimaEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.priority.kabupaten.DataMasterPriorityOfKabupatenEntity;
@@ -330,6 +332,8 @@ public final class DDLGenerator {
 			entityClasses.add(DataMasterKomponenEntity.class);
 			entityClasses.add(SelfMasterKomponenEntity.class);
 
+			entityClasses.add(DataMasterMayorEntity.class);
+
 			entityClasses.add(DataMasterTapdTeamEntity.class);
 			entityClasses.add(DataMasterTapdTeamOfSkpdEntity.class);
 			entityClasses.add(LogsMasterTapdTeamEntity.class);
@@ -340,6 +344,8 @@ public final class DDLGenerator {
 
 			entityClasses.add(DataBudgetJadwalEntity.class);
 			entityClasses.add(LogsBudgetJadwalEntity.class);
+
+			entityClasses.add(DataBudgetRecordMayorEntity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}

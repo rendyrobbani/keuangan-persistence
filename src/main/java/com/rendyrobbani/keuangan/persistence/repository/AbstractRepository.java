@@ -43,7 +43,7 @@ public abstract class AbstractRepository<ENTITY extends AbstractBaseEntity<DOMAI
 	private Class<DOMAIN> domainClass;
 
 	@SuppressWarnings("unchecked")
-	private void initClass() {
+	protected void initClass() {
 		if (domainClass == null || entityClass == null) {
 			ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
 			this.entityClass = (Class<ENTITY>) type.getActualTypeArguments()[0];
@@ -51,7 +51,7 @@ public abstract class AbstractRepository<ENTITY extends AbstractBaseEntity<DOMAI
 		}
 	}
 
-	private List<Method> domainMethods() {
+	protected List<Method> domainMethods() {
 		initClass();
 		Map<String, Method> methods = new HashMap<>();
 		Class<?> domainClass = this.domainClass;
@@ -62,7 +62,7 @@ public abstract class AbstractRepository<ENTITY extends AbstractBaseEntity<DOMAI
 		return List.copyOf(methods.values());
 	}
 
-	private List<Field> entityFields() {
+	protected List<Field> entityFields() {
 		initClass();
 		Map<String, Field> fields = new HashMap<>();
 		Class<?> entityClass = this.entityClass;
