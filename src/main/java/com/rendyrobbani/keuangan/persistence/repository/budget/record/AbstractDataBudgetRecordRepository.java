@@ -8,6 +8,7 @@ import com.rendyrobbani.keuangan.persistence.entity.AbstractBaseEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.record.AbstractDataBudgetRecordEntity;
 import com.rendyrobbani.keuangan.persistence.repository.budget.AbstractDataBudgetRepository;
 import com.rendyrobbani.keuangan.persistence.repository.budget.DataBudgetJpaRepository;
+import jakarta.persistence.Column;
 import lombok.SneakyThrows;
 
 import java.lang.reflect.Field;
@@ -88,29 +89,34 @@ public abstract class AbstractDataBudgetRecordRepository<
 		List<String> into = new ArrayList<>();
 		List<String> from = new ArrayList<>();
 		for (Field field : this.entityFields()) {
-			into.add(field.getName());
-			switch (field.getName()) {
+			Column column = field.getAnnotation(Column.class);
+			into.add(column.name());
+			switch (column.name()) {
 				case "id" -> from.add(this.idValue());
 				case "jadwal_id" -> from.add("?");
 				case "common_id" -> from.add("t.id");
-				default -> from.add("t." + field.getName());
+				default -> from.add("t." + column.name());
 			}
 		}
 
 		List<String> sql = new ArrayList<>();
-		sql.add("insert into " + ENTITY.TABLE_NAME + " (" + String.join(", ", into) + ")");
+		sql.add("insert into " + this.domainClass.getDeclaredField("TABLE_NAME").get(null) + " (" + String.join(", ", into) + ")");
 		sql.add("select " + String.join(", ", from));
-		sql.add("from " + COMMON.TABLE_NAME + " t");
+		sql.add("from " + this.commonClass.getDeclaredField("TABLE_NAME").get(null) + " t");
 
-		try (PreparedStatement statement = connection.prepareStatement(String.join(System.lineSeparator(), sql))) {
-			for (int i = 0; i < String.join(System.lineSeparator()).chars().filter(c -> c == '?').count(); i++) statement.setLong(i + 1, jadwal.id());
+		String query = String.join(System.lineSeparator(), sql);
+		try (PreparedStatement statement = connection.prepareStatement(query)) {
+			for (int i = 0; i < query.chars().filter(c -> c == '?').count(); i++) {
+				System.out.println("Index : " + (i + 1));
+				statement.setLong(i + 1, jadwal.id());
+			}
 			statement.execute();
 		}
 	}
 
-	private Class<COMMON> commonClass;
+	protected Class<COMMON> commonClass;
 
-	private Class<COMMONID> commonIdClass;
+	protected Class<COMMONID> commonIdClass;
 
 	@Override
 	@SuppressWarnings("unchecked")

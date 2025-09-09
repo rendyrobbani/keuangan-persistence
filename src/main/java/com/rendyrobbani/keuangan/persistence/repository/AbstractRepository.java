@@ -38,9 +38,9 @@ public abstract class AbstractRepository<ENTITY extends AbstractBaseEntity<DOMAI
 		return entity.toDomain();
 	}
 
-	private Class<ENTITY> entityClass;
+	protected Class<ENTITY> entityClass;
 
-	private Class<DOMAIN> domainClass;
+	protected Class<DOMAIN> domainClass;
 
 	@SuppressWarnings("unchecked")
 	protected void initClass() {
