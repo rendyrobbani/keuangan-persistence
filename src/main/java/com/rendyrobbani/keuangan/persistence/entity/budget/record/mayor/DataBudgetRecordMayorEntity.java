@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = DataBudgetRecordMayor.TABLE_NAME)
+@Table(name = DataBudgetRecordMayor.TABLE_NAME, uniqueConstraints = {@UniqueConstraint(columnNames = {"jadwal_id", "common_id"})})
 public class DataBudgetRecordMayorEntity extends AbstractDataBudgetRecordMayorEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -4,6 +4,7 @@ import com.rendyrobbani.keuangan.core.domain.vo.*;
 import com.rendyrobbani.keuangan.persistence.entity.budget.jadwal.DataBudgetJadwalEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.jadwal.LogsBudgetJadwalEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.record.mayor.DataBudgetRecordMayorEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.record.organisasi.DataBudgetRecordOrganisasiEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.DataMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.SipdMasterBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.fungsi.DataMasterFungsiEntity;
@@ -346,6 +347,7 @@ public final class DDLGenerator {
 			entityClasses.add(LogsBudgetJadwalEntity.class);
 
 			entityClasses.add(DataBudgetRecordMayorEntity.class);
+			entityClasses.add(DataBudgetRecordOrganisasiEntity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}

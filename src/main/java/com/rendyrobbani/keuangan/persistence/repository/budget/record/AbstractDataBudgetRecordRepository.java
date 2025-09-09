@@ -86,6 +86,17 @@ public abstract class AbstractDataBudgetRecordRepository<
 	@Override
 	@SneakyThrows
 	public void saveByJadwal(Connection connection, DataBudgetJadwal jadwal) {
+		String sql = this.saveByJadwalSql();
+		try (PreparedStatement statement = connection.prepareStatement(sql)) {
+			for (int i = 0; i < sql.chars().filter(c -> c == '?').count(); i++) {
+				statement.setLong(i + 1, jadwal.id());
+			}
+			statement.execute();
+		}
+	}
+
+	@SneakyThrows
+	protected String saveByJadwalSql() {
 		List<String> into = new ArrayList<>();
 		List<String> from = new ArrayList<>();
 		for (Field field : this.entityFields()) {
@@ -104,14 +115,7 @@ public abstract class AbstractDataBudgetRecordRepository<
 		sql.add("select " + String.join(", ", from));
 		sql.add("from " + this.commonClass.getDeclaredField("TABLE_NAME").get(null) + " t");
 
-		String query = String.join(System.lineSeparator(), sql);
-		try (PreparedStatement statement = connection.prepareStatement(query)) {
-			for (int i = 0; i < query.chars().filter(c -> c == '?').count(); i++) {
-				System.out.println("Index : " + (i + 1));
-				statement.setLong(i + 1, jadwal.id());
-			}
-			statement.execute();
-		}
+		return String.join(System.lineSeparator(), sql);
 	}
 
 	protected Class<COMMON> commonClass;

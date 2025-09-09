@@ -19,6 +19,7 @@ create or replace table data_budget_record_mayor (
 	constraint fk_data_budget_record_mayor_03 foreign key (created_by) references data_user (id),
 	constraint fk_data_budget_record_mayor_04 foreign key (updated_by) references data_user (id),
 	constraint fk_data_budget_record_mayor_05 foreign key (deleted_by) references data_user (id),
+	constraint uk_data_budget_record_mayor_01 unique key (jadwal_id, common_id),
 	primary key (id)
 ) engine = innodb
   charset = utf8mb4
