@@ -1,4 +1,4 @@
-insert into data_budget_jadwal (id, year, name, from_time, into_time, is_perda, perda_date, perda_number, is_perkada, perkada_date, perkada_number, is_locked, locked_at, locked_by, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by, tahapan_id, rkpd_id, ppas_id, apbd_id, sipd_id)
+insert into keuangan_dev.data_budget_jadwal (id, year, name, from_time, into_time, is_perda, perda_date, perda_number, is_perkada, perkada_date, perkada_number, is_locked, locked_at, locked_by, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by, tahapan_id, rkpd_id, ppas_id, apbd_id, sipd_id)
 select *
 from (
 	select id              as id
