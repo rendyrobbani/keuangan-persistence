@@ -73,8 +73,9 @@ public abstract class AbstractDataBudgetRecordRepository<
 	@Override
 	@SneakyThrows
 	public void deleteByJadwal(Connection connection, DataBudgetJadwal jadwal) {
+		this.initClass();
 		List<String> sql = new ArrayList<>();
-		sql.add("delete from " + ENTITY.TABLE_NAME);
+		sql.add("delete from " + this.domainClass.getDeclaredField("TABLE_NAME").get(null));
 		sql.add("where jadwal_id = ?");
 
 		try (PreparedStatement statement = connection.prepareStatement(String.join(System.lineSeparator(), sql))) {

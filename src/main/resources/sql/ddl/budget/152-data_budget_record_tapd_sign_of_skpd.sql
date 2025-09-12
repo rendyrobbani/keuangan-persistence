@@ -1,0 +1,32 @@
+create or replace table data_budget_record_tapd_sign_of_skpd (
+	common_id  varchar(44)  not null,
+	created_at datetime     null,
+	created_by varchar(18)  null,
+	updated_at datetime     null,
+	updated_by varchar(18)  null,
+	is_deleted bit          null,
+	deleted_at datetime     null,
+	deleted_by varchar(18)  null,
+	team_id    varchar(18)  not null,
+	sign_id    varchar(21)  not null,
+	skpd_id    varchar(22)  not null,
+	id         varchar(255) not null,
+	jadwal_id  bigint       not null,
+	constraint ck_data_budget_record_tapd_sign_of_skpd_01 check (id = concat_ws('|', jadwal_id, common_id)),
+	constraint ck_data_budget_record_tapd_sign_of_skpd_02 check (skpd_id like '%0000'),
+	constraint fk_data_budget_record_tapd_sign_of_skpd_01 foreign key (common_id) references data_master_tapd_sign_of_skpd (id),
+	constraint fk_data_budget_record_tapd_sign_of_skpd_02 foreign key (team_id) references data_user (id),
+	constraint fk_data_budget_record_tapd_sign_of_skpd_03 foreign key (team_id) references data_master_tapd_team (id),
+	constraint fk_data_budget_record_tapd_sign_of_skpd_04 foreign key (sign_id) references data_master_tapd_sign (id),
+	constraint fk_data_budget_record_tapd_sign_of_skpd_05 foreign key (jadwal_id, sign_id) references data_budget_record_tapd_sign (jadwal_id, common_id),
+	constraint fk_data_budget_record_tapd_sign_of_skpd_06 foreign key (skpd_id) references data_master_organisasi (id),
+	constraint fk_data_budget_record_tapd_sign_of_skpd_07 foreign key (jadwal_id, skpd_id) references data_budget_record_organisasi (jadwal_id, common_id),
+	constraint fk_data_budget_record_tapd_sign_of_skpd_08 foreign key (jadwal_id) references data_budget_jadwal (id),
+	constraint fk_data_budget_record_tapd_sign_of_skpd_09 foreign key (created_by) references data_user (id),
+	constraint fk_data_budget_record_tapd_sign_of_skpd_10 foreign key (updated_by) references data_user (id),
+	constraint fk_data_budget_record_tapd_sign_of_skpd_11 foreign key (deleted_by) references data_user (id),
+	constraint uk_data_budget_record_tapd_sign_of_skpd_01 unique key (jadwal_id, common_id),
+	primary key (id)
+) engine = innodb
+  charset = utf8mb4
+  collate = utf8mb4_unicode_ci;
