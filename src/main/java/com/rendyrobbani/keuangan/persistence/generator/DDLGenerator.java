@@ -1,6 +1,12 @@
 package com.rendyrobbani.keuangan.persistence.generator;
 
 import com.rendyrobbani.keuangan.core.domain.vo.*;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.bidang.DataBudgetCommonIncomePendapatanBidangEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.jenis.DataBudgetCommonIncomePendapatanJenisEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.organisasi.DataBudgetCommonIncomePendapatanOrganisasiEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.rekening.DataBudgetCommonIncomePendapatanRekeningEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.rincian.DataBudgetCommonIncomePendapatanRincianEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.rincian.SelfBudgetCommonIncomePendapatanRincianEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.jadwal.DataBudgetJadwalEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.jadwal.LogsBudgetJadwalEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.record.mayor.DataBudgetRecordMayorEntity;
@@ -353,6 +359,13 @@ public final class DDLGenerator {
 
 			entityClasses.add(DataBudgetRecordTapdSignEntity.class);
 			entityClasses.add(DataBudgetRecordTapdSignOfSkpdEntity.class);
+
+			entityClasses.add(DataBudgetCommonIncomePendapatanOrganisasiEntity.class);
+			entityClasses.add(DataBudgetCommonIncomePendapatanBidangEntity.class);
+			entityClasses.add(DataBudgetCommonIncomePendapatanJenisEntity.class);
+			entityClasses.add(DataBudgetCommonIncomePendapatanRekeningEntity.class);
+			entityClasses.add(DataBudgetCommonIncomePendapatanRincianEntity.class);
+			entityClasses.add(SelfBudgetCommonIncomePendapatanRincianEntity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}

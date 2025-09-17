@@ -1,6 +1,5 @@
 package com.rendyrobbani.keuangan.persistence.entity.budget.common.ie;
 
-import com.rendyrobbani.keuangan.core.common.util.koefisien.KoefisienUtil;
 import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.DataBudgetCommonRincianEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.common.AbstractDataBudgetCommonEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.bidang.DataMasterBidangEntity;
@@ -23,7 +22,6 @@ import java.math.BigDecimal;
 public abstract class AbstractDataBudgetCommonRincianEntity extends AbstractDataBudgetCommonEntity<DataBudgetCommonRincianEntity, Long> implements DataBudgetCommonRincianEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, updatable = false)
 	protected Long id;
 
@@ -42,7 +40,7 @@ public abstract class AbstractDataBudgetCommonRincianEntity extends AbstractData
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {
 			@JoinColumn(name = "skpd_id", referencedColumnName = "skpd_id", insertable = false, updatable = false),
-			@JoinColumn(name = "unit_id", referencedColumnName = "id", insertable = false, updatable = false),
+			@JoinColumn(name = "unit_id", referencedColumnName = "unit_id", insertable = false, updatable = false),
 	})
 	protected DataMasterOrganisasiEntity unit;
 

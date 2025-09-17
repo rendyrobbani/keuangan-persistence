@@ -42,7 +42,7 @@ public abstract class AbstractDataBudgetCommonBidangEntity extends AbstractDataB
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {
 			@JoinColumn(name = "skpd_id", referencedColumnName = "skpd_id", insertable = false, updatable = false),
-			@JoinColumn(name = "unit_id", referencedColumnName = "id", insertable = false, updatable = false),
+			@JoinColumn(name = "unit_id", referencedColumnName = "unit_id", insertable = false, updatable = false),
 	})
 	protected DataMasterOrganisasiEntity unit;
 
@@ -70,5 +70,5 @@ public abstract class AbstractDataBudgetCommonBidangEntity extends AbstractDataB
 
 	@Column(name = "sebelum", nullable = false)
 	protected BigDecimal sebelum;
-
+	
 }
