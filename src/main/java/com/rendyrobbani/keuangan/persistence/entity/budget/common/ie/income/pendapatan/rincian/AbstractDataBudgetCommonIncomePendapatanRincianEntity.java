@@ -20,7 +20,7 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataBudgetCommonIncomePendapatanRincianEntity extends AbstractDataBudgetCommonRincianEntity implements DataBudgetCommonIncomePendapatanRincian {
+public abstract class AbstractDataBudgetCommonIncomePendapatanRincianEntity extends AbstractDataBudgetCommonRincianEntity<DataBudgetCommonIncomePendapatanRincian> implements DataBudgetCommonIncomePendapatanRincian {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns(value = {

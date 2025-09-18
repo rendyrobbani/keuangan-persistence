@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataBudgetCommonBidangEntity extends AbstractDataBudgetCommonEntity<DataBudgetCommonBidangEntity, String> implements DataBudgetCommonBidangEntity {
+public abstract class AbstractDataBudgetCommonBidangEntity<DOMAIN extends DataBudgetCommonBidangEntity> extends AbstractDataBudgetCommonEntity<DOMAIN, String> implements DataBudgetCommonBidangEntity {
 
 	@Id
 	@Check(constraints = "id = concat_ws('|', unit_id, bidang_id)")
@@ -70,5 +70,5 @@ public abstract class AbstractDataBudgetCommonBidangEntity extends AbstractDataB
 
 	@Column(name = "sebelum", nullable = false)
 	protected BigDecimal sebelum;
-	
+
 }

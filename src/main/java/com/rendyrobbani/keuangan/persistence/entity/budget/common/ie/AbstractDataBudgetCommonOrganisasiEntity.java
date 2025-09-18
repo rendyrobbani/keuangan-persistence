@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataBudgetCommonOrganisasiEntity extends AbstractDataBudgetCommonEntity<DataBudgetCommonOrganisasiEntity, String> implements DataBudgetCommonOrganisasiEntity {
+public abstract class AbstractDataBudgetCommonOrganisasiEntity<DOMAIN extends DataBudgetCommonOrganisasiEntity> extends AbstractDataBudgetCommonEntity<DOMAIN, String> implements DataBudgetCommonOrganisasiEntity {
 
 	@Id
 	@Check(constraints = "id = unit_id")

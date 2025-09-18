@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataBudgetCommonRekeningEntity extends AbstractDataBudgetCommonEntity<DataBudgetCommonRekeningEntity, String> implements DataBudgetCommonRekeningEntity {
+public abstract class AbstractDataBudgetCommonRekeningEntity<DOMAIN extends DataBudgetCommonRekeningEntity> extends AbstractDataBudgetCommonEntity<DOMAIN, String> implements DataBudgetCommonRekeningEntity {
 
 	@Id
 	@Check(constraints = "id = concat_ws('|', unit_id, bidang_id, rekening6_id)")

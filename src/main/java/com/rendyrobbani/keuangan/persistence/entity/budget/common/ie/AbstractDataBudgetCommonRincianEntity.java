@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataBudgetCommonRincianEntity extends AbstractDataBudgetCommonEntity<DataBudgetCommonRincianEntity, Long> implements DataBudgetCommonRincianEntity {
+public abstract class AbstractDataBudgetCommonRincianEntity<DOMAIN extends DataBudgetCommonRincianEntity> extends AbstractDataBudgetCommonEntity<DOMAIN, Long> implements DataBudgetCommonRincianEntity {
 
 	@Id
 	@Column(name = "id", nullable = false, updatable = false)

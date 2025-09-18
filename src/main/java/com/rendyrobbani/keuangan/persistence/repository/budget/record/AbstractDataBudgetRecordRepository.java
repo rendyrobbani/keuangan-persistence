@@ -115,6 +115,7 @@ public abstract class AbstractDataBudgetRecordRepository<
 		sql.add("insert into " + this.domainClass.getDeclaredField("TABLE_NAME").get(null) + " (" + String.join(", ", into) + ")");
 		sql.add("select " + String.join(", ", from));
 		sql.add("from " + this.commonClass.getDeclaredField("TABLE_NAME").get(null) + " t");
+		sql.add("where !t.is_deleted");
 
 		return String.join(System.lineSeparator(), sql);
 	}

@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataBudgetCommonIncomePendapatanOrganisasiEntity extends AbstractDataBudgetCommonOrganisasiEntity implements DataBudgetCommonIncomePendapatanOrganisasi {
+public abstract class AbstractDataBudgetCommonIncomePendapatanOrganisasiEntity extends AbstractDataBudgetCommonOrganisasiEntity<DataBudgetCommonIncomePendapatanOrganisasi> implements DataBudgetCommonIncomePendapatanOrganisasi {
 
 	@Column(name = "is_locked", nullable = false)
 	protected boolean isLocked;

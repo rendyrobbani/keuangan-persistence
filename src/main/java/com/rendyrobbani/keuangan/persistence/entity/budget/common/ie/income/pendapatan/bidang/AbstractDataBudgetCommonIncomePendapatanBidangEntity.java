@@ -14,6 +14,6 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class AbstractDataBudgetCommonIncomePendapatanBidangEntity extends AbstractDataBudgetCommonBidangEntity implements DataBudgetCommonIncomePendapatanBidang {
+public abstract class AbstractDataBudgetCommonIncomePendapatanBidangEntity extends AbstractDataBudgetCommonBidangEntity<DataBudgetCommonIncomePendapatanBidang> implements DataBudgetCommonIncomePendapatanBidang {
 
 }
