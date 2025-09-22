@@ -1,6 +1,5 @@
 package com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pembiayaan.rincian;
 
-import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.DataBudgetCommonRincianEntity;
 import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.income.pembiayaan.rincian.DataBudgetCommonIncomePembiayaanRincian;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

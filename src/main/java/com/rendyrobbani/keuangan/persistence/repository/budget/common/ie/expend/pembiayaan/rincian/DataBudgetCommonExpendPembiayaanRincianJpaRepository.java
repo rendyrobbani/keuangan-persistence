@@ -1,0 +1,9 @@
+package com.rendyrobbani.keuangan.persistence.repository.budget.common.ie.expend.pembiayaan.rincian;
+
+import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.expend.pembiayaan.rincian.DataBudgetCommonExpendPembiayaanRincian;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.pembiayaan.rincian.DataBudgetCommonExpendPembiayaanRincianEntity;
+import com.rendyrobbani.keuangan.persistence.repository.budget.common.ie.DataBudgetCommonRincianJpaRepository;
+
+public interface DataBudgetCommonExpendPembiayaanRincianJpaRepository extends DataBudgetCommonRincianJpaRepository<DataBudgetCommonExpendPembiayaanRincianEntity, DataBudgetCommonExpendPembiayaanRincian> {
+
+}
