@@ -1,6 +1,12 @@
 package com.rendyrobbani.keuangan.persistence.generator;
 
 import com.rendyrobbani.keuangan.core.domain.vo.*;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pembiayaan.bidang.DataBudgetCommonIncomePembiayaanBidangEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pembiayaan.jenis.DataBudgetCommonIncomePembiayaanJenisEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pembiayaan.organisasi.DataBudgetCommonIncomePembiayaanOrganisasiEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pembiayaan.rekening.DataBudgetCommonIncomePembiayaanRekeningEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pembiayaan.rincian.DataBudgetCommonIncomePembiayaanRincianEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pembiayaan.rincian.SelfBudgetCommonIncomePembiayaanRincianEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.bidang.DataBudgetCommonIncomePendapatanBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.jenis.DataBudgetCommonIncomePendapatanJenisEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.organisasi.DataBudgetCommonIncomePendapatanOrganisasiEntity;
@@ -366,6 +372,13 @@ public final class DDLGenerator {
 			entityClasses.add(DataBudgetCommonIncomePendapatanRekeningEntity.class);
 			entityClasses.add(DataBudgetCommonIncomePendapatanRincianEntity.class);
 			entityClasses.add(SelfBudgetCommonIncomePendapatanRincianEntity.class);
+
+			entityClasses.add(DataBudgetCommonIncomePembiayaanOrganisasiEntity.class);
+			entityClasses.add(DataBudgetCommonIncomePembiayaanBidangEntity.class);
+			entityClasses.add(DataBudgetCommonIncomePembiayaanJenisEntity.class);
+			entityClasses.add(DataBudgetCommonIncomePembiayaanRekeningEntity.class);
+			entityClasses.add(DataBudgetCommonIncomePembiayaanRincianEntity.class);
+			entityClasses.add(SelfBudgetCommonIncomePembiayaanRincianEntity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}

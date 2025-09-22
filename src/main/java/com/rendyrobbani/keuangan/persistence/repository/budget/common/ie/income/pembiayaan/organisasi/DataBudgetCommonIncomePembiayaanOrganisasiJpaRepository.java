@@ -1,0 +1,9 @@
+package com.rendyrobbani.keuangan.persistence.repository.budget.common.ie.income.pembiayaan.organisasi;
+
+import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.income.pembiayaan.organisasi.DataBudgetCommonIncomePembiayaanOrganisasi;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pembiayaan.organisasi.DataBudgetCommonIncomePembiayaanOrganisasiEntity;
+import com.rendyrobbani.keuangan.persistence.repository.budget.common.ie.DataBudgetCommonOrganisasiJpaRepository;
+
+public interface DataBudgetCommonIncomePembiayaanOrganisasiJpaRepository extends DataBudgetCommonOrganisasiJpaRepository<DataBudgetCommonIncomePembiayaanOrganisasiEntity, DataBudgetCommonIncomePembiayaanOrganisasi> {
+
+}
