@@ -1,4 +1,4 @@
-package com.rendyrobbani.keuangan.persistence.repository.budget.common.ie.income.pendapatan;
+package com.rendyrobbani.keuangan.persistence.repository.budget.common.ie.income.pendapatan.organisasi;
 
 import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.income.pendapatan.organisasi.DataBudgetCommonIncomePendapatanOrganisasi;
 import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.organisasi.DataBudgetCommonIncomePendapatanOrganisasiEntity;

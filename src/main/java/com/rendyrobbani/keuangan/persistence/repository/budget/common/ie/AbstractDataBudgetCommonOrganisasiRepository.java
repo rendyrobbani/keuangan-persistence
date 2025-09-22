@@ -4,6 +4,7 @@ import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.DataBudgetC
 import com.rendyrobbani.keuangan.core.domain.repository.budget.common.ie.DataBudgetCommonOrganisasiRepository;
 import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.AbstractDataBudgetCommonOrganisasiEntity;
 import com.rendyrobbani.keuangan.persistence.repository.budget.AbstractDataBudgetRepository;
+import com.rendyrobbani.keuangan.persistence.repository.budget.DataBudgetJpaRepository;
 import jakarta.persistence.Column;
 import lombok.SneakyThrows;
 
@@ -22,6 +23,13 @@ public abstract class AbstractDataBudgetCommonOrganisasiRepository<
 		>
 		extends AbstractDataBudgetRepository<ENTITY, DOMAIN, String>
 		implements DataBudgetCommonOrganisasiRepository<DOMAIN> {
+
+	protected abstract DataBudgetCommonOrganisasiJpaRepository<ENTITY, DOMAIN> repositoryOfBudgetOrganisasi();
+
+	@Override
+	protected DataBudgetJpaRepository<ENTITY, DOMAIN, String> repositoryOfBudget() {
+		return this.repositoryOfBudgetOrganisasi();
+	}
 
 	@Override
 	@SneakyThrows

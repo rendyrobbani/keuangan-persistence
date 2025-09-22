@@ -1,8 +1,8 @@
 package com.rendyrobbani.keuangan.persistence.repository.budget.common.ie;
 
-import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.DataBudgetCommonBidangEntity;
-import com.rendyrobbani.keuangan.core.domain.repository.budget.common.ie.DataBudgetCommonBidangRepository;
-import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.AbstractDataBudgetCommonBidangEntity;
+import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.DataBudgetCommonJenisEntity;
+import com.rendyrobbani.keuangan.core.domain.repository.budget.common.ie.DataBudgetCommonJenisRepository;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.AbstractDataBudgetCommonJenisEntity;
 import com.rendyrobbani.keuangan.persistence.repository.budget.AbstractDataBudgetRepository;
 import com.rendyrobbani.keuangan.persistence.repository.budget.DataBudgetJpaRepository;
 import jakarta.persistence.Column;
@@ -17,18 +17,18 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractDataBudgetCommonBidangRepository<
-		ENTITY extends AbstractDataBudgetCommonBidangEntity<DOMAIN>,
-		DOMAIN extends DataBudgetCommonBidangEntity
+public abstract class AbstractDataBudgetCommonJenisRepository<
+		ENTITY extends AbstractDataBudgetCommonJenisEntity<DOMAIN>,
+		DOMAIN extends DataBudgetCommonJenisEntity
 		>
 		extends AbstractDataBudgetRepository<ENTITY, DOMAIN, String>
-		implements DataBudgetCommonBidangRepository<DOMAIN> {
+		implements DataBudgetCommonJenisRepository<DOMAIN> {
 
-	protected abstract DataBudgetCommonBidangJpaRepository<ENTITY, DOMAIN> repositoryOfBudgetBidang();
+	protected abstract DataBudgetCommonJenisJpaRepository<ENTITY, DOMAIN> repositoryOfBudgetJenis();
 
 	@Override
 	protected DataBudgetJpaRepository<ENTITY, DOMAIN, String> repositoryOfBudget() {
-		return this.repositoryOfBudgetBidang();
+		return this.repositoryOfBudgetJenis();
 	}
 
 	@Override
@@ -184,6 +184,58 @@ public abstract class AbstractDataBudgetCommonBidangRepository<
 
 			if (bidangId == null) statement.setNull(index++, Types.NULL);
 			else statement.setString(index++, bidangId);
+
+			statement.execute();
+		}
+	}
+
+	@Override
+	@SneakyThrows
+	public void deleteByUnitIdAndBidangIdAndJenisId(Connection connection, LocalDateTime deletedAt, String deletedBy, String unitId, String bidangId, String jenisId) {
+		List<String> params = List.of("unit_id = ?", "bidang_id = ?", "rekening3_id = ?");
+		try (PreparedStatement statement = connection.prepareStatement(String.join(System.lineSeparator(), this.deleteSql(params)))) {
+			int index = 1;
+
+			if (deletedAt == null) statement.setNull(index++, Types.NULL);
+			else statement.setTimestamp(index++, Timestamp.valueOf(deletedAt));
+
+			if (deletedBy == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, deletedBy);
+
+			if (unitId == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, unitId);
+
+			if (bidangId == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, bidangId);
+
+			if (jenisId == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, jenisId);
+
+			statement.execute();
+		}
+	}
+
+	@Override
+	@SneakyThrows
+	public void updateByUnitIdAndBidangIdAndJenisId(Connection connection, LocalDateTime updatedAt, String updatedBy, String unitId, String bidangId, String jenisId) {
+		List<String> params = List.of("unit_id = ?", "bidang_id = ?", "rekening3_id = ?");
+		try (PreparedStatement statement = connection.prepareStatement(String.join(System.lineSeparator(), this.updateSql(params)))) {
+			int index = 1;
+
+			if (updatedAt == null) statement.setNull(index++, Types.NULL);
+			else statement.setTimestamp(index++, Timestamp.valueOf(updatedAt));
+
+			if (updatedBy == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, updatedBy);
+
+			if (unitId == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, unitId);
+
+			if (bidangId == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, bidangId);
+
+			if (jenisId == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, jenisId);
 
 			statement.execute();
 		}
