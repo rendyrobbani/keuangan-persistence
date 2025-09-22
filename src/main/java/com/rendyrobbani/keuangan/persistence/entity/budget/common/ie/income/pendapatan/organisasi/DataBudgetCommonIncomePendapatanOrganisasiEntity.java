@@ -1,6 +1,5 @@
 package com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.organisasi;
 
-import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.DataBudgetCommonOrganisasiEntity;
 import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.income.pendapatan.organisasi.DataBudgetCommonIncomePendapatanOrganisasi;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -19,7 +18,7 @@ import lombok.experimental.Accessors;
 public class DataBudgetCommonIncomePendapatanOrganisasiEntity extends AbstractDataBudgetCommonIncomePendapatanOrganisasiEntity {
 
 	@Override
-	public DataBudgetCommonOrganisasiEntity toDomain() {
+	public DataBudgetCommonIncomePendapatanOrganisasiEntity toDomain() {
 		return this;
 	}
 

@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
 public class DataBudgetCommonIncomePendapatanRincianEntity extends AbstractDataBudgetCommonIncomePendapatanRincianEntity {
 
 	@Override
-	public DataBudgetCommonRincianEntity toDomain() {
+	public DataBudgetCommonIncomePendapatanRincianEntity toDomain() {
 		return this;
 	}
 

@@ -18,7 +18,7 @@ import lombok.experimental.Accessors;
 public class SelfBudgetCommonIncomePendapatanRincianEntity extends AbstractSelfBudgetCommonIncomePendapatanRincianEntity {
 
 	@Override
-	public SelfBudgetCommonIncomePendapatanRincian toDomain() {
+	public SelfBudgetCommonIncomePendapatanRincianEntity toDomain() {
 		return this;
 	}
 

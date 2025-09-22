@@ -1,8 +1,8 @@
 package com.rendyrobbani.keuangan.persistence.repository.budget.common.ie;
 
-import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.DataBudgetCommonOrganisasiEntity;
-import com.rendyrobbani.keuangan.core.domain.repository.budget.common.ie.DataBudgetCommonOrganisasiRepository;
-import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.AbstractDataBudgetCommonOrganisasiEntity;
+import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.DataBudgetCommonBidangEntity;
+import com.rendyrobbani.keuangan.core.domain.repository.budget.common.ie.DataBudgetCommonBidangRepository;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.AbstractDataBudgetCommonBidangEntity;
 import com.rendyrobbani.keuangan.persistence.repository.budget.AbstractDataBudgetRepository;
 import jakarta.persistence.Column;
 import lombok.SneakyThrows;
@@ -16,12 +16,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractDataBudgetCommonOrganisasiRepository<
-		ENTITY extends AbstractDataBudgetCommonOrganisasiEntity<DOMAIN>,
-		DOMAIN extends DataBudgetCommonOrganisasiEntity
+public abstract class AbstractDataBudgetCommonBidangRepository<
+		ENTITY extends AbstractDataBudgetCommonBidangEntity<DOMAIN>,
+		DOMAIN extends DataBudgetCommonBidangEntity
 		>
 		extends AbstractDataBudgetRepository<ENTITY, DOMAIN, String>
-		implements DataBudgetCommonOrganisasiRepository<DOMAIN> {
+		implements DataBudgetCommonBidangRepository<DOMAIN> {
 
 	@Override
 	@SneakyThrows
@@ -130,6 +130,52 @@ public abstract class AbstractDataBudgetCommonOrganisasiRepository<
 
 			if (unitId == null) statement.setNull(index++, Types.NULL);
 			else statement.setString(index++, unitId);
+
+			statement.execute();
+		}
+	}
+
+	@Override
+	@SneakyThrows
+	public void deleteByUnitIdAndBidangId(Connection connection, LocalDateTime deletedAt, String deletedBy, String unitId, String bidangId) {
+		List<String> params = List.of("unit_id = ?");
+		try (PreparedStatement statement = connection.prepareStatement(String.join(System.lineSeparator(), this.deleteSql(params)))) {
+			int index = 1;
+
+			if (deletedAt == null) statement.setNull(index++, Types.NULL);
+			else statement.setTimestamp(index++, Timestamp.valueOf(deletedAt));
+
+			if (deletedBy == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, deletedBy);
+
+			if (unitId == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, unitId);
+
+			if (bidangId == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, bidangId);
+
+			statement.execute();
+		}
+	}
+
+	@Override
+	@SneakyThrows
+	public void updateByUnitIdAndBidangId(Connection connection, LocalDateTime updatedAt, String updatedBy, String unitId, String bidangId) {
+		List<String> params = List.of("unit_id = ?");
+		try (PreparedStatement statement = connection.prepareStatement(String.join(System.lineSeparator(), this.updateSql(params)))) {
+			int index = 1;
+
+			if (updatedAt == null) statement.setNull(index++, Types.NULL);
+			else statement.setTimestamp(index++, Timestamp.valueOf(updatedAt));
+
+			if (updatedBy == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, updatedBy);
+
+			if (unitId == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, unitId);
+
+			if (bidangId == null) statement.setNull(index++, Types.NULL);
+			else statement.setString(index++, bidangId);
 
 			statement.execute();
 		}

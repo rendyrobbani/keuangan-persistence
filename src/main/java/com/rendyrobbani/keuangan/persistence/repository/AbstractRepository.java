@@ -63,7 +63,7 @@ public abstract class AbstractRepository<ENTITY extends AbstractBaseEntity<DOMAI
 	}
 
 	protected List<Field> entityFields() {
-		initClass();
+		this.initClass();
 		Map<String, Field> fields = new HashMap<>();
 		Class<?> entityClass = this.entityClass;
 		while (entityClass != null) {

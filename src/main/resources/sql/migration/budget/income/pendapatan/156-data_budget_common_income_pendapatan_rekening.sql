@@ -1,5 +1,5 @@
 delete from keuangan_dev.data_budget_common_income_pendapatan_rekening;
-insert into keuangan_dev.data_budget_common_income_pendapatan_rekening (id, skpd_id, unit_id, urusan_id, bidang_id, rekening1_id, rekening2_id, rekening3_id, rekening4_id, rekening5_id, rekening6_id, total, sebelum, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by)
+insert into keuangan_dev.data_budget_common_income_pendapatan_rekening (id, skpd_id, unit_id, urusan_id, bidang_id, rekening1_id, rekening2_id, rekening3_id, rekening4_id, rekening5_id, rekening6_id, sebelum, total, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by)
 select *
 from (
 	select concat_ws('|', unit_id, bidang_id, rekening6_id) as id
@@ -36,8 +36,8 @@ on duplicate key update skpd_id      = t.skpd_id
                       , rekening4_id = t.rekening4_id
                       , rekening5_id = t.rekening5_id
                       , rekening6_id = t.rekening6_id
-                      , total        = t.total
                       , sebelum      = t.sebelum
+                      , total        = t.total
                       , updated_at   = @action_at
                       , updated_by   = @action_by
                       , is_deleted   = t.is_deleted

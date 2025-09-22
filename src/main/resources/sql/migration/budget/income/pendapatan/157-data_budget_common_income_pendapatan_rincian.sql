@@ -1,4 +1,4 @@
-insert into keuangan_dev.data_budget_common_income_pendapatan_rincian (id, skpd_id, unit_id, urusan_id, bidang_id, rekening1_id, rekening2_id, rekening3_id, rekening4_id, rekening5_id, rekening6_id, description, information, volume1, satuan1, volume2, satuan2, volume3, satuan3, volume4, satuan4, volume, satuan, price, total, sebelum, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by)
+insert into keuangan_dev.data_budget_common_income_pendapatan_rincian (id, skpd_id, unit_id, urusan_id, bidang_id, rekening1_id, rekening2_id, rekening3_id, rekening4_id, rekening5_id, rekening6_id, description, information, volume1, satuan1, volume2, satuan2, volume3, satuan3, volume4, satuan4, volume, satuan, price, sebelum, total, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by)
 select *
 from (
 	select id             as id

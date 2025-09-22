@@ -1,5 +1,5 @@
 delete from keuangan_dev.data_budget_common_income_pendapatan_bidang;
-insert into keuangan_dev.data_budget_common_income_pendapatan_bidang (id, skpd_id, unit_id, urusan_id, bidang_id, total, sebelum, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by)
+insert into keuangan_dev.data_budget_common_income_pendapatan_bidang (id, skpd_id, unit_id, urusan_id, bidang_id, sebelum, total, created_at, created_by, updated_at, updated_by, is_deleted, deleted_at, deleted_by)
 select *
 from (
 	select concat_ws('|', unit_id, bidang_id) as id
