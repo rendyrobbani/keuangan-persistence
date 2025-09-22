@@ -1,0 +1,9 @@
+package com.rendyrobbani.keuangan.persistence.repository.budget.common.ie.income.pendapatan.jenis;
+
+import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.income.pendapatan.jenis.DataBudgetCommonIncomePendapatanJenis;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.jenis.DataBudgetCommonIncomePendapatanJenisEntity;
+import com.rendyrobbani.keuangan.persistence.repository.budget.common.ie.DataBudgetCommonJenisJpaRepository;
+
+public interface DataBudgetCommonIncomePendapatanJenisJpaRepository extends DataBudgetCommonJenisJpaRepository<DataBudgetCommonIncomePendapatanJenisEntity, DataBudgetCommonIncomePendapatanJenis> {
+
+}

@@ -230,7 +230,7 @@ public abstract class AbstractDataBudgetCommonBidangRepository<
 				switch (column.name()) {
 					case "id" -> {
 						targetCols.add(column.name());
-						targetVals.add("concat_ws('|', a.unit_id)");
+						targetVals.add("concat_ws('|', a.unit_id, a.bidang_id)");
 					}
 					case "created_at", "created_by" -> {
 						targetCols.add(column.name());

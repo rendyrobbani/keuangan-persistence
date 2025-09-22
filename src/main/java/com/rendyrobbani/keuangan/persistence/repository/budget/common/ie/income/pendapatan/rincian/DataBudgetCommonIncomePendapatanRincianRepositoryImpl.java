@@ -1,0 +1,22 @@
+package com.rendyrobbani.keuangan.persistence.repository.budget.common.ie.income.pendapatan.rincian;
+
+import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.income.pendapatan.rincian.DataBudgetCommonIncomePendapatanRincian;
+import com.rendyrobbani.keuangan.core.domain.repository.budget.common.ie.income.pendapatan.rincian.DataBudgetCommonIncomePendapatanRincianRepository;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pendapatan.rincian.DataBudgetCommonIncomePendapatanRincianEntity;
+import com.rendyrobbani.keuangan.persistence.repository.budget.common.ie.AbstractDataBudgetCommonRincianRepository;
+import com.rendyrobbani.keuangan.persistence.repository.budget.common.ie.DataBudgetCommonRincianJpaRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@RequiredArgsConstructor
+public class DataBudgetCommonIncomePendapatanRincianRepositoryImpl extends AbstractDataBudgetCommonRincianRepository<DataBudgetCommonIncomePendapatanRincianEntity, DataBudgetCommonIncomePendapatanRincian> implements DataBudgetCommonIncomePendapatanRincianRepository {
+
+	private final DataBudgetCommonIncomePendapatanRincianJpaRepository repository;
+
+	@Override
+	protected DataBudgetCommonRincianJpaRepository<DataBudgetCommonIncomePendapatanRincianEntity, DataBudgetCommonIncomePendapatanRincian> repositoryOfBudgetRincian() {
+		return this.repository;
+	}
+
+}

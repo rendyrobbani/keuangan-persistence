@@ -282,7 +282,7 @@ public abstract class AbstractDataBudgetCommonRekeningRepository<
 				switch (column.name()) {
 					case "id" -> {
 						targetCols.add(column.name());
-						targetVals.add("concat_ws('|', a.unit_id)");
+						targetVals.add("concat_ws('|', a.unit_id, a.bidang_id, a.rekening6_id)");
 					}
 					case "created_at", "created_by" -> {
 						targetCols.add(column.name());
