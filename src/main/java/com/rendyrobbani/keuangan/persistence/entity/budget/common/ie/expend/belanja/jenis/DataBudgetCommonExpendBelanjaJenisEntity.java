@@ -1,6 +1,5 @@
 package com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.belanja.jenis;
 
-import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.DataBudgetCommonJenisEntity;
 import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.expend.belanja.jenis.DataBudgetCommonExpendBelanjaJenis;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

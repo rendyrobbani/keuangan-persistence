@@ -1,5 +1,5 @@
 create or replace table data_budget_common_expend_pembiayaan_rincian (
-	id           varchar(255)   not null,
+	id           bigint         not null,
 	skpd_id      varchar(22)    not null,
 	unit_id      varchar(22)    not null,
 	urusan_id    varchar(1)     not null,

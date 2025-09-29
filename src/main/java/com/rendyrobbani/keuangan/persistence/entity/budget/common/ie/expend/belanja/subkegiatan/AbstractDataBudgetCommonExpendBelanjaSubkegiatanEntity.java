@@ -68,7 +68,7 @@ public abstract class AbstractDataBudgetCommonExpendBelanjaSubkegiatanEntity ext
 	})
 	protected DataUserEntity lockedByAsDataUser;
 
-	@Column(name = "is_rincianLocked", nullable = false)
+	@Column(name = "is_rincian_locked", nullable = false)
 	protected boolean isRincianLocked;
 
 	@Column(name = "rincian_locked_at")

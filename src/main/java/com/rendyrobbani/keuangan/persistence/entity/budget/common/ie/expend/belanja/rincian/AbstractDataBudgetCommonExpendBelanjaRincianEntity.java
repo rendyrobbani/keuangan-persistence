@@ -1,6 +1,10 @@
 package com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.belanja.rincian;
 
 import com.rendyrobbani.keuangan.core.domain.entity.budget.common.ie.expend.belanja.rincian.DataBudgetCommonExpendBelanjaRincian;
+import com.rendyrobbani.keuangan.core.domain.vo.BelanjaJenis;
+import com.rendyrobbani.keuangan.core.domain.vo.BelanjaLokus;
+import com.rendyrobbani.keuangan.persistence.converter.BelanjaJenisConverter;
+import com.rendyrobbani.keuangan.persistence.converter.BelanjaLokusConverter;
 import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.AbstractDataBudgetCommonRincianEntity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.belanja.belanja1.DataMasterBelanja1Entity;
 import com.rendyrobbani.keuangan.persistence.entity.master.classification.rekening.type.belanja.belanja2.DataMasterBelanja2Entity;
@@ -84,5 +88,12 @@ public abstract class AbstractDataBudgetCommonExpendBelanjaRincianEntity extends
 			@JoinColumn(name = "sumber_id", referencedColumnName = "id", insertable = false, updatable = false),
 	})
 	protected DataMasterSumberEntity sumber;
+
+	@Convert(converter = BelanjaJenisConverter.class)
+	@Column(name = "jenis")
+	protected BelanjaJenis jenis;
+
+	@Column(name = "penerima")
+	protected String penerima;
 
 }
