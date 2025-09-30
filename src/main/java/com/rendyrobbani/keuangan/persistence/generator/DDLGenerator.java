@@ -1,6 +1,21 @@
 package com.rendyrobbani.keuangan.persistence.generator;
 
 import com.rendyrobbani.keuangan.core.domain.vo.*;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.belanja.bidang.DataBudgetCommonExpendBelanjaBidangEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.belanja.jenis.DataBudgetCommonExpendBelanjaJenisEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.belanja.kegiatan.DataBudgetCommonExpendBelanjaKegiatanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.belanja.organisasi.DataBudgetCommonExpendBelanjaOrganisasiEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.belanja.program.DataBudgetCommonExpendBelanjaProgramEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.belanja.rekening.DataBudgetCommonExpendBelanjaRekeningEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.belanja.rincian.DataBudgetCommonExpendBelanjaRincianEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.belanja.rincian.SelfBudgetCommonExpendBelanjaRincianEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.belanja.subkegiatan.DataBudgetCommonExpendBelanjaSubkegiatanEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.pembiayaan.bidang.DataBudgetCommonExpendPembiayaanBidangEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.pembiayaan.jenis.DataBudgetCommonExpendPembiayaanJenisEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.pembiayaan.organisasi.DataBudgetCommonExpendPembiayaanOrganisasiEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.pembiayaan.rekening.DataBudgetCommonExpendPembiayaanRekeningEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.pembiayaan.rincian.DataBudgetCommonExpendPembiayaanRincianEntity;
+import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.expend.pembiayaan.rincian.SelfBudgetCommonExpendPembiayaanRincianEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pembiayaan.bidang.DataBudgetCommonIncomePembiayaanBidangEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pembiayaan.jenis.DataBudgetCommonIncomePembiayaanJenisEntity;
 import com.rendyrobbani.keuangan.persistence.entity.budget.common.ie.income.pembiayaan.organisasi.DataBudgetCommonIncomePembiayaanOrganisasiEntity;
@@ -379,6 +394,23 @@ public final class DDLGenerator {
 			entityClasses.add(DataBudgetCommonIncomePembiayaanRekeningEntity.class);
 			entityClasses.add(DataBudgetCommonIncomePembiayaanRincianEntity.class);
 			entityClasses.add(SelfBudgetCommonIncomePembiayaanRincianEntity.class);
+
+			entityClasses.add(DataBudgetCommonExpendPembiayaanOrganisasiEntity.class);
+			entityClasses.add(DataBudgetCommonExpendPembiayaanBidangEntity.class);
+			entityClasses.add(DataBudgetCommonExpendPembiayaanJenisEntity.class);
+			entityClasses.add(DataBudgetCommonExpendPembiayaanRekeningEntity.class);
+			entityClasses.add(DataBudgetCommonExpendPembiayaanRincianEntity.class);
+			entityClasses.add(SelfBudgetCommonExpendPembiayaanRincianEntity.class);
+
+			entityClasses.add(DataBudgetCommonExpendBelanjaOrganisasiEntity.class);
+			entityClasses.add(DataBudgetCommonExpendBelanjaBidangEntity.class);
+			entityClasses.add(DataBudgetCommonExpendBelanjaProgramEntity.class);
+			entityClasses.add(DataBudgetCommonExpendBelanjaKegiatanEntity.class);
+			entityClasses.add(DataBudgetCommonExpendBelanjaSubkegiatanEntity.class);
+			entityClasses.add(DataBudgetCommonExpendBelanjaJenisEntity.class);
+			entityClasses.add(DataBudgetCommonExpendBelanjaRekeningEntity.class);
+			entityClasses.add(DataBudgetCommonExpendBelanjaRincianEntity.class);
+			entityClasses.add(SelfBudgetCommonExpendBelanjaRincianEntity.class);
 
 			entityClasses = entityClasses.stream().filter(entityClass -> entityClass.isAnnotationPresent(Table.class)).toList();
 		}
