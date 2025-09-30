@@ -38,9 +38,11 @@ create or replace table data_budget_common_expend_belanja_kegiatan (
 	constraint fk_data_budget_common_expend_belanja_kegiatan_04 foreign key (urusan_id, bidang_id) references data_master_bidang (urusan_id, id),
 	constraint fk_data_budget_common_expend_belanja_kegiatan_05 foreign key (program_id) references data_master_program (id),
 	constraint fk_data_budget_common_expend_belanja_kegiatan_06 foreign key (fungsi_id, subfungsi_id, program_id, kegiatan_id) references data_master_kegiatan (fungsi_id, subfungsi_id, program_id, id),
-	constraint fk_data_budget_common_expend_belanja_kegiatan_07 foreign key (created_by) references data_user (id),
-	constraint fk_data_budget_common_expend_belanja_kegiatan_08 foreign key (updated_by) references data_user (id),
-	constraint fk_data_budget_common_expend_belanja_kegiatan_09 foreign key (deleted_by) references data_user (id),
+	constraint fk_data_budget_common_expend_belanja_kegiatan_07 foreign key (fungsi_id) references data_master_fungsi (id),
+	constraint fk_data_budget_common_expend_belanja_kegiatan_08 foreign key (fungsi_id, subfungsi_id) references data_master_subfungsi (fungsi_id, id),
+	constraint fk_data_budget_common_expend_belanja_kegiatan_09 foreign key (created_by) references data_user (id),
+	constraint fk_data_budget_common_expend_belanja_kegiatan_10 foreign key (updated_by) references data_user (id),
+	constraint fk_data_budget_common_expend_belanja_kegiatan_11 foreign key (deleted_by) references data_user (id),
 	primary key (id)
 ) engine = innodb
   charset = utf8mb4
